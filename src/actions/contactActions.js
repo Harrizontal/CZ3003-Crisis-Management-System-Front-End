@@ -20,7 +20,7 @@ export const getContact = id => async dispatch => {
   );
   dispatch({
     type: GET_CONTACT,
-    payload: res.data
+    payload: res.data // passing to reducers to update state
   });
 };
 

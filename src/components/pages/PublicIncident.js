@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
 
-class AddContact extends Component {
+class PublicIncident extends Component {
   state = {
     name: "",
     email: "",
@@ -82,7 +82,7 @@ class AddContact extends Component {
               error={errors.email}
             />
             <TextInputGroup
-              label="Phone"
+              label="Contact"
               name="phone"
               placeholder="Enter Phone"
               value={phone}
@@ -91,7 +91,7 @@ class AddContact extends Component {
             />
             <input
               type="submit"
-              value="Add Contact"
+              value="Submit Contact"
               className="btn btn-light btn-block"
             />
           </form>
@@ -101,10 +101,10 @@ class AddContact extends Component {
   }
 }
 
-AddContact.propTypes = {
+PublicIncident.propTypes = {
   addContact: PropTypes.func.isRequired
 };
 export default connect(
   null,
   { addContact }
-)(AddContact);
+)(PublicIncident);

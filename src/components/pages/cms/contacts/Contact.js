@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { deleteContact } from "../../actions/contactActions";
+import { deleteContact } from "../../../../actions/contactActions";
 class Contact extends Component {
   state = {
     showContactInfo: false
@@ -35,7 +35,7 @@ class Contact extends Component {
             style={{ cursor: "pointer", float: "right", color: "red" }}
             onClick={this.onDeleteClick.bind(this, id)}
           />
-          <Link to={`contact/edit/${id}`}>
+          <Link to={`/cms/incident/edit/${id}`}>
             <i
               className="fas fa-pencil-alt"
               style={{
