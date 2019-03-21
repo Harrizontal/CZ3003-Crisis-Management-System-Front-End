@@ -6,23 +6,30 @@ import EditContact from "./contacts/EditContact";
 import Header from "../../layout/Header";
 import MapView from "../../map/Map_old2";
 import Overview from "./Overview";
+import Setting from "./Setting";
+import { Incidents } from "./incidents";
 
 const routes = [
   {
     path: "/cms",
     exact: true,
-    sidebar: () => <div>Dashboard</div>,
+    sidebar: "Dashboard",
     main: Overview
   },
   {
     path: "/cms/incidents",
-    sidebar: () => <div>Incidents</div>,
-    main: Contacts
+    sidebar: "Incidents",
+    main: Incidents
+    // use to be Contacts, take note
   },
   {
     path: "/cms/incident/edit/:id",
-    sidebar: () => <div>Incidents</div>,
     main: EditContact
+  },
+  {
+    path: "/cms/setting",
+    sidebar: "Setting",
+    main: Setting
   }
 ];
 
@@ -32,17 +39,18 @@ export default () => {
       <Header branding="Welcome to CMS" />
       <div>
         <ul>
-          <li>
-            <Link to="/cms">Overview</Link>
-          </li>
-          <li>
-            <Link to="/cms/incidents">Incidents</Link>
-          </li>
-          <li>
-            <Link to="/cms/agencies">Agencies</Link>
-          </li>
+          {routes.map((route, index) =>
+            // Render more <Route>s with the same paths as
+            // above, but different components this time.
+            route.sidebar ? (
+              <li>
+                <Link to={route.path}>{route.sidebar}</Link>
+              </li>
+            ) : null
+          )}
         </ul>
       </div>
+
       <div style={{ flex: 1, padding: "10px" }}>
         {routes.map((route, index) => (
           // Render more <Route>s with the same paths as

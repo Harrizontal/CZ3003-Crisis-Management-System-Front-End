@@ -34,7 +34,7 @@ class App extends Component {
                 <PrivateRoute2 path="/login" component={Login} />
                 <Route exact path="/" component={PublicIncident} />
                 <Route exact path="/map" component={MapView} />
-
+                <Route exact path="/logout" component={About} />
                 {/* <Route exact path="/contact/add" component={AddContact} />
                 <Route exact path="/contact/edit/:id" component={EditContact} />
                 <Route exact path="/about" component={About} /> */}

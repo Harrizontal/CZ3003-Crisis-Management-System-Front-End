@@ -5,10 +5,10 @@ export const PrivateRoute2 = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      true ? (
-        <Component {...props} />
-      ) : (
+      localStorage.getItem("user") ? (
         <Redirect to={{ pathname: "/cms", state: { from: props.location } }} />
+      ) : (
+        <Component {...props} />
       )
     }
   />

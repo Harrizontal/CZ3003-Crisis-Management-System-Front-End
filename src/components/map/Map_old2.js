@@ -20,7 +20,7 @@ export default class MapView extends Component {
         height: "50vh",
         latitude: this.props.latitude,
         longitude: this.props.longitude,
-        zoom: 15,
+        zoom: 12,
         bearing: 0,
         pitch: 0
       },

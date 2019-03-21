@@ -3,6 +3,7 @@ import Contact from "./Contact";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getContacts } from "../../../../actions/contactActions";
+
 class Contacts extends Component {
   componentDidMount() {
     this.props.getContacts();

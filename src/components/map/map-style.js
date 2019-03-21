@@ -11,7 +11,7 @@ export const dataLayer = fromJS({
     "fill-color": {
       type: "exponential",
       base: 10,
-      stops: [[0, "#d53e4f"], [12, "#5e030e"]]
+      stops: [[0, "#5e030e"], [12, "#d53e4f"]]
     },
     "fill-opacity": 0.8
   }
