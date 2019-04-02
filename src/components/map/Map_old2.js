@@ -2,16 +2,19 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import MapGL from "react-map-gl";
-import ControlPanel from "./control-panel";
+import { connect } from "react-redux";
 
 import { defaultMapStyle, dataLayer } from "./map-style.js";
 import { fromJS } from "immutable";
 import { json as requestJson } from "d3-request";
+import PropTypes from "prop-types";
+
+import { getMapData } from "../../actions/infoActions";
 
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiaGFycml6b250YWwiLCJhIjoiY2l6YWw3YW90MDQ1NzJ3cDl5bXd4M2Y4aSJ9.CnTz5K2ShZcuLiG0xYLBKw"; // Set your mapbox token here
 
-export default class MapView extends Component {
+class MapView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +32,7 @@ export default class MapView extends Component {
   }
 
   componentDidMount() {
+    //this.props.getMapData();
     requestJson(
       require("./dengue-clusters-geojson.geojson"),
       (error, response) => {
@@ -41,6 +45,11 @@ export default class MapView extends Component {
     );
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props);
+    console.log(nextProps);
+    this._loadData(this.props.map.mapData);
+  }
   _loadData = data => {
     //updatePercentiles(data, f => f.properties.income[this.state.year]);
     console.log(fromJS({ type: "geojson", data }));
@@ -50,6 +59,7 @@ export default class MapView extends Component {
       // Add point layer to map
       .set("layers", defaultMapStyle.get("layers").push(dataLayer));
 
+    console.log(mapStyle);
     this.setState({ data, mapStyle });
   };
 
@@ -68,12 +78,14 @@ export default class MapView extends Component {
 
   _renderTooltip() {
     const { hoveredFeature, year, x, y } = this.state;
-
+    //console.log(hoveredFeature);
     return (
       hoveredFeature && (
         <div className="tooltip" style={{ left: x, top: y }}>
-          <div>State: {hoveredFeature.properties.name}</div>
-          <div>Median Household Income: {hoveredFeature.properties.value}</div>
+          <div>State: {hoveredFeature.properties.Name}</div>
+          <div>
+            Median Household Income: {hoveredFeature.properties.Description}
+          </div>
           <div>
             Percentile: {(hoveredFeature.properties.percentile / 8) * 100}
           </div>
@@ -84,10 +96,20 @@ export default class MapView extends Component {
 
   render() {
     const { viewport, mapStyle } = this.state;
-    console.log(this.props.longitude + " and " + this.props.latitude);
+    console.log("render: " + this.props.latitude + " " + this.props.longitude);
+    // let data = this.props.map.mapData;
 
+    // console.log(this.props.longitude + " and " + this.props.latitude);
+
+    // if (data == undefined) {
+    //   const mapStyle = defaultMapStyle
+    //     // Add geojson source to map
+    //     .setIn(["sources", "incomeByState"], fromJS({ type: "geojson", data }))
+    //     // Add point layer to map
+    //     .set("layers", defaultMapStyle.get("layers").push(dataLayer));
+    // }
     return (
-      <div style={{ height: "50vh" }}>
+      <div style={{ height: "100%" }}>
         <MapGL
           {...viewport}
           width="100%"
@@ -104,6 +126,17 @@ export default class MapView extends Component {
   }
 }
 
-export function renderToDom(container) {
-  render(<MapView />, container);
-}
+MapView.propTypes = {
+  map: PropTypes.object.isRequired,
+  getMapData: PropTypes.func.isRequired
+};
+const mapStateToProps = state => ({
+  //contacts: state.contact.contacts
+  map: state.map
+  // able to accept from this.props.contacts
+});
+
+export default connect(
+  mapStateToProps,
+  { getMapData }
+)(MapView);

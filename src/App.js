@@ -28,7 +28,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <div className="container">
+            <div>
               <Switch>
                 <PrivateRoute path="/cms" component={Overview} />
                 <PrivateRoute2 path="/login" component={Login} />

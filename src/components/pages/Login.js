@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { login } from "../../actions/userActions";
 
 class Login extends Component {
@@ -44,14 +43,19 @@ class Login extends Component {
   // always put at the last
   render() {
     const { loggingIn } = this.props;
-    console.log(loggingIn);
-    const { username, password } = this.state;
+    //console.log(loggingIn);
+    // const { username, password } = this.state;
 
     return (
-      <div>
+      <div className="login">
         <form onSubmit={this.onSubmit}>
           username:
-          <input type="text" name="username" onChange={this.onChange} />
+          <input
+            className="username"
+            type="text"
+            name="username"
+            onChange={this.onChange}
+          />
           password:
           <input type="text" name="password" onChange={this.onChange} />
           <input type="submit" value="Submit" />

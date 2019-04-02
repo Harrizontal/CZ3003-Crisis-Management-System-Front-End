@@ -4,10 +4,9 @@ import Contacts from "./contacts/Contacts";
 import AddContact from "./contacts/AddContact";
 import EditContact from "./contacts/EditContact";
 import Header from "../../layout/Header";
-import MapView from "../../map/Map_old2";
-import Overview from "./Overview";
+import Overview from "./overview/Overview";
 import Setting from "./Setting";
-import { Incidents } from "./incidents";
+import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
 
 const routes = [
   {
@@ -18,8 +17,8 @@ const routes = [
   },
   {
     path: "/cms/incidents",
-    sidebar: "Incidents",
-    main: Incidents
+    sidebar: "Live Incidents",
+    main: IncidentsOverview2
     // use to be Contacts, take note
   },
   {
@@ -36,33 +35,63 @@ const routes = [
 export default () => {
   return (
     <React.Fragment>
-      <Header branding="Welcome to CMS" />
-      <div>
-        <ul>
-          {routes.map((route, index) =>
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          justifyContent: "flex-start"
+        }}
+      >
+        <div
+          style={{
+            order: 0,
+            width: "100%",
+            height: "10%",
+            display: "flex",
+            zIndex: 3,
+            boxShadow: "0px 4px 6px -6px rgba(0,0,0,0.25)"
+          }}
+        >
+          <Header style={{ width: "100px" }} />
+          <div className="toolbar_navigation-items">
+            <ul>
+              {routes.map((route, index) =>
+                // Render more <Route>s with the same paths as
+                // above, but different components this time.
+                route.sidebar ? (
+                  <li>
+                    <Link to={route.path}>{route.sidebar}</Link>
+                  </li>
+                ) : null
+              )}
+            </ul>
+          </div>
+        </div>
+        <div
+          style={{
+            order: 1,
+            width: "100%",
+            height: "90%",
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "flex-start"
+          }}
+        >
+          {routes.map((route, index) => (
             // Render more <Route>s with the same paths as
             // above, but different components this time.
-            route.sidebar ? (
-              <li>
-                <Link to={route.path}>{route.sidebar}</Link>
-              </li>
-            ) : null
-          )}
-        </ul>
-      </div>
-
-      <div style={{ flex: 1, padding: "10px" }}>
-        {routes.map((route, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            exact={route.exact}
-            component={route.main}
-          />
-        ))}
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              exact={route.exact}
+              component={route.main}
+            />
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );

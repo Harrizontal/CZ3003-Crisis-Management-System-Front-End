@@ -15,10 +15,13 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_CONTACTS:
-      return {
+      console.log("GET_CONTACTS @ contactReducer");
+      const test = {
         ...state,
         contacts: action.payload
       };
+      console.log(test);
+      return test;
     case GET_CONTACT:
       return {
         ...state,

@@ -1,9 +1,5 @@
 import { userConstants } from "../constants";
-import axios from "axios";
 import { userService } from "../services";
-import { history } from "../helpers";
-import { resolve } from "path";
-import { rejects } from "assert";
 
 export const login = (username, password) => dispatch => {
   //const res = await axios.get("https://jsonplaceholder.typicode.com/users");

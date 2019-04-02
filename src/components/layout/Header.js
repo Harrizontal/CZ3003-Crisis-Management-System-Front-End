@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import logo from "./siren.png";
 
-const Header = props => {
-  const { branding } = props;
+const Header = () => {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
-      <div className="container">{branding}</div>
-    </nav>
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <img src={logo} width="auto" height="100%" />
+    </div>
   );
 };
 

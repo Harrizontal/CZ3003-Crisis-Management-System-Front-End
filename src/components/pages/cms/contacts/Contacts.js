@@ -6,11 +6,16 @@ import { getContacts } from "../../../../actions/contactActions";
 
 class Contacts extends Component {
   componentDidMount() {
+    console.log("componentDidMount");
     this.props.getContacts();
+    const { contacts } = this.props;
+    console.log(contacts);
   }
 
   render() {
+    console.log(this.props);
     const { contacts } = this.props;
+    console.log(contacts);
     return (
       <React.Fragment>
         <h1 className="display-4 mb-2">
