@@ -159,3 +159,7 @@ body {
 .btnSubmit:hover::after{
   background-color: black;
 }
+
+.formlabel{
+  color:#7138E0;
+}
