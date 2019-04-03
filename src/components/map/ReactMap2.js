@@ -16,22 +16,44 @@ class ReactMap2 extends Component {
   state = {
     listOfMarkers: []
   };
-  _generateSource = (map, id, mapSource) => {};
-  _generateLayer = (id, mapLayer) => {};
-  _generateMarkers = (map, type, mapSource) => {
-    var popup = new mapboxgl.Popup({
-      closeButton: false,
-      closeOnClick: false
-    });
+  _generateSourceAndLayer = (map, id, mapSource, mapLayer) => {
+    if (map.getSource(id)) {
+      console.log("There is source available, just update it");
+      map.getSource(id).setData(mapSource);
+      if (mapLayer !== undefined) {
+        if (map.getLayer(id)) {
+          console.log("There is layer available, remove and add new layer");
+          map.removeLayer(id);
 
-    var array = [];
-    console.log(mapSource);
+          //map.getLayoutProperty("data", "paint", mapLayer);
+          map.addLayer(mapLayer);
+        } else {
+          console.log("There is no layer available, creating layer it");
+          map.addLayer(mapLayer);
+        }
+      }
+    } else {
+      console.log(
+        "There is no source available, creating both source and layer it"
+      );
+      map.addSource(id, { type: "geojson", data: mapSource });
+      if (mapLayer !== undefined) {
+        map.addLayer(mapLayer);
+      }
+    }
+  };
+  _generateMarkers = (map, type, mapSource) => {
+    var array = []; // too keep markers - for removing later.
     switch (type) {
       case "fill":
+        var popup = new mapboxgl.Popup({
+          closeButton: false,
+          closeOnClick: false
+        });
         mapSource.features.forEach(function(marker) {
           map.on("mouseenter", "data", e => {
             const features = map.queryRenderedFeatures(e.point);
-            var getDescription = features[0]["properties"]["Description"];
+            var getDescription = marker["properties"]["Description"];
 
             popup
               .setLngLat(e.lngLat)
@@ -86,23 +108,6 @@ class ReactMap2 extends Component {
 
     mapboxgl.accessToken = token;
     this.map = new mapboxgl.Map(mapConfig);
-
-    // this.map.on("load", () => {
-    //   // Get the map style and set it in the state tree
-    //   // const style = this.map.getStyle();
-    //   // this.props.setStyle(style);
-    //   // this.map.on("mouseenter", "data", e => {
-    //   //   const features = this.map.queryRenderedFeatures(e.point);
-    //   //   var getDescription = features[0]["properties"]["Description"];
-    //   //   popup
-    //   //     .setLngLat(e.lngLat)
-    //   //     .setHTML(getDescription)
-    //   //     .addTo(this.map);
-    //   // });
-    //   // this.map.on("mouseleave", "data", function() {
-    //   //   popup.remove();
-    //   // });
-    // });
   }
 
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet
@@ -119,13 +124,6 @@ class ReactMap2 extends Component {
     const mapLayer = after["mapLayer"];
     const type = after["type"];
 
-    // console.log(before["mapSourceData"]);
-    // if (before["mapSourceData"] !== "") {
-    //   before["mapSourceData"].features.forEach(function(marker) {
-    //     marker.remove();
-    //   });
-    // }
-
     console.log(this.state.listOfMarkers);
 
     if (this.state.listOfMarkers.length > 0) {
@@ -135,50 +133,8 @@ class ReactMap2 extends Component {
     }
 
     if (after) {
-      if (map.getSource("data")) {
-        console.log("There is source available, just update it");
-        map.getSource("data").setData(mapSource);
-        if (mapLayer !== undefined) {
-          if (map.getLayer("data")) {
-            console.log("There is layer available, remove and add new layer");
-            map.removeLayer("data");
-
-            //map.getLayoutProperty("data", "paint", mapLayer);
-            map.addLayer(mapLayer);
-          } else {
-            console.log("There is no layer available, creating layer it");
-            map.addLayer(mapLayer);
-          }
-        }
-      } else {
-        console.log(
-          "There is no source available, creating both source and layer it"
-        );
-        map.addSource("data", { type: "geojson", data: mapSource });
-        if (mapLayer !== undefined) {
-          map.addLayer(mapLayer);
-        }
-      }
-
+      this._generateSourceAndLayer(map, id, mapSource, mapLayer);
       this._generateMarkers(map, type, mapSource);
-
-      //   // console.log("there is value in after");
-      //   // if (map.getSource("data") === undefined) {
-      //   //   map.addSource("data", { type: "geojson", data: after[0] });
-      //   // } else {
-      //   //   map.getSource("data").setData(after[0]);
-      //   // }
-
-      //   // if (map.getLayoutProperty("data") === undefined) {
-      //   //   map.addLayer({
-      //   //     id: "data",
-      //   //     type: "fill",
-      //   //     source: "data",
-      //   //     paint: after[1]
-      //   //   });
-      //   // } else {
-      //   //   map.getLayoutProperty("data", "paint", after[1]);
-      //   // }
     }
   }
 
