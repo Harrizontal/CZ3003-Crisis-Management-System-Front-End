@@ -1,6 +1,9 @@
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  padding:0;
+  width:100%;
+  height: 100vh;
+  background-color: #7138E0;
 }
 
 .tooltip {
@@ -110,4 +113,49 @@ body {
 
 .login .username {
   font-size: 5em;
+}
+
+.formcontainer{
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 3em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  justify-content: center;
+  align-content: center;
+}
+.card-header {
+  font-family: 'Rubik', sans-serif;
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: 2em;
+  letter-spacing: 0.2em;
+}
+
+.firstwordsel{
+  color: #7138E0;
+}
+
+.btnSubmit {
+  font-family: 'Rubik', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 500;
+  background-color: black;
+  color:white;
+  border-radius: 20px;
+  border: 0px;
+  width: 200px;
+  height: 40px;
+
+  transition: 0.5s;
+}
+.btnSubmit:hover{
+  background-color: #7138E0;
+}
+.btnSubmit:hover::after{
+  background-color: black;
 }

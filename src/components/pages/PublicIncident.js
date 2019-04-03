@@ -4,18 +4,24 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
 
+
 class PublicIncident extends Component {
   state = {
     name: "",
-    email: "",
-    phone: "",
+    contact: "",
+    incidenttitle: "",
+    incidentcategory: "",
+    locaddress: "",
+    postalcode: "",
+    description: "",
     errors: {}
   };
 
   onSubmit = e => {
     e.preventDefault();
 
-    const { name, email, phone } = this.state;
+    const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state;
+    var categoryTypes = ['']
 
     // Check For Errors
     if (name === "") {
@@ -23,20 +29,35 @@ class PublicIncident extends Component {
       return;
     }
 
-    if (email === "") {
-      this.setState({ errors: { email: "Email is required" } });
+    if (contact === "") {
+      this.setState({ errors: { contact: "Email is required" } });
       return;
     }
 
-    if (phone === "") {
-      this.setState({ errors: { phone: "Phone is required" } });
+    if (incidenttitle === "") {
+      this.setState({ errors: { incidenttitle: "Phone is required" } });
+      return;
+    }
+
+    if (locaddress === "") {
+      this.setState({ errors: { locaddress: "Address is required" } });
+      return;
+    }
+
+    if (postalcode === "") {
+      this.setState({ errors: { postalcode: "Postal Code is required" } });
+      return;
+    }
+
+    if (description === "") {
+      this.setState({ errors: { description: "Please provide a brief description of the incident." } });
       return;
     }
 
     const newContact = {
       name,
-      email,
-      phone
+      contact,
+      incidenttitle
     };
 
     //// SUBMIT CONTACT ////
@@ -46,8 +67,11 @@ class PublicIncident extends Component {
     // Clear State
     this.setState({
       name: "",
-      email: "",
-      phone: "",
+      contact: "",
+      incidenttitle: "",
+      locaddress: "",
+      postalcode: "",
+      description: "",
       errors: {}
     });
 
@@ -57,11 +81,11 @@ class PublicIncident extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { name, contact, incidenttitle, locaddress, postalcode, description, errors } = this.state;
 
     return (
-      <div className="card mb-3">
-        <div className="card-header">Add Contact</div>
+      <div class="bodybg" className="formcontainer">
+        <div className="card-header"><span class="firstwordsel">sumbit</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <TextInputGroup
@@ -73,26 +97,53 @@ class PublicIncident extends Component {
               error={errors.name}
             />
             <TextInputGroup
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              value={email}
+              label="Contact"
+              name="Contact"
+              type="contact"
+              placeholder="Enter Phone"
+              value={contact}
               onChange={this.onChange}
-              error={errors.email}
+              error={errors.contact}
             />
             <TextInputGroup
-              label="Contact"
-              name="phone"
-              placeholder="Enter Phone"
-              value={phone}
+              label="Incident Title"
+              name="incidenttitle"
+              placeholder="Enter Incident Title"
+              value={incidenttitle}
               onChange={this.onChange}
-              error={errors.phone}
+              error={errors.incidenttitle}
+            />
+            <TextInputGroup
+              label="Address"
+              name="locaddress"
+              type="locaddress"
+              placeholder="Enter Address"
+              value={locaddress}
+              onChange={this.onChange}
+              error={errors.locaddress}
+            />
+            <TextInputGroup
+              label="Postal Code"
+              name="postalcode"
+              type="postalcode"
+              placeholder="Enter Postal Code"
+              value={postalcode}
+              onChange={this.onChange}
+              error={errors.postalcode}
+            />
+            <TextInputGroup
+              label="Description"
+              name="description"
+              type="description"
+              placeholder="Enter Description"
+              value={description}
+              onChange={this.onChange}
+              error={errors.description}
             />
             <input
               type="submit"
-              value="Submit Contact"
-              className="btn btn-light btn-block"
+              value="submit"
+              className="btnSubmit"
             />
           </form>
         </div>
