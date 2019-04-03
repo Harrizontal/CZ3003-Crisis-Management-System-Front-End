@@ -63,6 +63,7 @@ class ReactMap extends Component {
     const after = nextProps.mapStyle;
     const map = this.map;
 
+    console.log(after);
     if (!Immutable.is(before, after)) {
       const changes = diffStyles(before.toJS(), after.toJS());
       console.log(changes);

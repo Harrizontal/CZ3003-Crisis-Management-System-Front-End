@@ -2,15 +2,17 @@ import { combineReducers } from "redux";
 import contactReducer from "./contactReducer";
 import { authentication } from "./authenticationReducer";
 import { incident as incidentReducer } from "./incidentReducer";
-import { map as infoReducer } from "./infoReducer";
+import { overviewReducer } from "./overviewReducer";
 import StylesheetReducer from "./reducer_stylesheet";
 import UserIntReducer from "./reduce_userInt";
+import mapReducer from "./mapReducer";
 
 export default combineReducers({
   contact: contactReducer,
   authentication,
   incident: incidentReducer,
-  map: infoReducer,
-  mapStyle: StylesheetReducer,
-  userInterface: UserIntReducer
+  overviewInformation: overviewReducer,
+  //mapStyle: StylesheetReducer,
+  userInterface: UserIntReducer,
+  mapInformation: mapReducer
 });

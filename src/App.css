@@ -104,10 +104,10 @@ body {
   font-weight: bold;
 }
 
-.login {
-  color: purple;
-}
-
-.login .username {
-  font-size: 5em;
+.marker {
+  display: block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
 }

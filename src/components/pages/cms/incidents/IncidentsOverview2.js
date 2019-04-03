@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import IncidentsSideBar from "./IncidentsSideBar";
-import ReactMap from "../../../map/ReactMap";
-import Interface from "../../../map/Interface";
+import ReactMap2 from "../../../map/ReactMap2";
+import Interface2 from "../../../map/Interface2";
 
 const TOKEN =
   "pk.eyJ1IjoiaGFycml6b250YWwiLCJhIjoiY2l6YWw3YW90MDQ1NzJ3cDl5bXd4M2Y4aSJ9.CnTz5K2ShZcuLiG0xYLBKw";
@@ -29,16 +29,16 @@ export class IncidentsOverview2 extends Component {
           justifyContent: "flex-start"
         }}
       >
-        <div style={{ width: "60%", height: "100%" }}>
-          <Interface />
-          <ReactMap
+        <div style={{ width: "60%", height: "100%", position: "relative" }}>
+          {/* <Interface2 />
+          <ReactMap2
             token={TOKEN}
             longitude={LONG}
             latitude={LAT}
             zoom={ZOOM}
             showPopUp={true}
             styleID={STYLE_ID}
-          />
+          /> */}
         </div>
         <div
           style={{

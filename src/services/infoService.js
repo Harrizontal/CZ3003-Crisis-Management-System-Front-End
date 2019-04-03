@@ -1,6 +1,8 @@
 import { json as requestJson } from "d3-request";
+import axios from "axios";
 export const infoService = {
-  getDengueClusterMap
+  getDengueClusterMap,
+  getWeatherInfo
 };
 
 async function getDengueClusterMap() {
@@ -28,4 +30,19 @@ async function getDengueClusterMap() {
   // result as an object!
   console.log("Returning result");
   return result;
+}
+
+function getWeatherInfo() {
+  console.log("InfoService getWeatherInformation");
+
+  return axios
+    .get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
+    .then(function(response) {
+      // handle success
+      return response.data;
+    })
+    .catch(function(error) {
+      // handle error
+      return error;
+    });
 }

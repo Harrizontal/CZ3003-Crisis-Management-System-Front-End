@@ -16,12 +16,10 @@ export default function StylesheetReducer(styleState = null, action) {
   if (styleState === null && action.type !== "SET_STYLE") return styleState;
   switch (action.type) {
     case "SET_STYLE": {
-      console.log(action.payload);
       return Immutable.fromJS(action.payload);
     }
 
     case "CHANGE_VIZ": {
-      console.log("CHANGE_VIZ");
       // const mapStyle = defaultMapStyle
       //   // Add geojson source to map
       //   .setIn(["sources", "incomeByState"], fromJS({ type: "geojson", data }))
@@ -41,7 +39,6 @@ export default function StylesheetReducer(styleState = null, action) {
       let layerIdx = styleState
         .get("layers")
         .findIndex(layer => layer.get("id") === "data");
-      console.log("high " + layerIdx);
       let paint = {}; // <= not a constant, dont use elsewhere in this scope
 
       let layersToBePush;
