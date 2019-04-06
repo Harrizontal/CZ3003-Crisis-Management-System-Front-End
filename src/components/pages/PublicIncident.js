@@ -84,12 +84,13 @@ class PublicIncident extends Component {
     const { name, contact, incidenttitle, locaddress, postalcode, description, errors } = this.state;
 
     return (
-      <div class="bodybg" className="formcontainer">
+      <body className="background">
+      <div class="bodybg" className="formcontainer"> 
         <div className="card-header"><span class="firstwordsel">sumbit</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <TextInputGroup
-              label="Name"
+              label="Name: "
               name="name"
               placeholder="Enter Name"
               value={name}
@@ -97,7 +98,7 @@ class PublicIncident extends Component {
               error={errors.name}
             />
             <TextInputGroup
-              label="Contact"
+              label="Contact: "
               name="Contact"
               type="contact"
               placeholder="Enter Phone"
@@ -106,7 +107,7 @@ class PublicIncident extends Component {
               error={errors.contact}
             />
             <TextInputGroup
-              label="Incident Title"
+              label="Incident Title: "
               name="incidenttitle"
               placeholder="Enter Incident Title"
               value={incidenttitle}
@@ -114,7 +115,7 @@ class PublicIncident extends Component {
               error={errors.incidenttitle}
             />
             <TextInputGroup
-              label="Address"
+              label="Address: "
               name="locaddress"
               type="locaddress"
               placeholder="Enter Address"
@@ -123,7 +124,7 @@ class PublicIncident extends Component {
               error={errors.locaddress}
             />
             <TextInputGroup
-              label="Postal Code"
+              label="Postal Code: "
               name="postalcode"
               type="postalcode"
               placeholder="Enter Postal Code"
@@ -132,7 +133,7 @@ class PublicIncident extends Component {
               error={errors.postalcode}
             />
             <TextInputGroup
-              label="Description"
+              label="Description: "
               name="description"
               type="description"
               placeholder="Enter Description"
@@ -148,6 +149,7 @@ class PublicIncident extends Component {
           </form>
         </div>
       </div>
+      </body>
     );
   }
 }
