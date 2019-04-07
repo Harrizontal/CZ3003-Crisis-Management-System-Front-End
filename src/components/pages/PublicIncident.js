@@ -20,43 +20,53 @@ class PublicIncident extends Component {
   checkFields = () => {
     const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state;
     var categoryTypes = ['']
+    var errors = {};
 
     // Check For Errors
     const validName = name.match(new RegExp('^[a-zA-Z\\s]*$'));
-    console.log(validName);
-    if (name === "" || !validName) {
-      this.setState({ errors: { name: "Enter valid name" } });
-      return false;
+    if (name === "") {
+      errors["name"] = "Name is required.";
+    }
+    else if (!validName){
+      errors["name"] = "Enter a valid name.";
     }
 
     const validContact = contact.match(new RegExp('^[0-9]{8}$'));
-    if (contact === "" || !validContact) {
-      this.setState({ errors: { contact: "Enter valid contact" } });
-      return false;
+    if (contact === ""){
+      errors["contact"] = "Contact is required.";
+    }
+    else if (!validContact){
+      errors["contact"] = "Enter a valid contact.";
     }
 
-
     if (incidenttitle === "") {
-      this.setState({ errors: { incidenttitle: "Phone is required" } });
-      return false;
+      errors["incidenttitle"] = "Please provide a title.";
     }
 
     if (locaddress === "") {
-      this.setState({ errors: { locaddress: "Address is required" } });
-      return false;
+      errors["locaddress"] = "Address is required.";
     }
 
     const validPostCode = postalcode.match(new RegExp('^[0-9]{6}$'));
-    if (postalcode === "" || !validPostCode) {
-      this.setState({ errors: { postalcode: "Enter valid Postal Code" } });
-      return false;
+    if (postalcode === ""){
+      errors["postalcode"] = "Postal Code is required.";
+    }
+    else if (!validContact){
+      errors["postalcode"] = "Enter a valid Postal Code.";
     }
 
     if (description === "") {
-      this.setState({ errors: { description: "Please provide a brief description of the incident." } });
-      return false;
+      errors["description"] = "A brief description of the incident will help us, thanks!";
     }
-    return true;
+
+    if(errors){
+      this.setState({errors: errors})
+      return false;
+
+    }
+    else{
+      return true;
+    }
   }
 
   onSubmit = e => {
@@ -66,16 +76,7 @@ class PublicIncident extends Component {
    
     if(canSubmit) {
       const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state
-      
-      const newContact = {
-        name,
-        contact,
-        incidenttitle
-      };
-
-      //// SUBMIT CONTACT ////
-
-      this.props.addContact(newContact);
+      console.log(this.state);
 
       // Clear State
       this.setState({
