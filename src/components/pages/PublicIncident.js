@@ -17,65 +17,79 @@ class PublicIncident extends Component {
     errors: {}
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-
+  checkFields = () => {
     const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state;
     var categoryTypes = ['']
 
     // Check For Errors
-    if (name === "") {
-      this.setState({ errors: { name: "Name is required" } });
-      return;
+    const validName = name.match(new RegExp('^[a-zA-Z\\s]*$'));
+    console.log(validName);
+    if (name === "" || !validName) {
+      this.setState({ errors: { name: "Enter valid name" } });
+      return false;
     }
 
-    if (contact === "") {
-      this.setState({ errors: { contact: "Email is required" } });
-      return;
+    const validContact = contact.match(new RegExp('^[0-9]{8}$'));
+    if (contact === "" || !validContact) {
+      this.setState({ errors: { contact: "Enter valid contact" } });
+      return false;
     }
+
 
     if (incidenttitle === "") {
       this.setState({ errors: { incidenttitle: "Phone is required" } });
-      return;
+      return false;
     }
 
     if (locaddress === "") {
       this.setState({ errors: { locaddress: "Address is required" } });
-      return;
+      return false;
     }
 
-    if (postalcode === "") {
-      this.setState({ errors: { postalcode: "Postal Code is required" } });
-      return;
+    const validPostCode = postalcode.match(new RegExp('^[0-9]{6}$'));
+    if (postalcode === "" || !validPostCode) {
+      this.setState({ errors: { postalcode: "Enter valid Postal Code" } });
+      return false;
     }
 
     if (description === "") {
       this.setState({ errors: { description: "Please provide a brief description of the incident." } });
-      return;
+      return false;
     }
+    return true;
+  }
 
-    const newContact = {
-      name,
-      contact,
-      incidenttitle
-    };
+  onSubmit = e => {
+    e.preventDefault();
 
-    //// SUBMIT CONTACT ////
+    const canSubmit = this.checkFields();
+   
+    if(canSubmit) {
+      const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state
+      
+      const newContact = {
+        name,
+        contact,
+        incidenttitle
+      };
 
-    this.props.addContact(newContact);
+      //// SUBMIT CONTACT ////
 
-    // Clear State
-    this.setState({
-      name: "",
-      contact: "",
-      incidenttitle: "",
-      locaddress: "",
-      postalcode: "",
-      description: "",
-      errors: {}
-    });
+      this.props.addContact(newContact);
 
-    this.props.history.push("/");
+      // Clear State
+      this.setState({
+        name: "",
+        contact: "",
+        incidenttitle: "",
+        locaddress: "",
+        postalcode: "",
+        description: "",
+        errors: {}
+      });
+
+      this.props.history.push("/");
+    }
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -98,13 +112,12 @@ class PublicIncident extends Component {
               error={errors.name}
             />
             <TextInputGroup
-              label="Contact: "
-              name="Contact"
-              type="contact"
-              placeholder="Enter Phone"
-              value={contact}
-              onChange={this.onChange}
-              error={errors.contact}
+            label='Contact: '
+            name='contact'
+            placeholder='Enter contact'
+            value={contact}
+            onChange={this.onChange}
+            error={errors.contact}
             />
             <TextInputGroup
               label="Incident Title: "

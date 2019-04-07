@@ -163,27 +163,39 @@ body {
   transition: 0.5s;
 }
 .btnSubmit:hover{
-  background-color: #7138E0;
+  background-color: #C51EA1;
 }
 .btnSubmit:hover::after{
   background-color: black;
+}
+
+.btnSubmit:active{
+  background-color: #7138E0;
 }
 
 .formlabel{
   color: black;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
+  letter-spacing: 0.05em;
 }
 
 .forminput{
   display: block;
-  background: rgba(255,255,255,0.1);
+  background: transparent;
   outline: none;
-  border: 0.8px solid rgba(0,0,0,0.5);
-  border-radius: 20px;
-  font-family: 'Rubik Sans', sans-serif;
-  font-weight: 400;
+  border: none;
+  border-bottom: 1px rgba(0,0,0,0.8) ; 
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.8);
+  width: 200px;
 }
 .forminput:focus{
-  border: solid 0.8px rgb(197,30,161,0.8);
+  border-bottom: solid 1px rgb(197,30,161,0.8);
+}
+.invalid-feedback{
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  color: #F84141;
 }
