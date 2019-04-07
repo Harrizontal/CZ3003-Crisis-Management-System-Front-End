@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
 
 
+
 class PublicIncident extends Component {
   state = {
     name: "",
@@ -62,7 +63,6 @@ class PublicIncident extends Component {
     if(errors){
       this.setState({errors: errors})
       return false;
-
     }
     else{
       return true;
@@ -73,6 +73,7 @@ class PublicIncident extends Component {
     e.preventDefault();
 
     const canSubmit = this.checkFields();
+    //console.log(this.state);
    
     if(canSubmit) {
       const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state
@@ -88,6 +89,7 @@ class PublicIncident extends Component {
         description: "",
         errors: {}
       });
+      console.log(this.state);
 
       this.props.history.push("/");
     }
