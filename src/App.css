@@ -195,7 +195,7 @@ body {
   margin-top: 10px;
 }
 .forminput:focus{
-  border-bottom: solid 1px rgb(197,30,161,0.8);
+  border-bottom: solid 1px rgb(197,30,161,1);
 }
 .invalid-feedback{
   font-family: 'Rubik', sans-serif;
