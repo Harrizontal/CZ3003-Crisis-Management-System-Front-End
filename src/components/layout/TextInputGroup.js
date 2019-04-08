@@ -15,7 +15,7 @@ const TextInputGroup = ({
     <div className="form-group">
       <label className="formlabel" htmlFor={name}>{label}</label>
       <input 
-        className="forminput"
+        className="forminput" 
         type={type}
         name={name}
         /*className={classnames('form-control form-control-lg', {

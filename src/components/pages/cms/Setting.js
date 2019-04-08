@@ -6,16 +6,24 @@ class Setting extends Component {
     console.log("click logout");
     localStorage.removeItem("user");
     this.props.history.push("/login");
+    window.confirm("You have successfully logged out!")
   };
 
   render() {
     return (
-      <div>
-        <h1 className="display-4">Settings</h1>
+      <body className="bgLogout">
+      <div className="formcontainer">
+        <div className="logo"></div>
+        <h1 className="hey">hey!</h1>
+        <div className="settingsHeader">Be sure to <span className="firstwordsel">logout</span> of account after use</div>
         <form onSubmit={this.onSubmit}>
-          <button>Logout</button>
+          <button className="btnLogout"
+          >
+            log me out
+            </button>
         </form>
       </div>
+      </body>
     );
   }
 }

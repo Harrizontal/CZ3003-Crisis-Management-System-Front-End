@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
 
-
-
-
 class PublicIncident extends Component {
   state = {
     name: "",
@@ -154,6 +151,7 @@ class PublicIncident extends Component {
               name="description"
               type="description"
               placeholder="Enter Description"
+              input className="desc"
               value={description}
               onChange={this.onChange}
               error={errors.description}
