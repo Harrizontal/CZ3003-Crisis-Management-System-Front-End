@@ -6,6 +6,7 @@ import { addContact } from "../../actions/contactActions";
 
 
 
+
 class PublicIncident extends Component {
   state = {
     name: "",
@@ -22,6 +23,7 @@ class PublicIncident extends Component {
     const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state;
     var categoryTypes = ['']
     var errors = {};
+    var empty = require('is-empty');
 
     // Check For Errors
     const validName = name.match(new RegExp('^[a-zA-Z\\s]*$'));
@@ -60,12 +62,12 @@ class PublicIncident extends Component {
       errors["description"] = "A brief description of the incident will help us, thanks!";
     }
 
-    if(errors){
-      this.setState({errors: errors})
-      return false;
+    if(empty(errors)){
+      return true;
     }
     else{
-      return true;
+      this.setState({errors: errors})
+      return false;
     }
   }
 
@@ -73,11 +75,9 @@ class PublicIncident extends Component {
     e.preventDefault();
 
     const canSubmit = this.checkFields();
-    //console.log(this.state);
    
-    if(canSubmit) {
+    if(canSubmit === true) {
       const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state
-      console.log(this.state);
 
       // Clear State
       this.setState({
@@ -89,7 +89,8 @@ class PublicIncident extends Component {
         description: "",
         errors: {}
       });
-      console.log(this.state);
+
+      window.confirm("Incident submitted!")
 
       this.props.history.push("/");
     }
