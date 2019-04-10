@@ -1,40 +1,34 @@
-.container{
+.background{
     display: flex;
     position: absolute;
-    width: 100%;
     height: 100%;
-    background-image: url("https://i.gifer.com/QfHS.gif");
+    width: 100%;
+    background-image: url(../layout/bg.svg);
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-color: #333333;
-    background-size: contain;
-    align-items: center;
-    background-blend-mode: overlay;
-}
-.logo{
-    background-image: url(../layout/cystemlogo.svg);
     background-size: cover;
-    width: 400px;
-    height: 140px;
+    align-items: center;   
 }
 .groupName{
-    font-size: 3em;
+    font-size: 3.5em;
     font-family: 'Impact';
     font-variant: small-caps;
     color: #7138E0;
 }
 .projectName{
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-family: Helvetica;
-    margin-top: -35px;
-    color: white;
+    margin-top: -30px;
+    color: black;
     font-style: oblique;
     text-decoration-line: underline;
 }
-.login{
+.containerLogin{
     margin: 0 auto;
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.6);
+    display: block;
+    background: rgba(255, 255, 255, 0.9);
     width: fit-content;
     height: fit-content;
     padding: 2em;

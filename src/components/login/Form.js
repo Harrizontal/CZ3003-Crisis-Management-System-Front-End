@@ -1,7 +1,6 @@
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import TextInputGroup from "../layout/TextInputGroup";
 import { connect } from "react-redux";
 import { login } from "../../actions/userActions";
 
@@ -97,9 +96,8 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <form className="login">
-        <div className="logo"/>
+      <div className="background">
+        <form className="containerLogin">
           <h1 className="groupName">8'S COMPLEMENT</h1>
           <h2 className="projectName">CRISIS MANAGEMENT SYSTEM</h2>
           <br />
@@ -124,6 +122,7 @@ class Form extends React.Component {
           <Button
             variant="contained"
             color="primary"
+            type="submit"
             className="loginBTN"
             onClick={e => this.onSubmit(e)}
           >Login</Button>

@@ -123,9 +123,7 @@ class App extends Component {
       <MuiThemeProvider>
       <div className="loginAPP">
         <Form onChange={fields => this.onChange(fields)} />
-        <p>
           {console.log(this.state.fields)}
-        </p>
       </div>
       </MuiThemeProvider>
     );
