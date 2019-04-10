@@ -144,12 +144,13 @@ body {
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 3em;
+  /* width: 80%;
+  height: 100%;
+  margin:10%; */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-  justify-content: center;
-  align-content: center;
 }
 .card-header {
   font-family: 'Rubik', sans-serif;
@@ -159,7 +160,26 @@ body {
   letter-spacing: 0.3em;
   margin-bottom: 30px;
 }
-
+.card-body{
+  display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+  align-items: flex-start;
+  height: 80%;
+}
+.textgroup{
+  width:60%;
+  height: 100%;
+  display: inline-block;
+  top:0;
+  align-self: flex-start;
+}
+.selectgroup{
+  width:40%;
+  height: 100%;
+  display: inline-block;
+  align-self: flex-start;
+}
 .firstwordsel{
   color: #7138E0;
 }

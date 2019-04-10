@@ -179,7 +179,7 @@ const customStyles = {
   control: () => ({
     // none of react-select's styles are passed to <Control />
     background: transparent,
-    width: 500
+    width: 250
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
@@ -198,7 +198,8 @@ const customStyles = {
         <div className="card-header"><span class="firstwordsel">create</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
-            <TextInputGroup
+          <div className="textgroup"> 
+          <TextInputGroup
               label="Name: "
               name="name"
               placeholder="Enter Name"
@@ -222,7 +223,37 @@ const customStyles = {
               onChange={this.onChange}
               error={errors.nric}
             />
-            <div className="formlabel2">Incident Category: </div>
+           
+            <TextInputGroup
+              label="Address: "
+              name="locaddress"
+              type="locaddress"
+              placeholder="Enter Address"
+              value={locaddress}
+              onChange={this.onChange}
+              error={errors.locaddress}
+            />
+            <TextInputGroup
+              label="Postal Code: "
+              name="postalcode"
+              type="postalcode"
+              placeholder="Enter Postal Code"
+              value={postalcode}
+              onChange={this.onChange}
+              error={errors.postalcode}
+            />
+            <TextInputGroup
+              label="Description: "
+              name="description"
+              type="description"
+              placeholder="Enter Description"
+              value={description}
+              onChange={this.onChange}
+              error={errors.description}
+            />
+          </div>
+          <div className="selectgroup">
+          <div className="formlabel2">Incident Category: </div>
             <Select
               isMulti
               value={selectedOption}
@@ -255,35 +286,8 @@ const customStyles = {
               error={errors.selectedAgencyType}
             />
             {errors["selectedAgencyType"] && <div className="invalid-feedback">{errors["selectedAgencyType"]}</div>}
-
-
-            <TextInputGroup
-              label="Address: "
-              name="locaddress"
-              type="locaddress"
-              placeholder="Enter Address"
-              value={locaddress}
-              onChange={this.onChange}
-              error={errors.locaddress}
-            />
-            <TextInputGroup
-              label="Postal Code: "
-              name="postalcode"
-              type="postalcode"
-              placeholder="Enter Postal Code"
-              value={postalcode}
-              onChange={this.onChange}
-              error={errors.postalcode}
-            />
-            <TextInputGroup
-              label="Description: "
-              name="description"
-              type="description"
-              placeholder="Enter Description"
-              value={description}
-              onChange={this.onChange}
-              error={errors.description}
-            />
+          </div>
+            
             <input
               type="submit"
               value="create"
