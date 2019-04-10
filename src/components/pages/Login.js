@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import "../login/style.css";
 import Form from "../login/Form";
-
-injectTapEventPlugin();
 /*
 class Login extends Component {
   // take note that properties of state must follow the name of input
