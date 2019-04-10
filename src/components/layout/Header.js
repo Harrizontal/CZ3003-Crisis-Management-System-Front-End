@@ -5,7 +5,7 @@ import logo from "./cystemlogo.svg";
 const Header = () => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-      <img src={logo} width="125px" height="100%"/>
+      <img className="logo1" src={logo} width="125px" height="100%"/>
     </div>
   );
 };
