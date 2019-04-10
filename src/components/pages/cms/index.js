@@ -9,6 +9,7 @@ import Setting from "./Setting";
 import Popup from "reactjs-popup";
 import Report from "./report/Report";
 import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
+import IncidentCreate from "./incidents/IncidentCreate";
 
 const routes = [
   {
@@ -24,8 +25,9 @@ const routes = [
     // use to be Contacts, take note
   },
   {
-    path: "/cms/incident/edit/:id",
-    main: EditContact
+    path: "/cms/incidentcreate",
+    sidebar: "Create Incident",
+    main: IncidentCreate
   },
   {
     path: "/cms/setting",

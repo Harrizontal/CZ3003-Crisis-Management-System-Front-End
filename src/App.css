@@ -243,8 +243,10 @@ body {
   font-family: 'Rubik', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.8em;
+  background-color: black;
+  color: #fff;
   border-radius: 20px;
   width: 160px;
   height: 45px;
