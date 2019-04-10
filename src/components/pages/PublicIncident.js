@@ -3,14 +3,14 @@ import TextInputGroup from "../layout/TextInputGroup";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
-//import Select from 'react-select';
-import SelectField from '../layout/SelectField'
+import Select from 'react-select';
+import { transparent } from "material-ui/styles/colors";
 
 class PublicIncident extends Component {
   state = {
     name: "",
     contact: "",
-    incidenttitle: "",
+    nric: "",
     locaddress: "",
     postalcode: "",
     description: "",
@@ -22,15 +22,34 @@ class PublicIncident extends Component {
      { value: '4', label: 'Gas Leak' },
      { value: '5', label: 'Drought' },
      { value: '6', label: 'Terroist' },
+     { value: '7', label: 'Others' },
     ],
-    selectedOptions: {}
-      
+    selectedOption: null,
   };
-
-  checkFields = () => {
-    const { name, contact, incidenttitle, options, selectedOptions, locaddress, postalcode, description } = this.state;
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
     var errors = {};
     var empty = require('is-empty');
+    for(var i = 0; i < selectedOption.length; i++){
+      console.log(selectedOption[i]['value'] )
+      if(selectedOption[i]['value'] == 7){
+        errors["selectedoption"] = "Please describe in Description Field";
+        this.setState({errors: errors})
+        break;
+      }
+      else
+      this.setState({errors: {}})
+    }
+    if(empty(selectedOption)){
+      this.setState({errors: {}})
+    }
+  }
+  checkFields = () => {
+    const { name, contact, nric, selectedOption, locaddress, postalcode, description, } = this.state;
+    var errors = {};
+    var empty = require('is-empty');
+    console.log(selectedOption)
 
     // Check For Errors
     const validName = name.match(new RegExp('^[a-zA-Z\\s]*$'));
@@ -49,29 +68,32 @@ class PublicIncident extends Component {
       errors["contact"] = "Enter a valid contact.";
     }
 
-    if (incidenttitle === "") {
-      errors["incidenttitle"] = "Please provide a title.";
+    const validNRIC = nric.match(new RegExp(/^[STFGstfg]\d{7}[A-Za-z]$/));
+    if (nric === "") {
+      errors["nric"] = "Please provide a NRIC.";
     } 
-    if (options === "") {
-      errors["options"] = "Please provide at least one Category.";
+    else if (!validNRIC){
+      errors["nric"] = "Enter a valid NRIC.";
     }
 
     if (locaddress === "") {
       errors["locaddress"] = "Address is required.";
     }
-
-    const validPostCode = postalcode.match(new RegExp('^[0-9]{6}$'));
-    if (postalcode === ""){
-      errors["postalcode"] = "Postal Code is required.";
-    }
-    else if (!validContact){
-      errors["postalcode"] = "Enter a valid Postal Code.";
+ 
+    if (postalcode !== ""){
+      const validPostCode = postalcode.match(new RegExp('^[0-9]{6}$'));
+      if (!validPostCode){
+        errors["postalcode"] = "Enter a valid Postal Code.";
+      }
     }
 
     if (description === "") {
       errors["description"] = "A brief description of the incident will help us, thanks!";
     }
 
+    if (selectedOption == null || empty(selectedOption)){
+      errors["selectedoption"] = "Please select at least one.";
+    }
     if(empty(errors)){
       return true;
     }
@@ -85,23 +107,22 @@ class PublicIncident extends Component {
     e.preventDefault();
 
     const canSubmit = this.checkFields();
-    console.log(this.state.options);
     console.log(canSubmit);
    
     if(canSubmit === true) {
-      const { name, contact, incidenttitle, options, selectedOptions, locaddress, postalcode, description } = this.state
+      const { name, contact, nric, selectedOption, locaddress, postalcode, description } = this.state
       console.log(this.state);
       // Clear State
       this.setState({
         name: "",
         contact: "",
-        incidenttitle: "",
-        options: {},
-        selectedOptions: {},
+        nric: "",
+        selectedOption: {},
         locaddress: "",
         postalcode: "",
         description: "",
-        errors: {}
+        errors: {},
+        note: {}
       });
 
       window.confirm("Incident submitted!")
@@ -110,10 +131,28 @@ class PublicIncident extends Component {
     }
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
-
+    
   render() {
-    const { name, contact, incidenttitle, locaddress, postalcode, description, errors, options, selectedOptions } = this.state;
+const customStyles = {
+  fontFamily: 'Rubik',
+  option: (provided, state) => ({
+    ...provided,
+    fontFamily: 'Rubik',
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    background: transparent,
+    width: 500
+  }),
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+
+    return { ...provided, opacity, transition };
+  }
+}
+
+    const { name, contact, nric, locaddress, postalcode, description, errors, options, selectedOption, } = this.state;
 
     return (
       <body className="background">
@@ -138,16 +177,23 @@ class PublicIncident extends Component {
             error={errors.contact}
             />
             <TextInputGroup
-              label="Incident Title: "
-              name="incidenttitle"
-              placeholder="Enter Incident Title"
-              value={incidenttitle}
+              label="NRIC: "
+              name="nric"
+              placeholder="Enter NRIC"
+              value={nric}
               onChange={this.onChange}
-              error={errors.incidenttitle}
+              error={errors.nric}
             />
             <div className="formlabel2">Incident Category: </div>
-            <SelectField  
-            options={options}/>
+            <Select
+              isMulti
+              value={selectedOption}
+              onChange={this.handleChange}
+              options={options}
+              className="basic-multi-select"
+              styles={customStyles}  
+            />
+            {errors["selectedoption"] && <div className="invalid-feedback">{errors["selectedoption"]}</div>}
 
             <TextInputGroup
               label="Address: "
