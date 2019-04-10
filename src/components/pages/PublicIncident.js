@@ -3,22 +3,32 @@ import TextInputGroup from "../layout/TextInputGroup";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
-import Select from 'react-select';
+//import Select from 'react-select';
+import SelectField from '../layout/SelectField'
 
 class PublicIncident extends Component {
   state = {
     name: "",
     contact: "",
     incidenttitle: "",
-    options: "",
     locaddress: "",
     postalcode: "",
     description: "",
-    errors: {}
+    errors: {},
+    options: [
+     { value: '1', label: 'Fire' },
+     { value: '2', label: 'Flood' },
+     { value: '3', label: 'Earthquake' },
+     { value: '4', label: 'Gas Leak' },
+     { value: '5', label: 'Drought' },
+     { value: '6', label: 'Terroist' },
+    ],
+    selectedOptions: {}
+      
   };
 
   checkFields = () => {
-    const { name, contact, incidenttitle, options, locaddress, postalcode, description } = this.state;
+    const { name, contact, incidenttitle, options, selectedOptions, locaddress, postalcode, description } = this.state;
     var errors = {};
     var empty = require('is-empty');
 
@@ -79,14 +89,15 @@ class PublicIncident extends Component {
     console.log(canSubmit);
    
     if(canSubmit === true) {
-      const { name, contact, incidenttitle, options, locaddress, postalcode, description } = this.state
+      const { name, contact, incidenttitle, options, selectedOptions, locaddress, postalcode, description } = this.state
       console.log(this.state);
       // Clear State
       this.setState({
         name: "",
         contact: "",
         incidenttitle: "",
-        options: "",
+        options: {},
+        selectedOptions: {},
         locaddress: "",
         postalcode: "",
         description: "",
@@ -102,11 +113,7 @@ class PublicIncident extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description, errors } = this.state;
-    const options = [
-      { value: 'Terrorism', label: 'Terrorism' },
-      { value: 'Fire', label: 'Fire' },
-    ]
+    const { name, contact, incidenttitle, locaddress, postalcode, description, errors, options, selectedOptions } = this.state;
 
     return (
       <body className="background">
@@ -139,10 +146,8 @@ class PublicIncident extends Component {
               error={errors.incidenttitle}
             />
             <div className="formlabel2">Incident Category: </div>
-            <Select 
-            isMulti 
-            options={options} 
-            onChange={this.handleChange}/>
+            <SelectField  
+            options={options}/>
 
             <TextInputGroup
               label="Address: "

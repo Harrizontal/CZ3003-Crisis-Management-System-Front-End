@@ -1,12 +1,16 @@
 import React from 'react';
 import Select from 'react-select';
  
-const options = [
-    { value: 'Terrorism', label: 'Terrorism' },
-    { value: 'Fire', label: 'Fire' },
-  ]
+// const options = [
+//   { value: '1', label: 'Fire' },
+//   { value: '2', label: 'Flood' },
+//   { value: '3', label: 'Earthquake' },
+//   { value: '4', label: 'Gas Leak' },
+//   { value: '5', label: 'Drought' },
+//   { value: '6', label: 'Terroist' },
+//   ]
  
-class App extends React.Component {
+class SelectField extends React.Component {
   state = {
     selectedOption: null,
   }
@@ -16,15 +20,18 @@ class App extends React.Component {
   }
   render() {
     const { selectedOption } = this.state;
+    const { options} = this.props;
  
     return (
       <Select
         isMulti
         value={selectedOption}
         onChange={this.handleChange}
-        options={option}
+        options={options}
         className="basic-multi-select"
       />
     );
   }
 }
+
+export default SelectField;
