@@ -3,13 +3,14 @@ import TextInputGroup from "../layout/TextInputGroup";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addContact } from "../../actions/contactActions";
+import Select from 'react-select';
 
 class PublicIncident extends Component {
   state = {
     name: "",
     contact: "",
     incidenttitle: "",
-    incidentcategory: "",
+    options: "",
     locaddress: "",
     postalcode: "",
     description: "",
@@ -17,8 +18,7 @@ class PublicIncident extends Component {
   };
 
   checkFields = () => {
-    const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state;
-    var categoryTypes = ['']
+    const { name, contact, incidenttitle, options, locaddress, postalcode, description } = this.state;
     var errors = {};
     var empty = require('is-empty');
 
@@ -41,6 +41,9 @@ class PublicIncident extends Component {
 
     if (incidenttitle === "") {
       errors["incidenttitle"] = "Please provide a title.";
+    } 
+    if (options === "") {
+      errors["options"] = "Please provide at least one Category.";
     }
 
     if (locaddress === "") {
@@ -72,15 +75,18 @@ class PublicIncident extends Component {
     e.preventDefault();
 
     const canSubmit = this.checkFields();
+    console.log(this.state.options);
+    console.log(canSubmit);
    
     if(canSubmit === true) {
-      const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state
-
+      const { name, contact, incidenttitle, options, locaddress, postalcode, description } = this.state
+      console.log(this.state);
       // Clear State
       this.setState({
         name: "",
         contact: "",
         incidenttitle: "",
+        options: "",
         locaddress: "",
         postalcode: "",
         description: "",
@@ -96,7 +102,11 @@ class PublicIncident extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, contact, incidenttitle, locaddress, postalcode, description, errors } = this.state;
+    const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description, errors } = this.state;
+    const options = [
+      { value: 'Terrorism', label: 'Terrorism' },
+      { value: 'Fire', label: 'Fire' },
+    ]
 
     return (
       <body className="background">
@@ -128,6 +138,12 @@ class PublicIncident extends Component {
               onChange={this.onChange}
               error={errors.incidenttitle}
             />
+            <div className="formlabel2">Incident Category: </div>
+            <Select 
+            isMulti 
+            options={options} 
+            onChange={this.handleChange}/>
+
             <TextInputGroup
               label="Address: "
               name="locaddress"
@@ -151,7 +167,6 @@ class PublicIncident extends Component {
               name="description"
               type="description"
               placeholder="Enter Description"
-              input className="desc"
               value={description}
               onChange={this.onChange}
               error={errors.description}
