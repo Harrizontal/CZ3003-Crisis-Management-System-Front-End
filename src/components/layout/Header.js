@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import logo from "./siren.png";
+import logo from "./cystemlogo.svg";
 
 const Header = () => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-      <img src={logo} width="auto" height="100%" />
+      <img src={logo} width="125px" height="100%"/>
     </div>
   );
 };
