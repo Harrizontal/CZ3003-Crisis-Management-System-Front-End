@@ -27,7 +27,7 @@ const routes = [
   },
   {
     path: "/cms/setting",
-    sidebar: "Setting",
+    sidebar: "Settings",
     main: Setting
   }
 ];

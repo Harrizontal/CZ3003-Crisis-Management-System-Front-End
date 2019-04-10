@@ -7,65 +7,105 @@ import { addContact } from "../../actions/contactActions";
 class PublicIncident extends Component {
   state = {
     name: "",
-    email: "",
-    phone: "",
+    contact: "",
+    incidenttitle: "",
+    incidentcategory: "",
+    locaddress: "",
+    postalcode: "",
+    description: "",
     errors: {}
   };
+
+  checkFields = () => {
+    const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state;
+    var categoryTypes = ['']
+    var errors = {};
+    var empty = require('is-empty');
+
+    // Check For Errors
+    const validName = name.match(new RegExp('^[a-zA-Z\\s]*$'));
+    if (name === "") {
+      errors["name"] = "Name is required.";
+    }
+    else if (!validName){
+      errors["name"] = "Enter a valid name.";
+    }
+
+    const validContact = contact.match(new RegExp('^[0-9]{8}$'));
+    if (contact === ""){
+      errors["contact"] = "Contact is required.";
+    }
+    else if (!validContact){
+      errors["contact"] = "Enter a valid contact.";
+    }
+
+    if (incidenttitle === "") {
+      errors["incidenttitle"] = "Please provide a title.";
+    }
+
+    if (locaddress === "") {
+      errors["locaddress"] = "Address is required.";
+    }
+
+    const validPostCode = postalcode.match(new RegExp('^[0-9]{6}$'));
+    if (postalcode === ""){
+      errors["postalcode"] = "Postal Code is required.";
+    }
+    else if (!validContact){
+      errors["postalcode"] = "Enter a valid Postal Code.";
+    }
+
+    if (description === "") {
+      errors["description"] = "A brief description of the incident will help us, thanks!";
+    }
+
+    if(empty(errors)){
+      return true;
+    }
+    else{
+      this.setState({errors: errors})
+      return false;
+    }
+  }
 
   onSubmit = e => {
     e.preventDefault();
 
-    const { name, email, phone } = this.state;
+    const canSubmit = this.checkFields();
+   
+    if(canSubmit === true) {
+      const { name, contact, incidenttitle, incidentcategory, locaddress, postalcode, description } = this.state
 
-    // Check For Errors
-    if (name === "") {
-      this.setState({ errors: { name: "Name is required" } });
-      return;
+      // Clear State
+      this.setState({
+        name: "",
+        contact: "",
+        incidenttitle: "",
+        locaddress: "",
+        postalcode: "",
+        description: "",
+        errors: {}
+      });
+
+      window.confirm("Incident submitted!")
+
+      this.props.history.push("/");
     }
-
-    if (email === "") {
-      this.setState({ errors: { email: "Email is required" } });
-      return;
-    }
-
-    if (phone === "") {
-      this.setState({ errors: { phone: "Phone is required" } });
-      return;
-    }
-
-    const newContact = {
-      name,
-      email,
-      phone
-    };
-
-    //// SUBMIT CONTACT ////
-
-    this.props.addContact(newContact);
-
-    // Clear State
-    this.setState({
-      name: "",
-      email: "",
-      phone: "",
-      errors: {}
-    });
-
-    this.props.history.push("/");
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { name, contact, incidenttitle, locaddress, postalcode, description, errors } = this.state;
 
     return (
-      <div className="card mb-3">
-        <div className="card-header">Add Contact</div>
+      <body className="background">
+      <div class="bodybg" className="formcontainer"> 
+        <div className="card-header"><span class="firstwordsel">sumbit</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <TextInputGroup
-              label="Name"
+              label="Name: "
               name="name"
               placeholder="Enter Name"
               value={name}
@@ -73,30 +113,58 @@ class PublicIncident extends Component {
               error={errors.name}
             />
             <TextInputGroup
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={this.onChange}
-              error={errors.email}
+            label='Contact: '
+            name='contact'
+            placeholder='Enter contact'
+            value={contact}
+            onChange={this.onChange}
+            error={errors.contact}
             />
             <TextInputGroup
-              label="Contact"
-              name="phone"
-              placeholder="Enter Phone"
-              value={phone}
+              label="Incident Title: "
+              name="incidenttitle"
+              placeholder="Enter Incident Title"
+              value={incidenttitle}
               onChange={this.onChange}
-              error={errors.phone}
+              error={errors.incidenttitle}
+            />
+            <TextInputGroup
+              label="Address: "
+              name="locaddress"
+              type="locaddress"
+              placeholder="Enter Address"
+              value={locaddress}
+              onChange={this.onChange}
+              error={errors.locaddress}
+            />
+            <TextInputGroup
+              label="Postal Code: "
+              name="postalcode"
+              type="postalcode"
+              placeholder="Enter Postal Code"
+              value={postalcode}
+              onChange={this.onChange}
+              error={errors.postalcode}
+            />
+            <TextInputGroup
+              label="Description: "
+              name="description"
+              type="description"
+              placeholder="Enter Description"
+              input className="desc"
+              value={description}
+              onChange={this.onChange}
+              error={errors.description}
             />
             <input
               type="submit"
-              value="Submit Contact"
-              className="btn btn-light btn-block"
+              value="submit"
+              className="btnSubmit"
             />
           </form>
         </div>
       </div>
+      </body>
     );
   }
 }
