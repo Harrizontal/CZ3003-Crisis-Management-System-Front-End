@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { login } from "../../actions/userActions";
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import "../login/style.css";
+import Form from "../login/Form";
+/*
 class Login extends Component {
   // take note that properties of state must follow the name of input
   state = {
@@ -45,25 +46,42 @@ class Login extends Component {
     const { loggingIn } = this.props;
     //console.log(loggingIn);
     // const { username, password } = this.state;
+    return (      
+      <MuiThemeProvider>
+        <div className="login">
+          <form>
+            <TextField
+              className="username"
+              hintText="Username"
+              placeholder="Username"
+              onChange={e => this.onChange(e)}
+              floatingLabelFixed
+            />
+            <br />
+            <TextField
+              className="password"
+              hintText="Password"
+              placeholder="Password"
+              type="password"
+              onChange={e => this.onChange(e)}
+              floatingLabelFixed
+            />
+            <br />
+            <br />
+            <Button
+              className="loginBTN"
+              variant="contained"
+              onClick={e => this.onSubmit(e)}
+              color="primary">
+              Login
+            </Button>
 
-    return (
-      <div className="login">
-        <form onSubmit={this.onSubmit}>
-          username:
-          <input
-            className="username"
-            type="text"
-            name="username"
-            onChange={this.onChange}
-          />
-          password:
-          <input type="text" name="password" onChange={this.onChange} />
-          <input type="submit" value="Submit" />
-          {loggingIn && (
-            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-          )}
-        </form>
-      </div>
+            {loggingIn && (
+              <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            )}
+          </form>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
@@ -84,3 +102,34 @@ const mapStateToProps = state => ({
 // }
 
 export default connect(mapStateToProps)(Login);
+*/
+
+class App extends Component {
+  state = {
+    fields: {}
+  };
+
+  onChange = updatedValue => {
+    this.setState({
+      fields: {
+        ...this.state.fields,
+        ...updatedValue
+      }
+    });
+  };
+
+  render() {
+    return (
+      <MuiThemeProvider>
+      <div className="loginAPP">
+        <Form onChange={fields => this.onChange(fields)} />
+        <p>
+          {console.log(this.state.fields)}
+        </p>
+      </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+export default App;
