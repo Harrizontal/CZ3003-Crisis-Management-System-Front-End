@@ -15,7 +15,7 @@ class Setting extends Component {
       <div className="formcontainer">
         <div className="logo"></div>
         <h1 className="hey">hey!</h1>
-        <div className="settingsHeader">Be sure to <span className="firstwordsel">logout</span> of account after use</div>
+        <div className="settingsHeader">Be sure to <span className="firstwordsel">logout</span> of account after use.</div>
         <form onSubmit={this.onSubmit}>
           <button className="btnLogout"
           >
