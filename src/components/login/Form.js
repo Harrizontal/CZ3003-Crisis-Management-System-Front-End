@@ -96,10 +96,10 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div className="background">
+      <body className="backgroundLogin">
         <form className="containerLogin">
           <h1 className="groupName">8'S COMPLEMENT</h1>
-          <h2 className="projectName">CRISIS MANAGEMENT SYSTEM</h2>
+          <h2 className="projectName">Crisis Management System</h2>
           <br />
           <TextField
             name="username"
@@ -127,7 +127,7 @@ class Form extends React.Component {
             onClick={e => this.onSubmit(e)}
           >Login</Button>
         </form>
-      </div>
+      </body>
     );
   }
 }

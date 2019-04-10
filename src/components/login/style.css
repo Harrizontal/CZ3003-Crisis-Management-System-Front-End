@@ -3,7 +3,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url(../layout/bg.svg);
+    background-image: url(../layout/bgLogin.svg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -11,24 +11,31 @@
     background-size: cover;
     align-items: center;   
 }
+.backgroundLogin{
+    background-image: url(../layout/bgLogin.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 .groupName{
     font-size: 3.5em;
-    font-family: 'Impact';
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    font-family: 'Rubik', sans-serif;
     font-variant: small-caps;
-    color: #7138E0;
+    color: black;
 }
 .projectName{
-    font-size: 1.2em;
-    font-family: Helvetica;
+    font-size: 1.5em;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
     margin-top: -30px;
-    color: black;
-    font-style: oblique;
-    text-decoration-line: underline;
+    color: #7138E0;
 }
 .containerLogin{
     margin: 0 auto;
     display: block;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
     width: fit-content;
     height: fit-content;
     padding: 2em;
@@ -37,14 +44,34 @@
     align-items: center;
     justify-content: center;
     text-emphasis-style: bold;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.input{
+    font-family: 'Rubik', sans-serif;
 }
 .errorMsg{
+    font-family: 'Rubik', sans-serif;
+    margin-top: 10px;
     font-size: 0.8em;
-    font-family: Arial;
-    color: red;
+    font-family: 'Rubik', sans-serif;
+    color: #F84141;
 }
 .loginBTN{
-    display: flex;
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    font-size: 0.8em;
+    border-radius: 20px;
+    width: 160px;
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;display: flex;
     align-items: center;
     justify-content:center;
 }
