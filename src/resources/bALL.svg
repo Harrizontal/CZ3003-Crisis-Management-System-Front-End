@@ -3,17 +3,10 @@
     <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
     <title>ALL</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <linearGradient x1="7.92815593%" y1="24.4847007%" x2="85.8612856%" y2="81.2337414%" id="linearGradient-1">
-            <stop stop-color="#3B5998" offset="0%"></stop>
-            <stop stop-color="#2E79C0" offset="50.7845001%"></stop>
-            <stop stop-color="#1DA1F2" offset="100%"></stop>
-        </linearGradient>
-    </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="ALL">
             <g>
-                <circle id="Oval" fill="url(#linearGradient-1)" fill-rule="nonzero" cx="200" cy="200" r="200"></circle>
+                <circle id="Oval" fill="#000000" fill-rule="nonzero" cx="200" cy="200" r="200"></circle>
                 <text font-family="Rubik-Regular, Rubik" font-size="150" font-weight="normal" fill="#FFFFFF">
                     <tspan x="65.75" y="253">ALL</tspan>
                 </text>

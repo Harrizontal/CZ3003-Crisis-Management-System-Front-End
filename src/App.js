@@ -22,7 +22,7 @@ import PublicIncident from "./components/pages/PublicIncident";
 import Overview from "./components/pages/cms";
 import { PrivateRoute2 } from "./routes/PrivateRoute2";
 import EditContact from "./components/pages/cms/contacts/EditContact";
-import EditIncident from "./components/pages/cms/incidents/EditIncident";
+import IncidentEdit from "./components/pages/cms/incidents/IncidentEdit";
 
 class App extends Component {
   render() {

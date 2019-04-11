@@ -130,6 +130,12 @@ body {
 .bgLogout{
     background-image: url(resources/bgLogout.svg);
     background-repeat: no-repeat;
+    height: 100%;
+}
+.bg404{
+  background-image: url(resources/404.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .logo{
   width: 225px;
@@ -371,4 +377,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.e404{
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 400;
+  font-size: 8em;
+  position: absolute;
+  top:10%;
+  left:10%;
+}
+.message{
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 2em;
+  position: absolute;
+  top:25%;
+  left:11%;
 }

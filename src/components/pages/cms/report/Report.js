@@ -2,8 +2,12 @@
 import Popup from "reactjs-popup";
 import React, { Component } from "react";
 import facebook from "../../../../resources/facebook.svg";
+import bfacebook from "../../../../resources/bfacebook.svg";
 import twitter from "../../../../resources/twitter.svg";
+import btwitter from "../../../../resources/btwitter.svg";
 import all from "../../../../resources/all.svg";
+import ball from "../../../../resources/bALL.svg";
+
 
 class Report extends Component {
   handleChange(change) {
@@ -17,10 +21,10 @@ class Report extends Component {
   render() {
     return (
       <div
-        style={{ display: "flex", height: "200px", flexDirection: "column" }}
+        style={{ display: "flex", height: "200px", flexDirection: "column", }}
       >
         <div style={{ flexGrow: "4" }}>
-          <div style={{ margin: "1%", height: "98%", width: "98%" }}>
+          <div style={{ margin: "1%", height: "98%", width: "98%", borderRadius:20,}}>
             <textarea
               maxLength="280"
               style={{
