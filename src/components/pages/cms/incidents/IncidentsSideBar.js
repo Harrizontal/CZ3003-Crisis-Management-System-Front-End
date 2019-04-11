@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getIncidents } from "../../../../actions/incidentActions";
 import { getContacts } from "../../../../actions/contactActions";
+import Incident from "./Incident";
 
 class IncidentsSideBar extends Component {
   componentDidMount() {
@@ -25,14 +26,9 @@ class IncidentsSideBar extends Component {
         </div>
         <div style={{ height: "50%", width: "100%", backgroundColor: "green" }}>
           {incidents.map(incident => {
-            return <span key={incident.key}>{incident["name"]}</span>;
+            return <Incident key={incident.key} incident={incident} />;
           })}
         </div>
-
-        <form onSubmit={this.onDeleteClick}>
-          <button>Logout</button>
-        </form>
-        {/* {incidents} */}
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Contacts from "./contacts/Contacts";
 import AddContact from "./contacts/AddContact";
 import EditContact from "./contacts/EditContact";
@@ -7,6 +7,7 @@ import Header from "../../layout/Header";
 import Overview from "./overview/Overview";
 import Setting from "./Setting";
 import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
+import EditIncident from "./incidents/EditIncident";
 
 const routes = [
   {
@@ -22,8 +23,8 @@ const routes = [
     // use to be Contacts, take note
   },
   {
-    path: "/cms/incident/edit/:id",
-    main: EditContact
+    path: "/cms/incident/:id",
+    main: EditIncident
   },
   {
     path: "/cms/setting",
@@ -80,17 +81,18 @@ export default () => {
             justifyContent: "flex-start"
           }}
         >
-          {routes.map((route, index) => (
-            // Render more <Route>s with the same paths as
-            // above, but different components this time.
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              exact={route.exact}
-              component={route.main}
-            />
-          ))}
+          <Switch>
+            {routes.map((route, index) => (
+              // Render more <Route>s with the same paths as
+              // above, but different components this time.
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </Switch>
         </div>
       </div>
     </React.Fragment>

@@ -29,7 +29,8 @@ async function getDengueClusterMap() {
 
   // result as an object!
   console.log("Returning result");
-  return result;
+  //return result;
+  return require("../components/map/dengue-clusters-geojson.json");
 }
 
 function getWeatherInfo() {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import IncidentsSideBar from "./IncidentsSideBar";
-import ReactMap2 from "../../../map/ReactMap2";
-import Interface2 from "../../../map/Interface2";
+import ReactMap3 from "../../../map/ReactMap3";
 
 const TOKEN =
   "pk.eyJ1IjoiaGFycml6b250YWwiLCJhIjoiY2l6YWw3YW90MDQ1NzJ3cDl5bXd4M2Y4aSJ9.CnTz5K2ShZcuLiG0xYLBKw";
@@ -39,6 +38,14 @@ export class IncidentsOverview2 extends Component {
             showPopUp={true}
             styleID={STYLE_ID}
           /> */}
+          <ReactMap3
+            token={TOKEN}
+            longitude={LONG}
+            latitude={LAT}
+            zoom={ZOOM}
+            showPopUp={true}
+            styleID={STYLE_ID}
+          />
         </div>
         <div
           style={{

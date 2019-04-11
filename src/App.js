@@ -21,6 +21,8 @@ import PublicIncident from "./components/pages/PublicIncident";
 // for CMS
 import Overview from "./components/pages/cms";
 import { PrivateRoute2 } from "./routes/PrivateRoute2";
+import EditContact from "./components/pages/cms/contacts/EditContact";
+import EditIncident from "./components/pages/cms/incidents/EditIncident";
 
 class App extends Component {
   render() {

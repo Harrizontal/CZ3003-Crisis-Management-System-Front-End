@@ -5,14 +5,15 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Immutable from "immutable";
 
-import { clickMap, setStyle } from "../../actions/mapActions";
+import { getIncidents } from "../../actions/incidentActions";
+
 import diffStyles from "./diff.js";
 import MAP_STYLE from "./map-style-basic-v8.json";
 import { defaultMapStyle } from "./map-style";
 
 const id = "data";
 
-class ReactMap2 extends Component {
+class ReactMap3 extends Component {
   state = {
     listOfMarkers: []
   };
@@ -36,7 +37,7 @@ class ReactMap2 extends Component {
       console.log(
         "There is no source available, creating both source and layer it"
       );
-      map.addSource(id, { type: "geojson", data: mapSource });
+      map.addSource("data", { type: "geojson", data: mapSource });
       if (mapLayer !== undefined) {
         map.addLayer(mapLayer);
       }
@@ -69,6 +70,8 @@ class ReactMap2 extends Component {
         break;
       case "marker":
         var popup;
+        var popup2;
+
         mapSource.features.forEach(function(marker) {
           var el = document.createElement("div");
           el.className = "marker";
@@ -77,14 +80,18 @@ class ReactMap2 extends Component {
           el.style.width = "50px";
           el.style.height = "50px";
 
-          el.addEventListener("click", function() {
-            window.alert(
-              marker.properties.location + "" + marker.properties.status
-            );
-          });
+          // el.addEventListener("click", function() {
+          //   window.alert(
+          //     marker.properties.location + "" + marker.properties.status
+          //   );
+          // });
+          popup2 = new mapboxgl.Popup({
+            offset: 25
+          }).setText(marker.properties.location);
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)
+            .setPopup(popup2)
             .addTo(map);
 
           array.push(popup);
@@ -95,28 +102,33 @@ class ReactMap2 extends Component {
   };
 
   componentDidMount() {
-    // set map properties
+    this.props.getIncidents(); // retrieve incident details
+
     const { token, longitude, latitude, zoom, minZoom, styleID } = this.props;
     const mapConfig = {
       container: "map",
-      //style: `mapbox://styles/${styleID}`,
       style: MAP_STYLE,
       center: [longitude, latitude],
       zoom: zoom
     };
+
     if (this.props.pitch) mapConfig["pitch"] = this.props.pitch;
     if (this.props.bearing) mapConfig["bearing"] = this.props.bearing;
 
     mapboxgl.accessToken = token;
     this.map = new mapboxgl.Map(mapConfig);
+
+    // load data here
+    console.log("consoling this.props.incidents");
+    console.log(this.props.incident);
   }
 
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet
   componentWillReceiveProps(nextProps) {
-    if (this.props.mapInformation === null) return;
+    if (this.props.incident === null) return;
     console.log(nextProps);
-    const before = this.props.mapInformation;
-    const after = nextProps.mapInformation;
+    const before = this.props.mapInformation; // not needed
+    const after = nextProps.incident;
     const map = this.map;
 
     console.log(before);
@@ -144,20 +156,10 @@ class ReactMap2 extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(
-//     {
-//       clickMap: clickMap,
-//       setStyle: setStyle
-//     },
-//     dispatch
-//   );
-// }
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      clickMap: clickMap,
-      setStyle: setStyle
+      getIncidents: getIncidents
     },
     dispatch
   );
@@ -165,12 +167,11 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    userInterface: state.userInterface,
-    mapInformation: state.overviewInformation
+    incident: state.incident
   };
 }
 export default connect(
   mapStateToProps,
   mapDispatchToProps
   //   mapDispatchToProps
-)(ReactMap2);
+)(ReactMap3);
