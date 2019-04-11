@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import logo from "./cystemlogo.svg";
+import logo from "../../resources/cystemlogo.svg";
 
 const Header = () => {
   return (

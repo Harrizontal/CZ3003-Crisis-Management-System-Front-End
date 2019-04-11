@@ -1,9 +1,9 @@
 // import React from "react";
 import Popup from "reactjs-popup";
 import React, { Component } from "react";
-import facebook from "../facebook.svg";
-import twitter from "../twitter.svg";
-import all from "../all.svg";
+import facebook from "../../../../resources/facebook.svg";
+import twitter from "../../../../resources/twitter.svg";
+import all from "../../../../resources/all.svg";
 
 class Report extends Component {
   handleChange(change) {
