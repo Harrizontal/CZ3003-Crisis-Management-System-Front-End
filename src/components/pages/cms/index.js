@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Contacts from "./contacts/Contacts";
-import AddContact from "./contacts/AddContact";
-import EditContact from "./contacts/EditContact";
 import Header from "../../layout/Header";
 import Overview from "./overview/Overview";
 import Setting from "./Setting";
