@@ -1,33 +1,91 @@
 import React, { Component } from "react";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import "../login/style.css";
-import Form from "../login/Form";
-/*
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { login } from "../../actions/userActions";
+import { connect } from "react-redux";
+
 class Login extends Component {
-  // take note that properties of state must follow the name of input
   state = {
     username: "",
     password: "",
-    submitted: false
+    role: "",
+    submitted: false,
+    errors: {}
   };
 
-  onChange = e => {
-    console.log(e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
+  change = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  validate = () => {
+    let isError = false;
+    let errors = {};
+
+    if (this.state.username === "" && this.state.password === "") {
+      isError = true;
+      errors["username"] = "Please valid enter username";
+      errors["password"] = "Please valid enter password";
+      {
+        console.log("Enter username and password");
+      }
+    }
+    if (this.state.username.length < 6) {
+      isError = true;
+      errors["username"] = "Please enter valid username";
+      {
+        console.log("Enter username");
+      }
+    }
+    if (this.state.password.length < 6) {
+      isError = true;
+      errors["password"] = "Please enter valid password (min. 6 characters)";
+      {
+        console.log("Enter password");
+      }
+    }
+    this.setState({ errors: errors });
+    return isError;
   };
 
   onSubmit = e => {
-    console.log("Click login button");
     e.preventDefault();
-    this.setState({ submitted: true }); // set submitted to true
-    const { username, password } = this.state;
+    // this.props.onSubmit(this.state);
     const { dispatch } = this.props;
+    const err = this.validate();
+    if (err) {
+      this.setState({
+        username: "",
+        password: "",
+        role: "",
+        submitted: false
+      });
+    }
+    if (!err) {
+      var role, submitted;
+      this.state.submitted = true;
+      this.setState(submitted);
 
-    if (username && password) {
-      // execute action
-      console.log("Execute action for login");
-      //dispatch(login(username, password));
-      dispatch(login(username, password)).then(
+      if (this.state.username.includes("op")) {
+        this.state.role = "operator";
+        this.setState(role);
+      } else if (
+        this.state.username.includes("gov") ||
+        this.state.username.includes("pmo")
+      ) {
+        this.state.role = "gov";
+        this.setState(role);
+      } else {
+        this.state.role = "gp";
+        this.setState(role);
+      }
+      {
+        console.log(role);
+      }
+
+      dispatch(login(this.state.username, this.state.password)).then(
         user => {
           console.log("accessing to next web page");
           console.log(user);
@@ -37,97 +95,57 @@ class Login extends Component {
           console.log("wrong");
         }
       );
-      //this.props.login(username, password);
     }
-  };
 
-  // always put at the last
-  render() {
-    const { loggingIn } = this.props;
-    //console.log(loggingIn);
-    // const { username, password } = this.state;
-    return (      
-      <MuiThemeProvider>
-        <div className="login">
-          <form>
-            <TextField
-              className="username"
-              hintText="Username"
-              placeholder="Username"
-              onChange={e => this.onChange(e)}
-              floatingLabelFixed
-            />
-            <br />
-            <TextField
-              className="password"
-              hintText="Password"
-              placeholder="Password"
-              type="password"
-              onChange={e => this.onChange(e)}
-              floatingLabelFixed
-            />
-            <br />
-            <br />
-            <Button
-              className="loginBTN"
-              variant="contained"
-              onClick={e => this.onSubmit(e)}
-              color="primary">
-              Login
-            </Button>
-
-            {loggingIn && (
-              <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            )}
-          </form>
-        </div>
-      </MuiThemeProvider>
-    );
-  }
-}
-
-// Login.propTypes = {
-//   login: PropTypes.func.isRequired
-// };
-
-// mapping state to props to display data(?)
-// must return object
-const mapStateToProps = state => ({
-  loggingIn: state.authentication.loggingIn // passing logging state from authentication reducer
-});
-
-// function mapStateToProps(state) {
-//   const { loggingIn } = state.authentication; // see reducers!
-//   return loggingIn;
-// }
-
-export default connect(mapStateToProps)(Login);
-*/
-
-class App extends Component {
-  state = {
-    fields: {}
-  };
-
-  onChange = updatedValue => {
-    this.setState({
-      fields: {
-        ...this.state.fields,
-        ...updatedValue
-      }
-    });
+    console.log(this.state);
   };
 
   render() {
     return (
       <MuiThemeProvider>
-      <div className="loginAPP">
-        <Form onChange={fields => this.onChange(fields)} />
-          {console.log(this.state.fields)}
-      </div>
+        <body className="backgroundLogin">
+          <div className="loginAPP">
+            <form className="containerLogin">
+              <h1 className="groupName">8'S COMPLEMENT</h1>
+              <h2 className="projectName">Crisis Management System</h2>
+              <br />
+              <TextField
+                name="username"
+                placeholder="Enter Username"
+                value={this.state.username}
+                onChange={e => this.change(e)}
+              />
+              <div className="errorMsg">{this.state.errors.username}</div>
+              <br />
+              <TextField
+                name="password"
+                placeholder="Enter Password"
+                value={this.state.password}
+                onChange={e => this.change(e)}
+                type="password"
+              />
+              <div className="errorMsg">{this.state.errors.password}</div>
+              <br />
+              <br />
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                className="loginBTN"
+                onClick={e => this.onSubmit(e)}
+              >
+                Login
+              </Button>
+            </form>
+          </div>
+        </body>
       </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  loggingIn: state.authentication.loggingIn // passing logging state from authentication reducer
+});
+
+export default connect(mapStateToProps)(Login);

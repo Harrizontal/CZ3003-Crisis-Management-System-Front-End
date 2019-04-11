@@ -1,14 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Contacts from "./contacts/Contacts";
-import AddContact from "./contacts/AddContact";
-import EditContact from "./contacts/EditContact";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Header from "../../layout/Header";
 import Overview from "./overview/Overview";
 import Setting from "./Setting";
 import Popup from "reactjs-popup";
 import Report from "./report/Report";
 import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
+import EditIncident from "./incidents/EditIncident";
+
 import IncidentCreate from "./incidents/IncidentCreate";
 
 const routes = [
@@ -23,6 +22,10 @@ const routes = [
     sidebar: "Live Incidents",
     main: IncidentsOverview2
     // use to be Contacts, take note
+  },
+  {
+    path: "/cms/incident/:id",
+    main: EditIncident
   },
   {
     path: "/cms/incidentcreate",
@@ -90,17 +93,18 @@ export default () => {
             justifyContent: "flex-start"
           }}
         >
-          {routes.map((route, index) => (
-            // Render more <Route>s with the same paths as
-            // above, but different components this time.
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              exact={route.exact}
-              component={route.main}
-            />
-          ))}
+          <Switch>
+            {routes.map((route, index) => (
+              // Render more <Route>s with the same paths as
+              // above, but different components this time.
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </Switch>
         </div>
       </div>
     </React.Fragment>
