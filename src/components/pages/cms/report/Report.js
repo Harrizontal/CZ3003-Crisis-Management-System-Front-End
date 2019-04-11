@@ -1,9 +1,9 @@
 // import React from "react";
 import Popup from "reactjs-popup";
 import React, { Component } from "react";
-import facebook from "../facebook.png";
-import twitter from "../twitter.png";
-import all from "../all.png";
+import facebook from "../facebook.svg";
+import twitter from "../twitter.svg";
+import all from "../all.svg";
 
 class Report extends Component {
   handleChange(change) {
@@ -46,13 +46,15 @@ class Report extends Component {
         >
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
             <input type="radio" name="media" value="1" checked="checked" />{" "}
-            <img src={all} />
+            <img src={all} style={{ height: "32px", width: "32px" }} />
           </div>
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
-            <input type="radio" name="media" value="2" /> <img src={facebook} />
+            <input type="radio" name="media" value="2" />{" "}
+            <img src={facebook} style={{ height: "32px", width: "32px" }} />
           </div>
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
-            <input type="radio" name="media" value="3" /> <img src={twitter} />
+            <input type="radio" name="media" value="3" />{" "}
+            <img src={twitter} style={{ height: "32px", width: "32px" }} />
           </div>
         </div>
         <div
