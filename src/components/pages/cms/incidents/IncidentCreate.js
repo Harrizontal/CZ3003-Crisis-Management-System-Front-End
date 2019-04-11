@@ -179,7 +179,7 @@ const customStyles = {
   control: () => ({
     // none of react-select's styles are passed to <Control />
     background: transparent,
-    width: 250
+    width: 800
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
@@ -193,12 +193,12 @@ const customStyles = {
     console.log(this.state)
 
     return (
-      <body className="background">
+      <body className="backgroundNoLogo">
       <div class="bodybg" className="formcontainer"> 
         <div className="card-header"><span class="firstwordsel">create</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
-          <div className="textgroup"> 
+          <div className="textgroup1"> 
           <TextInputGroup
               label="Name: "
               name="name"
@@ -223,8 +223,9 @@ const customStyles = {
               onChange={this.onChange}
               error={errors.nric}
             />
-           
-            <TextInputGroup
+            </div>
+           <div className="textgroup2">
+           <TextInputGroup
               label="Address: "
               name="locaddress"
               type="locaddress"
@@ -251,7 +252,7 @@ const customStyles = {
               onChange={this.onChange}
               error={errors.description}
             />
-          </div>
+            </div>
           <div className="selectgroup">
           <div className="formlabel2">Incident Category: </div>
             <Select
@@ -286,13 +287,12 @@ const customStyles = {
               error={errors.selectedAgencyType}
             />
             {errors["selectedAgencyType"] && <div className="invalid-feedback">{errors["selectedAgencyType"]}</div>}
-          </div>
-            
             <input
               type="submit"
               value="create"
               className="btnSubmit"
             />
+          </div>
           </form>
         </div>
       </div>
