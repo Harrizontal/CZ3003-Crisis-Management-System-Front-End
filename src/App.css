@@ -65,10 +65,11 @@ body {
   text-decoration: none;
   text-align: center;
   border-bottom: 3px solid transparent;
-  padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   font-family: 'Rubik', sans-serif;
   font-weight: 400;
   letter-spacing: 0.05em;
+  font-size: 1.1em;
 }
 
 .toolbar_navigation-items a:hover,
@@ -132,18 +133,24 @@ body {
   background-size: cover;
   margin: 0 auto;
 }
+.logo1{
+  padding: 15px;
+  padding-top: 5px;
+  
+}
 
 .formcontainer{
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 3em;
+  /* width: 80%;
+  height: 100%;
+  margin:10%; */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-  justify-content: center;
-  align-content: center;
 }
 .card-header {
   font-family: 'Rubik', sans-serif;
@@ -153,7 +160,26 @@ body {
   letter-spacing: 0.3em;
   margin-bottom: 30px;
 }
-
+.card-body{
+  display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+  align-items: flex-start;
+  height: 80%;
+}
+.textgroup{
+  width:60%;
+  height: 100%;
+  display: inline-block;
+  top:0;
+  align-self: flex-start;
+}
+.selectgroup{
+  width:40%;
+  height: 100%;
+  display: inline-block;
+  align-self: flex-start;
+}
 .firstwordsel{
   color: #7138E0;
 }
@@ -193,6 +219,15 @@ body {
   margin-top: 5px;
   letter-spacing: 0.05em;
 }
+.formlabel2{
+  color: black;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
 
 .forminput{
   display: block;
@@ -218,8 +253,8 @@ body {
 }
 .settingsHeader{
   font-family: 'Rubik', sans-serif;
-  font-weight: 400;
-  font-size: 1.2em;
+  font-weight: 300;
+  font-size: 1.0em;
   letter-spacing: 0.1em;
   display: block;
   text-align: center;
@@ -229,21 +264,27 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-weight: 500;
-  font-size: 1em;
-  background-color: #C51EA1;
-  color:white;
+  font-size: 0.8em;
+  background-color: black;
+  color: #fff;
   border-radius: 20px;
-  width: 180px;
-  height: 50px;
+  width: 160px;
+  height: 45px;
   display: block;
   margin: 0 auto;
   margin-top: 50px;
 }
+.btnLogout:hover{
+  background-color: #C51EA1;
+}
 .hey{
   font-family: 'Rubik', sans-serif;
   text-transform: uppercase;
-  font-weight: 500;
-  font-size: 3em;
+  font-weight: 400;
+  font-size: 2.2em;
   letter-spacing: 0.1em;
   margin-left: 35%;
+}
+.basic-multi-select{
+  font-family: 'Rubik', sans-serif;
 }

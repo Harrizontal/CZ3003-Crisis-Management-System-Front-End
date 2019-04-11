@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import TextInputGroup from "../layout/TextInputGroup";
+import TextInputGroup from "../../../layout/TextInputGroup";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addContact } from "../../actions/contactActions";
 import Select from 'react-select';
 import { transparent } from "material-ui/styles/colors";
 
-class PublicIncident extends Component {
+class IncidentCreate extends Component {
   state = {
     name: "",
     contact: "",
@@ -25,6 +24,19 @@ class PublicIncident extends Component {
      { value: '7', label: 'Others' },
     ],
     selectedOption: null,
+    assType: [
+    { value: '1', label: 'Emergency Ambulance' },
+    { value: '2', label: 'Rescue and Evacuation' },
+    { value: '3', label: 'Fire Fighting' },
+    { value: '4', label: 'Gas Leak Control' },
+    ],
+    selectedAssType: null,
+    agencyType: [
+        { value: '1', label: 'SCDF' },
+        { value: '2', label: 'SPF' },
+        { value: '3', label: 'Singapore Power' },
+        ],
+    selectedAgencyType: null,
   };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   handleChange = (selectedOption) => {
@@ -45,8 +57,24 @@ class PublicIncident extends Component {
       this.setState({errors: {}})
     }
   }
+  handleChangeAss = (selectedAssType) => {
+    this.setState({ selectedAssType });
+    var errors = {};
+    var empty = require('is-empty');
+    if(empty(selectedAssType)){
+        this.setState({errors: errors})
+    }
+  }
+  handleChangeAgency = (selectedAgencyType) => {
+    this.setState({ selectedAgencyType });
+    var errors = {};
+    var empty = require('is-empty');
+    if(empty(selectedAgencyType)){
+    this.setState({errors: errors})
+    }
+  }
   checkFields = () => {
-    const { name, contact, nric, selectedOption, locaddress, postalcode, description, } = this.state;
+    const { name, contact, nric, selectedOption, locaddress, postalcode, description, selectedAgencyType, selectedAssType} = this.state;
     var errors = {};
     var empty = require('is-empty');
     console.log(selectedOption)
@@ -94,6 +122,14 @@ class PublicIncident extends Component {
     if (selectedOption == null || empty(selectedOption)){
       errors["selectedoption"] = "Please select at least one.";
     }
+
+    if (selectedAssType == null || empty(selectedAssType)){
+        errors["selectedAssType"] = "Please select at least one.";
+      }
+
+    if (selectedAgencyType == null || empty(selectedAgencyType)){
+        errors["selectedAgencyType"] = "Please select at least one.";
+      }
     if(empty(errors)){
       return true;
     }
@@ -110,7 +146,7 @@ class PublicIncident extends Component {
     console.log(canSubmit);
    
     if(canSubmit === true) {
-      const { name, contact, nric, selectedOption, locaddress, postalcode, description } = this.state
+      const { name, contact, nric, selectedOption, locaddress, postalcode, description, selectedAssType, selectedAgencyType} = this.state
       console.log(this.state);
       // Clear State
       this.setState({
@@ -122,7 +158,8 @@ class PublicIncident extends Component {
         postalcode: "",
         description: "",
         errors: {},
-        note: {}
+        selectedAssType: "",
+        selectedAgencyType: ""
       });
 
       window.confirm("Incident submitted!")
@@ -142,7 +179,7 @@ const customStyles = {
   control: () => ({
     // none of react-select's styles are passed to <Control />
     background: transparent,
-    width: 500
+    width: 250
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
@@ -152,15 +189,17 @@ const customStyles = {
   }
 }
 
-    const { name, contact, nric, locaddress, postalcode, description, errors, options, selectedOption, } = this.state;
+    const { name, contact, nric, locaddress, postalcode, description, errors, options, selectedOption, assType, selectedAssType, agencyType, selectedAgencyType } = this.state;
+    console.log(this.state)
 
     return (
       <body className="background">
       <div class="bodybg" className="formcontainer"> 
-        <div className="card-header"><span class="firstwordsel">sumbit</span> incident report</div>
+        <div className="card-header"><span class="firstwordsel">create</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
-            <TextInputGroup
+          <div className="textgroup"> 
+          <TextInputGroup
               label="Name: "
               name="name"
               placeholder="Enter Name"
@@ -184,17 +223,7 @@ const customStyles = {
               onChange={this.onChange}
               error={errors.nric}
             />
-            <div className="formlabel2">Incident Category: </div>
-            <Select
-              isMulti
-              value={selectedOption}
-              onChange={this.handleChange}
-              options={options}
-              className="basic-multi-select"
-              styles={customStyles}  
-            />
-            {errors["selectedoption"] && <div className="invalid-feedback">{errors["selectedoption"]}</div>}
-
+           
             <TextInputGroup
               label="Address: "
               name="locaddress"
@@ -222,9 +251,46 @@ const customStyles = {
               onChange={this.onChange}
               error={errors.description}
             />
+          </div>
+          <div className="selectgroup">
+          <div className="formlabel2">Incident Category: </div>
+            <Select
+              isMulti
+              value={selectedOption}
+              onChange={this.handleChange}
+              options={options}
+              className="basic-multi-select"
+              styles={customStyles}  
+              error={errors.selectedOption}
+            />
+            {errors["selectedAssType"] && <div className="invalid-feedback">{errors["selectedAssType"]}</div>}
+            <div className="formlabel2">Assistance Required: </div>
+            <Select
+              isMulti
+              value={selectedAssType}
+              onChange={this.handleChangeAss}
+              options={assType}
+              className="basic-multi-select"
+              styles={customStyles}  
+              error={errors.selectedAssType}
+            />
+            {errors["selectedAssType"] && <div className="invalid-feedback">{errors["selectedAssType"]}</div>}
+            <div className="formlabel2">Relevant Agencies: </div>
+            <Select
+              isMulti
+              value={selectedAgencyType}
+              onChange={this.handleChangeAgency}
+              options={agencyType}
+              className="basic-multi-select"
+              styles={customStyles}  
+              error={errors.selectedAgencyType}
+            />
+            {errors["selectedAgencyType"] && <div className="invalid-feedback">{errors["selectedAgencyType"]}</div>}
+          </div>
+            
             <input
               type="submit"
-              value="submit"
+              value="create"
               className="btnSubmit"
             />
           </form>
@@ -235,10 +301,6 @@ const customStyles = {
   }
 }
 
-PublicIncident.propTypes = {
-  addContact: PropTypes.func.isRequired
-};
 export default connect(
   null,
-  { addContact }
-)(PublicIncident);
+)(IncidentCreate);

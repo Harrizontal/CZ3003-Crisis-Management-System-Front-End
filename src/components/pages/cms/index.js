@@ -6,8 +6,12 @@ import EditContact from "./contacts/EditContact";
 import Header from "../../layout/Header";
 import Overview from "./overview/Overview";
 import Setting from "./Setting";
+import Popup from "reactjs-popup";
+import Report from "./report/Report";
 import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
 import EditIncident from "./incidents/EditIncident";
+
+import IncidentCreate from "./incidents/IncidentCreate";
 
 const routes = [
   {
@@ -25,6 +29,11 @@ const routes = [
   {
     path: "/cms/incident/:id",
     main: EditIncident
+  },
+  {
+    path: "/cms/incidentcreate",
+    sidebar: "Create Incident",
+    main: IncidentCreate
   },
   {
     path: "/cms/setting",
@@ -67,6 +76,12 @@ export default () => {
                   </li>
                 ) : null
               )}
+
+              <li>
+                <Popup trigger={<a>Report</a>} modal closeOnDocumentClick>
+                  <Report />
+                </Popup>
+              </li>
             </ul>
           </div>
         </div>
