@@ -23,15 +23,28 @@ class Report extends Component {
           <div style={{ margin: "1%", height: "98%", width: "98%" }}>
             <textarea
               maxLength="280"
-              style={{ height: "100%", width: "100%", padding: "0" }}
+              style={{
+                height: "100%",
+                width: "100%",
+                padding: "0",
+                fontFamily: "rubik, san-serif"
+              }}
               onChange={this.handleChange.bind(this)}
+              placeholder="Enter details here."
               // onKeyUp="handleChange(this)"
               id="ahh1"
             />
           </div>
         </div>
         <div style={{ flexGrow: "1", padding: "2%" }}>
-          <span id="remaining" style={{ color: "red", float: "right" }}>
+          <span
+            id="remaining"
+            style={{
+              color: "red",
+              float: "right",
+              fontFamily: "rubik, san-serif"
+            }}
+          >
             280 remaining characters
           </span>
         </div>
@@ -63,10 +76,26 @@ class Report extends Component {
             display: "flex"
           }}
         >
-          <button type="submit" style={{ flexGrow: "1" }}>
+          <button
+            type="submit"
+            style={{
+              flexGrow: "1",
+              fontFamily: "rubik, sans-serif",
+              fontWeight: "500",
+              fontSize: "1em"
+            }}
+          >
             Submit
           </button>
-          <button type="button" style={{ flexGrow: "1" }}>
+          <button
+            type="button"
+            style={{
+              flexGrow: "1",
+              fontFamily: "rubik, san-serif",
+              fontWeight: "500",
+              fontSize: "1em"
+            }}
+          >
             Cancel
           </button>
         </div>
