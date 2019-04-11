@@ -20,11 +20,12 @@ class Report extends Component {
 
   render() {
     return (
-      <div
+      <div className="formcontainer2">
+<div
         style={{ display: "flex", height: "200px", flexDirection: "column", }}
       >
         <div style={{ flexGrow: "4" }}>
-          <div style={{ margin: "1%", height: "98%", width: "98%", borderRadius:20,}}>
+          <div style={{ margin: "1%", height: "98%", width: "98%",}}>
             <textarea
               maxLength="280"
               style={{
@@ -63,15 +64,15 @@ class Report extends Component {
         >
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
             <input type="radio" name="media" value="1" checked="checked" />{" "}
-            <img src={all} style={{ height: "32px", width: "32px" }} />
+            <img src={all} style={{ height: "50px", width: "50px" }} />
           </div>
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
             <input type="radio" name="media" value="2" />{" "}
-            <img src={facebook} style={{ height: "32px", width: "32px" }} />
+            <img src={facebook} style={{ height: "50px", width: "50px" }} />
           </div>
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
             <input type="radio" name="media" value="3" />{" "}
-            <img src={twitter} style={{ height: "32px", width: "32px" }} />
+            <img src={twitter} style={{ height: "50px", width: "50px" }} />
           </div>
         </div>
         <div
@@ -103,7 +104,9 @@ class Report extends Component {
             Cancel
           </button>
         </div>
+      </div>  
       </div>
+      
     );
   }
 }
