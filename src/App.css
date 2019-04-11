@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  padding: 0;
-  width: 100%;
+  padding:0;
+  width:100%;
   height: 100vh;
 }
 
@@ -66,7 +66,7 @@ body {
   text-align: center;
   border-bottom: 3px solid transparent;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 400;
   letter-spacing: 0.05em;
   font-size: 1.1em;
@@ -75,7 +75,7 @@ body {
 .toolbar_navigation-items a:hover,
 .toolbar_navigation-items a:active {
   color: black;
-  border-bottom: 3px solid #c51ea1;
+  border-bottom: 3px solid #C51EA1;
 }
 
 .incident-sidebar-container {
@@ -117,39 +117,34 @@ body {
   padding: 0;
 }
 
-.background {
-  background-image: url("components/layout/bg.svg");
+.background{
+  background-image: url(resources/bg.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
-<<<<<<< HEAD
 .backgroundNoLogo{
-  background-image: url('components/layout/bgNoLogo.svg');
+  background-image: url(resources/bgNoLogo.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .bgLogout{
-    background-image: url('components/layout/bgLogout.svg');
+    background-image: url(resources/bgLogout.svg);
     background-repeat: no-repeat;
-=======
-.bgLogout {
-  background-image: url("resources/bgLogout.svg");
-  background-repeat: no-repeat;
->>>>>>> ad5d3cd96e2f868c94121339b53d5c22e8f290ac
 }
-.logo {
+.logo{
   width: 225px;
   height: 75px;
-  background-image: url("components/layout/cystemlogo.svg");
+  background-image: url(resources/cystemlogo.svg);
   background-size: cover;
   margin: 0 auto;
 }
-.logo1 {
+.logo1{
   padding: 15px;
   padding-top: 5px;
+  
 }
 
-.formcontainer {
+.formcontainer{
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -157,28 +152,21 @@ body {
   /* width: 80%;
   height: 100%;
   margin:10%; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 .card-header {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-variant: small-caps;
   font-weight: 500;
   font-size: 2.1em;
   letter-spacing: 0.3em;
   margin-bottom: 30px;
 }
-<<<<<<< HEAD
 .card-body{
   display: flexbox;
-=======
-.card-body {
-  display: flex;
-  flex-direction: row;
-  flex-basis: auto;
->>>>>>> ad5d3cd96e2f868c94121339b53d5c22e8f290ac
   align-items: flex-start;
   align-content: flex-start;
   height: 100%;
@@ -191,7 +179,6 @@ body {
   align-content: space-between;
   top:0;
 }
-<<<<<<< HEAD
 .textgroup2{
   width:50%;
   height: 80%;
@@ -203,34 +190,22 @@ body {
 .selectgroup{
   width:100%;
   height: 20%;
-=======
-.textgroup {
-  width: 60%;
-  height: 100%;
-  display: inline-block;
-  top: 0;
-  align-self: flex-start;
-}
-.selectgroup {
-  width: 40%;
-  height: 100%;
->>>>>>> ad5d3cd96e2f868c94121339b53d5c22e8f290ac
   display: inline-block;
   align-self: flex-start;
   align-content: flex-start;
 }
-.firstwordsel {
-  color: #7138e0;
+.firstwordsel{
+  color: #7138E0;
 }
 
 .btnSubmit {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-weight: 500;
   font-size: 1em;
   background-color: black;
-  color: white;
+  color:white;
   border-radius: 20px;
   border: 0px;
   width: 180px;
@@ -240,40 +215,40 @@ body {
   margin-top: 40px;
   transition: 0.4s;
 }
-.btnSubmit:hover {
-  background-color: #c51ea1;
+.btnSubmit:hover{
+  background-color: #C51EA1;
 }
-.btnSubmit:hover::after {
+.btnSubmit:hover::after{
   background-color: black;
 }
 
-.btnSubmit:active {
-  background-color: #7138e0;
+.btnSubmit:active{
+  background-color: #7138E0;
 }
 
-.formlabel {
+.formlabel{
   color: black;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 400;
   margin-top: 5px;
   letter-spacing: 0.05em;
 }
-.formlabel2 {
+.formlabel2{
   color: black;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 400;
   margin-top: 5px;
   margin-bottom: 10px;
   letter-spacing: 0.05em;
 }
 
-.forminput {
+.forminput{
   display: block;
   background: transparent;
   outline: none;
   border: none;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.5);
-  font-family: "Rubik", sans-serif;
+  border-bottom: solid 1px rgba(0,0,0,0.5) ; 
+  font-family: 'Rubik', sans-serif;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.8);
   width: 250px;
@@ -281,25 +256,25 @@ body {
   margin-top: 10px;
   margin-right: 10px;
 }
-.forminput:focus {
-  border-bottom: solid 1px rgb(197, 30, 161, 1);
+.forminput:focus{
+  border-bottom: solid 1px rgb(197,30,161,1);
 }
-.invalid-feedback {
-  font-family: "Rubik", sans-serif;
+.invalid-feedback{
+  font-family: 'Rubik', sans-serif;
   font-weight: 300;
-  color: #f84141;
+  color: #F84141;
   margin-bottom: 10px;
 }
-.settingsHeader {
-  font-family: "Rubik", sans-serif;
+.settingsHeader{
+  font-family: 'Rubik', sans-serif;
   font-weight: 300;
-  font-size: 1em;
+  font-size: 1.0em;
   letter-spacing: 0.1em;
   display: block;
   text-align: center;
 }
-.btnLogout {
-  font-family: "Rubik", sans-serif;
+.btnLogout{
+  font-family: 'Rubik', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-weight: 500;
@@ -313,16 +288,19 @@ body {
   margin: 0 auto;
   margin-top: 50px;
 }
-.btnLogout:hover {
-  background-color: #c51ea1;
+.btnLogout:hover{
+  background-color: #C51EA1;
 }
-.hey {
-  font-family: "Rubik", sans-serif;
+.hey{
+  font-family: 'Rubik', sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 2.2em;
   letter-spacing: 0.1em;
   margin-left: 35%;
+}
+.basic-multi-select{
+  font-family: 'Rubik', sans-serif;
 }
 .basic-multi-select {
   font-family: "Rubik", sans-serif;
@@ -330,7 +308,7 @@ body {
 
 /* terence */
 .backgroundLogin {
-  background-image: url(components/layout/bgLogin.svg);
+  background-image: url(resources/bgLogin.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
