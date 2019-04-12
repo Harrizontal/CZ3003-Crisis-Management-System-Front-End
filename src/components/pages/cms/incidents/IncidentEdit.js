@@ -7,6 +7,8 @@ import { transparent } from "material-ui/styles/colors";
 
 class IncidentEdit extends Component {
   state = {
+    incidentid: "I0232145",
+    status: "Pending",
     name: "",
     contact: "",
     nric: "",
@@ -189,13 +191,18 @@ const customStyles = {
   }
 }
 
-    const { name, contact, nric, locaddress, postalcode, description, errors, options, selectedOption, assType, selectedAssType, agencyType, selectedAgencyType } = this.state;
+    const { name, contact, nric, locaddress, postalcode, description, errors, options, selectedOption, assType, selectedAssType, agencyType, selectedAgencyType, incidentid, status } = this.state;
     console.log(this.state)
 
     return (
       <body className="backgroundNoLogo">
       <div class="bodybg" className="formcontainer"> 
-        <div className="card-header"><span class="firstwordsel">edit</span> incident report</div>
+        <div className="editIncidentTitle">
+           <div className="incident-header"><span class="firstwordsel">edit</span> incident report: </div>  
+           <div className="incidentLabel">IncidentID:  <label>{incidentid}</label></div>
+          <div className="incidentLabel">Status:  <label>{status}</label></div>
+        </div>
+    
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
           <div className="textgroup1"> 

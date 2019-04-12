@@ -167,8 +167,6 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-.formcontainer2 {
-}
 .card-header {
   font-family: "Rubik", sans-serif;
   font-variant: small-caps;
@@ -387,6 +385,26 @@ body {
   margin-left: 5%;
   margin-right: 5%;
   font-family: "Rubik", sans-serif;
+}
+.editIncidentTitle{
+  display: block;
+}
+.incidentLabel{
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  display: block;
+  width:30%;
+  margin-bottom: 10px;
+}
+.incident-header {
+  font-family: "Rubik", sans-serif;
+  font-variant: small-caps;
+  font-weight: 500;
+  font-size: 2.1em;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
 }
 .e404 {
   font-family: "Rubik", sans-serif;
