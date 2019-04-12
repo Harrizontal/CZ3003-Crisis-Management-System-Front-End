@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Select from 'react-select';
 import { transparent } from "material-ui/styles/colors";
 
-class IncidentCreate extends Component {
+class IncidentEdit extends Component {
   state = {
     name: "",
     contact: "",
@@ -195,7 +195,7 @@ const customStyles = {
     return (
       <body className="backgroundNoLogo">
       <div class="bodybg" className="formcontainer"> 
-        <div className="card-header"><span class="firstwordsel">create</span> incident report</div>
+        <div className="card-header"><span class="firstwordsel">edit</span> incident report</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
           <div className="textgroup1"> 
@@ -289,7 +289,7 @@ const customStyles = {
             {errors["selectedAgencyType"] && <div className="invalid-feedback">{errors["selectedAgencyType"]}</div>}
             <input
               type="submit"
-              value="create"
+              value="edit"
               className="btnSubmit"
             />
           </div>
@@ -303,4 +303,4 @@ const customStyles = {
 
 export default connect(
   null,
-)(IncidentCreate);
+)(IncidentEdit);

@@ -6,8 +6,7 @@ import Setting from "./settings/Setting";
 import Popup from "reactjs-popup";
 import Report from "./report/Report";
 import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
-import EditIncident from "./incidents/EditIncident";
-
+import IncidentEdit from "./incidents/IncidentEdit";
 import IncidentCreate from "./incidents/IncidentCreate";
 
 const routes = [
@@ -29,13 +28,13 @@ const routes = [
   },
 
   {
+    path: "/cms/incident/:id",
+    main: IncidentEdit
+  },
+  {
     path: "/cms/setting",
     sidebar: "Settings",
     main: Setting
-  },
-  {
-    path: "/cms/incident/:id",
-    main: EditIncident
   }
 ];
 

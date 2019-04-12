@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>ALL</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ALL">
+            <g>
+                <circle id="Oval" fill="#000000" fill-rule="nonzero" cx="200" cy="200" r="200"></circle>
+                <text font-family="Rubik-Regular, Rubik" font-size="150" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="65.75" y="253">ALL</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
