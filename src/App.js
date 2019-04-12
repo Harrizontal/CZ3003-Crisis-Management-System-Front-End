@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NotFound from "./components/pages/NotFound";
 import Login from "./components/pages/Login";
-import EnterMobileArea from "./components/pages/EnterMobileArea";
+import EnterMobilePostal from "./components/pages/EnterMobilePostal";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -30,10 +30,7 @@ class App extends Component {
                 <PrivateRoute2 path="/login" component={Login} />
                 <Route exact path="/" component={PublicIncident} />
                 <Route path="/ra/:id" component={RelevantAgency} />
-                <Route
-                  exact
-                  path="/entermobilearea"
-                  component={EnterMobileArea}
+                <Route exact path="/entermobilepostal" component={EnterMobilePostal}
                 />
                 <Route component={NotFound} />
               </Switch>
