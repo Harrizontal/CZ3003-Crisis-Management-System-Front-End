@@ -3,7 +3,7 @@ export const userService = {
   logout,
   register,
   getUser,
-  update
+  subscribe
 };
 
 function login(username, password) {
@@ -58,7 +58,7 @@ function getUser() {
   return null;
 }
 
-function update() {
+function subscribe() {
   return null;
 }
 

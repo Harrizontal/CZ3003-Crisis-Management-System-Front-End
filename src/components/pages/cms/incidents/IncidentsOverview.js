@@ -37,8 +37,7 @@ export class IncidentsOverview extends Component {
             width: "25%",
             height: "100%",
             zIndex: 2,
-            boxShadow: "-8px 0px 6px -6px rgba(0,0,0,0.25)",
-            overflowY: "scroll"
+            boxShadow: "-8px 0px 6px -6px rgba(0,0,0,0.25)"
           }}
         >
           <IncidentsSideBar />

@@ -1,5 +1,6 @@
 {
-  "name": "contactmanager",
+  "name": "CMS",
+  "homepage": "https://harrizontal.github.io/CZ3003_CMS_FrontEnd/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "d3-request": "^1.0.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
+    "gh-pages": "^2.0.1",
     "immutable": "^4.0.0-rc.12",
     "is-empty": "^1.2.0",
     "mapbox-gl": "^0.53.1",
@@ -42,7 +44,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint": "^5.16.0"

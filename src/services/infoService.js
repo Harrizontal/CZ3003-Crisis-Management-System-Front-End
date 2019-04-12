@@ -47,3 +47,5 @@ function getWeatherInfo() {
       return error;
     });
 }
+
+async function getPSIMap() {}

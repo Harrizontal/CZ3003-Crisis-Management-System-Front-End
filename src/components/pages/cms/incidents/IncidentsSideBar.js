@@ -20,11 +20,23 @@ class IncidentsSideBar extends Component {
     return (
       <div className="incident-sidebar-container">
         <div className="incident-siderbar-header">
-          <div className="incident-sidebar-region">Region</div>
-          <div className="incident-sidebar-country">Singapore</div>
-          <div>View By</div>
+          <div className="incident-sidebar-item">
+            <span className="big">15</span>
+            <span className="small">Total Incident</span>
+          </div>
+          <div className="incident-sidebar-item">
+            <span className="big">15</span>
+            <span className="small">Pending Incidents</span>
+          </div>
+          <div className="incident-sidebar-item">
+            <span className="big">15</span>
+            <span className="small">Ongoing Incidents</span>
+          </div>
         </div>
-        <div style={{ height: "50%", width: "100%", backgroundColor: "green" }}>
+        <div className="incident-sidebar-title">
+          <span>Recent Incidents</span>
+        </div>
+        <div style={{ height: "auto", width: "100%", overflowY: "scroll" }}>
           {incidents.map(incident => {
             return <Incident incident={incident["properties"]} />;
           })}

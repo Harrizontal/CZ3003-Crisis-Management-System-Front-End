@@ -29,22 +29,14 @@ class Incident extends Component {
     console.log(this.props.incident);
 
     return (
-      <div className="incident-card">
-        <h4>
-          {address}
-          <Link to={`/cms/incident/${id}`}>
-            <i
-              className="fas fa-pencil-alt"
-              style={{
-                cursor: "pointer",
-                float: "right",
-                color: "black",
-                marginRight: "1rem"
-              }}
-            />
-          </Link>
-        </h4>
-      </div>
+      <Link style={{ textDecoration: "none" }} to={`/cms/incident/${id}`}>
+        <div className="incident-card">
+          <div>{address}</div>
+          <div>{status}</div>
+          <div>{time_stamp}</div>
+          <div>{reported_user}</div>
+        </div>
+      </Link>
     );
   }
 }
