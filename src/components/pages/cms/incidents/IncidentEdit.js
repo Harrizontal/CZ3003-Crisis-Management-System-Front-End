@@ -164,7 +164,7 @@ class IncidentEdit extends Component {
         selectedAgencyType: ""
       });
 
-      window.confirm("Incident submitted!")
+      window.confirm("Incident Editted!")
 
       this.props.history.push("/");
     }
