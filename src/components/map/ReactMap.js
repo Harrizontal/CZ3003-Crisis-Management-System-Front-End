@@ -6,7 +6,6 @@ import { bindActionCreators } from "redux";
 import Immutable from "immutable";
 
 import { clickMap, setStyle } from "../../actions/mapActions";
-import diffStyles from "./diff.js";
 import MAP_STYLE from "./map-style-basic-v8.json";
 import { defaultMapStyle } from "./map-style";
 

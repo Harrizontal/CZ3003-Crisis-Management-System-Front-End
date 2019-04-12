@@ -7,7 +7,6 @@ import Immutable from "immutable";
 
 import { getIncidents } from "../../actions/incidentActions";
 
-import diffStyles from "./diff.js";
 import MAP_STYLE from "./map-style-basic-v8.json";
 import { defaultMapStyle } from "./map-style";
 
