@@ -7,9 +7,13 @@ export const getIncidents = () => async dispatch => {
     console.log("dispatch @ getIncidents");
     const res = await incidentService.getIncidents();
 
+    // dispatch({
+    //   type: incidentConstants.GET_INCIDENTS,
+    //   payload: res.data.data
+    // });
     dispatch({
       type: incidentConstants.GET_INCIDENTS,
-      payload: res.data.data
+      payload: res
     });
   } catch (error) {
     console.log("IncidentActions:Getincident->" + error);

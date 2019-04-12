@@ -10,13 +10,13 @@ class IncidentsSideBar extends Component {
     console.log("componentDidMount");
     this.props.getIncidents();
   }
+
   render() {
     console.log("Rendering");
     // console.log(this.props);
     const { incidents } = this.props;
+    console.log(incidents);
 
-    //console.log(incidents);
-    // console.log(incidents);
     return (
       <div className="incident-sidebar-container">
         <div className="incident-siderbar-header">
@@ -26,7 +26,7 @@ class IncidentsSideBar extends Component {
         </div>
         <div style={{ height: "50%", width: "100%", backgroundColor: "green" }}>
           {incidents.map(incident => {
-            return <Incident key={incident.key} incident={incident} />;
+            return <Incident incident={incident["properties"]} />;
           })}
         </div>
       </div>
@@ -36,8 +36,7 @@ class IncidentsSideBar extends Component {
 
 IncidentsSideBar.propTypes = {
   incidents: PropTypes.array.isRequired,
-  getIncidents: PropTypes.func.isRequired,
-  getContacts: PropTypes.func.isRequired
+  getIncidents: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -47,5 +46,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getIncidents, getContacts }
+  { getIncidents }
 )(IncidentsSideBar);

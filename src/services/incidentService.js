@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { incidentData } from "../components/map/map-style";
+
 export const incidentService = {
   getIncidents,
   getIncident,
@@ -9,18 +11,10 @@ export const incidentService = {
 };
 
 function getIncidents() {
-  // return fetch(`https://jsonplaceholder.typicode.com/posts`)
-  //   .then(console.log("asd"))
-  //   .then(user => {
-  //     return [user];
-  //   });
-  return axios
-    .get("https://reqres.in/api/incidents")
-    .then(res => {
-      return res;
-    })
-    .catch(error => {
-      return error;
+  return fetch(`https://jsonplaceholder.typicode.com/posts`)
+    .then(console.log("asd"))
+    .then(user => {
+      return incidentData;
     });
 }
 

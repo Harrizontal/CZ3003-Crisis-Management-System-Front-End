@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteContact } from "../../../../actions/contactActions";
+
 class Incident extends Component {
   onDeleteClick = id => {
     //// DELETE CONTACT ////
@@ -11,7 +12,6 @@ class Incident extends Component {
 
   render() {
     const {
-      name,
       id,
       address,
       postal_code,
@@ -22,13 +22,16 @@ class Incident extends Component {
       time_stamp,
       status,
       reported_user,
-      phone_No
+      phone_no
     } = this.props.incident;
 
+    // const test = this.props.incident;
+    console.log(this.props.incident);
+
     return (
-      <div className="card card-body mb-3">
+      <div className="incident-card">
         <h4>
-          {name}
+          {address}
           <Link to={`/cms/incident/${id}`}>
             <i
               className="fas fa-pencil-alt"

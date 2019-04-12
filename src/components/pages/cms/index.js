@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Header from "../../layout/Header";
 import Overview from "./overview/Overview";
-import Setting from "./Setting";
+import Setting from "./settings/Setting";
 import Popup from "reactjs-popup";
 import Report from "./report/Report";
 import { IncidentsOverview, IncidentsOverview2 } from "./incidents";
@@ -20,22 +20,22 @@ const routes = [
   {
     path: "/cms/incidents",
     sidebar: "Live Incidents",
-    main: IncidentsOverview2
-    // use to be Contacts, take note
-  },
-  {
-    path: "/cms/incident/:id",
-    main: EditIncident
+    main: IncidentsOverview
   },
   {
     path: "/cms/incidentcreate",
     sidebar: "Create Incident",
     main: IncidentCreate
   },
+
   {
     path: "/cms/setting",
     sidebar: "Settings",
     main: Setting
+  },
+  {
+    path: "/cms/incident/:id",
+    main: EditIncident
   }
 ];
 

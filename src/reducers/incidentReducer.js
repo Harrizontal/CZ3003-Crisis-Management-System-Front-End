@@ -5,7 +5,8 @@ import {
   fillLayerFormat,
   weatherData,
   weatherData2,
-  weatherLayerPaint
+  weatherLayerPaint,
+  incidentData
 } from "../components/map/map-style";
 //let user = JSON.parse(localStorage.getItem("user"));
 // const initialState = user ? { loggedIn: true, user } : {};
@@ -22,10 +23,11 @@ export function incident(state = initialState2, action) {
   switch (action.type) {
     case incidentConstants.GET_INCIDENTS:
       console.log("incidentConstants.GET_INCIDENTS @ incidentReducer");
+
       const test = {
         ...state,
-        incidents: action.payload,
-        mapSourceData: weatherData2,
+        incidents: action.payload["features"],
+        mapSourceData: incidentData,
         type: "marker"
       };
 

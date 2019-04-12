@@ -1,12 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MapView from "./components/map/Map_old2";
-// import UberMap from "./components/map/Map_old";
-// import Contacts from "./components/contacts/Contacts";
-// import AddContact from "./components/contacts/AddContact";
-// import EditContact from "./components/contacts/EditContact";
-import Header from "./components/layout/Header";
-import About from "./components/pages/About";
 import NotFound from "./components/pages/NotFound";
 import Login from "./components/pages/Login";
 
@@ -21,8 +14,7 @@ import PublicIncident from "./components/pages/PublicIncident";
 // for CMS
 import Overview from "./components/pages/cms";
 import { PrivateRoute2 } from "./routes/PrivateRoute2";
-import EditContact from "./components/pages/cms/contacts/EditContact";
-import EditIncident from "./components/pages/cms/incidents/EditIncident";
+import RelevantAgency from "./components/pages/RelevantAgency";
 
 class App extends Component {
   render() {
@@ -35,11 +27,7 @@ class App extends Component {
                 <PrivateRoute path="/cms" component={Overview} />
                 <PrivateRoute2 path="/login" component={Login} />
                 <Route exact path="/" component={PublicIncident} />
-                <Route exact path="/map" component={MapView} />
-                <Route exact path="/logout" component={About} />
-                {/* <Route exact path="/contact/add" component={AddContact} />
-                <Route exact path="/contact/edit/:id" component={EditContact} />
-                <Route exact path="/about" component={About} /> */}
+                <Route path="/ra/:id" component={RelevantAgency} />
                 <Route component={NotFound} />
               </Switch>
             </div>

@@ -87,7 +87,7 @@ class ReactMap3 extends Component {
           // });
           popup2 = new mapboxgl.Popup({
             offset: 25
-          }).setText(marker.properties.location);
+          }).setText(marker.properties.address);
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)
