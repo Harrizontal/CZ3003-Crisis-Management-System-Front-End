@@ -26,8 +26,8 @@ class Login extends Component {
 
     if (this.state.username === "" && this.state.password === "") {
       isError = true;
-      errors["username"] = "Please valid enter username";
-      errors["password"] = "Please valid enter password";
+      errors["username"] = "Please enter valid username";
+      errors["password"] = "Please enter valid password";
       {
         console.log("Enter username and password");
       }
