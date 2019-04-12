@@ -9,6 +9,7 @@ import Header from "./components/layout/Header";
 import About from "./components/pages/About";
 import NotFound from "./components/pages/NotFound";
 import Login from "./components/pages/Login";
+import EnterMobileArea from "./components/pages/EnterMobileArea";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -40,6 +41,7 @@ class App extends Component {
                 {/* <Route exact path="/contact/add" component={AddContact} />
                 <Route exact path="/contact/edit/:id" component={EditContact} />
                 <Route exact path="/about" component={About} /> */}
+                <Route exact path="/entermobilearea" component={EnterMobileArea} />
                 <Route component={NotFound} />
               </Switch>
             </div>
