@@ -41,12 +41,6 @@ export function incident(state = initialState2, action) {
         incident: action.payload
       };
       return newState;
-    case incidentConstants.ADD_INCIDENT:
-      return {};
-    case incidentConstants.UPDATE_INCIDENT:
-      return {};
-    case incidentConstants.DELETE_INCIDENT:
-      return {};
     default:
       return state;
   }

@@ -34,4 +34,10 @@ export const getIncident = id => async dispatch => {
 };
 export const updateIncident = id => async dispatch => {};
 
-export const addIncident = incident => async dispatch => {};
+export const addIncident = incident => async dispatch => {
+  try {
+    const res = await incidentService.addIncident(incident);
+  } catch (error) {
+    console.log("IncidentActions:Getincident->" + error);
+  }
+};

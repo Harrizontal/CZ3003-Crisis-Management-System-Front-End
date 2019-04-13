@@ -5,7 +5,6 @@ import { incidentData } from "../components/map/map-style";
 export const incidentService = {
   getIncidents,
   getIncident,
-  deleteIncident,
   updateIncident,
   addIncident
 };
@@ -30,14 +29,18 @@ function getIncident(id) {
     });
 }
 
-function deleteIncident() {
-  return {};
-}
-
 function updateIncident() {
   return {};
 }
 
-function addIncident() {
-  return {};
+function addIncident(incident) {
+  return axios
+    .post(`https://jsonplaceholder.typicode.com/posts/`)
+    .then(res => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch(error => {
+      return undefined;
+    });
 }
