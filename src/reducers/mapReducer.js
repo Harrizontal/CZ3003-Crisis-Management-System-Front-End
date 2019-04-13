@@ -4,7 +4,8 @@ import {
   dengueData,
   dengueLayerPaint,
   weatherData,
-  weatherLayerPaint
+  weatherLayerPaint,
+  psiData
 } from "../components/map/map-style";
 
 import { fromJS } from "immutable";
@@ -33,10 +34,13 @@ export default function mapReducer(styleState = null, action) {
           paint = weatherLayerPaint;
           break;
         case "psi":
+          data = psiData;
+          paint = weatherLayerPaint;
           break;
         default:
       }
       styleState = [data, paint];
+      console.log(styleState);
       return styleState;
     }
 

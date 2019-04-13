@@ -16,11 +16,6 @@ export function setStyle(style) {
 
 export const changeOverview = event => async dispatch => {
   console.log("changeOverview @ mapActions");
-  // might need 3 dispatchs to weather,api , dengue
-  // dispatch({
-  //   type: "CHANGE_VIZ",
-  //   payload: event.target.value
-  // });
   let value = event.target.value;
   let res;
   try {
@@ -32,13 +27,12 @@ export const changeOverview = event => async dispatch => {
       case "weather":
         res = await infoService.getWeatherInfo();
         break;
-      // need format res here...
+      case "psi":
+        res = await infoService.getPSIInfo();
+        break;
       default:
         return null;
     }
-
-    console.log("res done");
-    console.log(res);
 
     // change map
     dispatch({
@@ -52,14 +46,3 @@ export const changeOverview = event => async dispatch => {
     console.log("GetMapData - " + error);
   }
 };
-
-// export function changeViz(event) {
-//   console.log("changeViz triggered");
-
-//   // fetch geojson api here, and its data
-
-//   return {
-//     type: "CHANGE_VIZ",
-//     payload: event.target.value
-//   };
-// }

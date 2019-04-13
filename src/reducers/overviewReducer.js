@@ -9,7 +9,8 @@ import {
   fillLayerFormat,
   weatherData,
   weatherData2,
-  weatherLayerPaint
+  weatherLayerPaint,
+  psiData
 } from "../components/map/map-style";
 
 const initialState = {
@@ -43,6 +44,9 @@ export function overviewReducer(state = initialState, action) {
           type = "marker";
           break;
         case "psi":
+          data = psiData;
+          fillLayerFormat.paint = weatherLayerPaint;
+          type = "psimarker";
           break;
         default:
       }

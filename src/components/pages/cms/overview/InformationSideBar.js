@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DengueCluster from "./DengueCluster";
 import Weather from "./Weather";
+import PSI from "./PSI";
 
 export default class InformationSideBar extends Component {
   _generateInfoComponent(title) {
@@ -10,7 +11,7 @@ export default class InformationSideBar extends Component {
       case "weather":
         return <Weather />;
       case "psi":
-        break;
+        return <PSI />;
       default:
         return <div>No information available</div>;
     }

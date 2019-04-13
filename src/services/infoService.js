@@ -2,7 +2,8 @@ import { json as requestJson } from "d3-request";
 import axios from "axios";
 export const infoService = {
   getDengueClusterMap,
-  getWeatherInfo
+  getWeatherInfo,
+  getPSIInfo
 };
 
 async function getDengueClusterMap() {
@@ -48,4 +49,4 @@ function getWeatherInfo() {
     });
 }
 
-async function getPSIMap() {}
+async function getPSIInfo() {}

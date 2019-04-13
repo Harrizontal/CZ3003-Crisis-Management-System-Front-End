@@ -13,6 +13,6 @@ export default combineReducers({
   incident: incidentReducer,
   overviewInformation: overviewReducer,
   //mapStyle: StylesheetReducer,
-  userInterface: UserIntReducer,
-  mapInformation: mapReducer
+  userInterface: UserIntReducer
+  // mapInformation: mapReducer
 });

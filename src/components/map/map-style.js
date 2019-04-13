@@ -5663,3 +5663,100 @@ export const incidentData = {
     }
   ]
 };
+
+export const psiData = {
+  type: "FeatureCollection", // standard
+  features: [// standard
+    {
+      // note that it is in an object form
+      type: "Feature", // standard
+      geometry: {// standard
+        type: "Point", // standard
+        coordinates: [103.7, 1.35735] // based on api. [lon,lat]. Note that is in an array
+      },
+      properties: { // standard. All this data is from api
+        o3_sub_index: "12", 
+        pm10_twenty_four_hourly: "12",
+        pm10_sub_index: "12",
+        co_sub_index: "12",
+        pm25_twenty_four_hourly: "",
+        so2_sub_index: "",
+        co_eight_hour_max: "",
+        no2_one_hour_max: "",
+        so2_twenty_four_hourly: "",
+        pm25_sub_index: "",
+        psi_twenty_four_hourly: "",
+        o3_eight_hour_max: ""
+      }
+    },
+    {
+      // note that it is in an object form
+      type: "Feature", // standard
+      geometry: {
+        // standard
+        type: "Point", // standard
+        coordinates: [103.94, 1.35735] // based on database. [lon,lat]. Note that is in an array
+      },
+      properties: {
+        o3_sub_index: "12",
+        pm10_twenty_four_hourly: "12",
+        pm10_sub_index: "12",
+        co_sub_index: "12",
+        pm25_twenty_four_hourly: "",
+        so2_sub_index: "",
+        co_eight_hour_max: "",
+        no2_one_hour_max: "",
+        so2_twenty_four_hourly: "",
+        pm25_sub_index: "",
+        psi_twenty_four_hourly: "",
+        o3_eight_hour_max: ""
+      }
+    },
+    {
+      // note that it is in an object form
+      type: "Feature", // standard
+      geometry: {
+        // standard
+        type: "Point", // standard
+        coordinates: [103.82, 1.35735] // based on database. [lon,lat]. Note that is in an array
+      },
+      properties: {
+        o3_sub_index: "12",
+        pm10_twenty_four_hourly: "12",
+        pm10_sub_index: "12",
+        co_sub_index: "12",
+        pm25_twenty_four_hourly: "",
+        so2_sub_index: "",
+        co_eight_hour_max: "",
+        no2_one_hour_max: "",
+        so2_twenty_four_hourly: "",
+        pm25_sub_index: "",
+        psi_twenty_four_hourly: "",
+        o3_eight_hour_max: ""
+      }
+    },
+    {
+      // note that it is in an object form
+      type: "Feature", // standard
+      geometry: {
+        // standard
+        type: "Point", // standard
+        coordinates: [103.82, 1.29587] // based on database. [lon,lat]. Note that is in an array
+      },
+      properties: {
+        o3_sub_index: "12",
+        pm10_twenty_four_hourly: "12",
+        pm10_sub_index: "12",
+        co_sub_index: "12",
+        pm25_twenty_four_hourly: "",
+        so2_sub_index: "",
+        co_eight_hour_max: "",
+        no2_one_hour_max: "",
+        so2_twenty_four_hourly: "",
+        pm25_sub_index: "",
+        psi_twenty_four_hourly: "",
+        o3_eight_hour_max: ""
+      }
+    }
+  ]
+};

@@ -3,11 +3,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Immutable from "immutable";
 
 import { clickMap, setStyle } from "../../actions/mapActions";
 import MAP_STYLE from "./map-style-basic-v8.json";
-import { defaultMapStyle } from "./map-style";
 
 const id = "data";
 
@@ -90,6 +88,28 @@ class ReactMap2 extends Component {
         });
         this.setState({ listOfMarkers: array });
         break;
+      case "psimarker":
+        var popup;
+        mapSource.features.forEach(function(marker) {
+          var el = document.createElement("div");
+          el.className = "marker";
+          el.style.backgroundImage =
+            "url(http://openweathermap.org/img/w/02n.png";
+          el.style.width = "50px";
+          el.style.height = "50px";
+
+          el.addEventListener("click", function() {
+            window.alert(marker.properties["o3_sub_index"]);
+          });
+
+          popup = new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+
+          array.push(popup);
+        });
+        this.setState({ listOfMarkers: array });
+        break;
     }
   };
 
@@ -132,6 +152,7 @@ class ReactMap2 extends Component {
       });
     }
 
+    console.log(mapSource);
     if (after) {
       this._generateSourceAndLayer(map, id, mapSource, mapLayer);
       this._generateMarkers(map, type, mapSource);
