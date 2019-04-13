@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { white } from "material-ui/styles/colors";
 
 const style = {
   ui: {
@@ -28,6 +29,7 @@ class CreateIncidentButton extends Component {
       <div id="ui" style={style.ui}>
         <div>
           <button
+            className="createIncBTN"
             type="button"
             style={style.button}
             onClick={this._directToCreateIncident.bind(this)}

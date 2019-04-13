@@ -554,3 +554,18 @@ input[type="number"]::-webkit-outer-spin-button {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.createIncBTN{
+  border-radius: 25px;
+  color: white;
+  background-color: black;
+
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.createIncBTN:hover{
+  color: white;
+  background-color: #c51ea1;
+}
