@@ -1,9 +1,7 @@
 export const userService = {
   login,
   logout,
-  register,
-  getUser,
-  subscribe
+  getUser
 };
 
 function login(username, password) {
@@ -50,15 +48,7 @@ function logout() {
   localStorage.removeItem("user");
 }
 
-function register() {
-  return null;
-}
-
 function getUser() {
-  return null;
-}
-
-function subscribe() {
   return null;
 }
 

@@ -30,8 +30,7 @@ class App extends Component {
                 <PrivateRoute2 path="/login" component={Login} />
                 <Route exact path="/" component={PublicIncident} />
                 <Route path="/ra/:id" component={RelevantAgency} />
-                <Route exact path="/entermobilepostal" component={EnterMobilePostal}
-                />
+                <Route exact path="/subscribe" component={EnterMobilePostal} />
                 <Route component={NotFound} />
               </Switch>
             </div>
