@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Immutable from "immutable";
 
 import { getIncidents } from "../../actions/incidentActions";
 
@@ -14,7 +13,8 @@ const id = "data";
 
 class ReactMap3 extends Component {
   state = {
-    listOfMarkers: []
+    listOfMarkers: [],
+    seconds: 0
   };
   _generateSourceAndLayer = (map, id, mapSource, mapLayer) => {
     if (map.getSource(id)) {
@@ -100,8 +100,19 @@ class ReactMap3 extends Component {
     }
   };
 
+  tick() {
+    this.setState(prevState => ({
+      seconds: prevState.seconds + 1
+    }));
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   componentDidMount() {
-    this.props.getIncidents(); // retrieve incident details
+    // retrieve incident details
+    this.interval = setInterval(() => this.props.getIncidents(), 5000);
 
     const { token, longitude, latitude, zoom, minZoom, styleID } = this.props;
     const mapConfig = {

@@ -92,9 +92,7 @@ class ReactMap2 extends Component {
         var popup;
         mapSource.features.forEach(function(marker) {
           var el = document.createElement("div");
-          el.className = "marker";
-          el.style.backgroundImage =
-            "url(http://openweathermap.org/img/w/02n.png";
+          el.className = "psi-marker";
           el.style.width = "50px";
           el.style.height = "50px";
 
