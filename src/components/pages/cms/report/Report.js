@@ -2,57 +2,107 @@
 import Popup from "reactjs-popup";
 import React, { Component } from "react";
 import facebook from "../../../../resources/facebook.svg";
-import bfacebook from "../../../../resources/bfacebook.svg";
 import twitter from "../../../../resources/twitter.svg";
-import btwitter from "../../../../resources/btwitter.svg";
 import all from "../../../../resources/all.svg";
-import ball from "../../../../resources/bALL.svg";
 
 
 class Report extends Component {
+  state ={
+    text: "",
+    selectedoption: "Facebook",
+    errror : {},
+  };
   handleChange(change) {
     var input = change.target.value;
     var charnum = input.length;
 
     document.getElementById("remaining").innerHTML =
-      280 - charnum + " remaining characters";
+      (280 - charnum + " remaining characters");
+
+  }
+  checkFields = () => {
+    const {
+      error,
+      text
+    } = this.state;
+
+
+    var empty = require("is-empty");
+  if(text === "")
+  {
+    error["empty"] = "Please type something.";
+  }
+  if (empty(error)) {
+    return true;
+  } else {
+    this.setState({ error: error });
+    return false;
+  }
+}
+  onSubmit = e => {
+    e.preventDefault();
+    const {
+      text,
+      selectedoption,
+      error
+    } = this.state;
+
+    this.setState({
+      text: "",
+      selectedoption: "",
+      errror : {}
+    });
+
+    window.confirm("Posted!");
+
+    this.props.history.push("/");
   }
 
   render() {
+    const {text, selectedoption, error} = this.state
     return (
       <div className="formcontainer2">
-<div
-        style={{ display: "flex", height: "200px", flexDirection: "column", }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", }} >
         <div style={{ flexGrow: "4" }}>
-          <div style={{ margin: "1%", height: "98%", width: "98%",}}>
-            <textarea
+        <div style={{display:"flex", flexDirection:"row", alignItems: "baseline"}}>
+          <div className="card-header"><span className="firstwordsel">post</span> to</div> 
+          <div className="socialmedia"> : <label>{selectedoption}</label></div>
+        </div>
+
+          <div>
+            <textarea className="reportText"
               maxLength="280"
-              style={{
-                height: "100%",
-                width: "100%",
-                padding: "0",
-                fontFamily: "rubik, san-serif"
-              }}
+              // style={{
+              //   height: "100%",
+              //   width: "100%",
+              //   padding: "15",
+              //   fontFamily: "rubik, san-serif"      
+              // }}
               onChange={this.handleChange.bind(this)}
               placeholder="Enter details here."
-              // onKeyUp="handleChange(this)"
-              id="ahh1"
+              // id="ahh1"
             />
+              {/* {error["empty"] && (
+                  <div className="invalid-feedback">
+                    {error["empty"]}
+                  </div>
+                )} */}
           </div>
         </div>
+
         <div style={{ flexGrow: "1", padding: "2%" }}>
           <span
             id="remaining"
             style={{
-              color: "red",
+              color: "grey",
               float: "right",
               fontFamily: "rubik, san-serif"
             }}
-          >
-            280 remaining characters
+            >
+            280 remaining characters.
           </span>
         </div>
+
         <div
           style={{
             flexGrow: "1",
@@ -63,15 +113,15 @@ class Report extends Component {
           }}
         >
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
-            <input type="radio" name="media" value="1" checked="checked" />{" "}
+            <input className= "radioInput" type="radio" name="media" value="1" checked="checked" />{" "}
             <img src={all} style={{ height: "50px", width: "50px" }} />
           </div>
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
-            <input type="radio" name="media" value="2" />{" "}
+            <input className= "radioInput" type="radio" name="media" value="2" />{" "}
             <img src={facebook} style={{ height: "50px", width: "50px" }} />
           </div>
           <div style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}>
-            <input type="radio" name="media" value="3" />{" "}
+            <input className= "radioInput" type="radio" name="media" value="3" />{" "}
             <img src={twitter} style={{ height: "50px", width: "50px" }} />
           </div>
         </div>
@@ -81,27 +131,16 @@ class Report extends Component {
             display: "flex"
           }}
         >
-          <button
+          <button className="btnSubmit"
             type="submit"
-            style={{
-              flexGrow: "1",
-              fontFamily: "rubik, sans-serif",
-              fontWeight: "500",
-              fontSize: "1em"
-            }}
+            // style={{
+            //   flexGrow: "1",
+            //   fontFamily: "rubik, sans-serif",
+            //   fontWeight: "500",
+            //   fontSize: "1em"
+            // }}
           >
             Submit
-          </button>
-          <button
-            type="button"
-            style={{
-              flexGrow: "1",
-              fontFamily: "rubik, san-serif",
-              fontWeight: "500",
-              fontSize: "1em"
-            }}
-          >
-            Cancel
           </button>
         </div>
       </div>  

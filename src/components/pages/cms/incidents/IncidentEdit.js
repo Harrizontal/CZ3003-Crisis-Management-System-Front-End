@@ -9,8 +9,8 @@ import { getIncident } from "../../../../actions/incidentActions";
 class IncidentEdit extends Component {
   state = {
     show: false,
-    incidentid: "I0232145",
-    status: "Pending",
+    incidentid: "",
+    status: "",
     name: "",
     contact: "",
     nric: "",
