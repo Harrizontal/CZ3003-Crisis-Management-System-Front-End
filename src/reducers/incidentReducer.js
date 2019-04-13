@@ -20,21 +20,27 @@ const initialState2 = {
 };
 
 export function incident(state = initialState2, action) {
+  let newState;
   switch (action.type) {
     case incidentConstants.GET_INCIDENTS:
       console.log("incidentConstants.GET_INCIDENTS @ incidentReducer");
 
-      const test = {
+      newState = {
         ...state,
         incidents: action.payload["features"],
         mapSourceData: incidentData,
         type: "marker"
       };
 
-      console.log(state);
-      return test;
+      console.log(newState);
+      return newState;
     case incidentConstants.GET_INCIDENT:
-      return {};
+      console.log("asdasdasdas");
+      newState = {
+        ...state,
+        incident: action.payload
+      };
+      return newState;
     case incidentConstants.ADD_INCIDENT:
       return {};
     case incidentConstants.UPDATE_INCIDENT:
