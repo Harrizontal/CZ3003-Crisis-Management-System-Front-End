@@ -23,7 +23,6 @@ const routes = [
   },
   {
     path: "/cms/incidentcreate",
-    sidebar: "Create Incident",
     main: IncidentCreate
   },
 

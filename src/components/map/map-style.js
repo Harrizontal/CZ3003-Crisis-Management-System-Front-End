@@ -5666,16 +5666,19 @@ export const incidentData = {
 
 export const psiData = {
   type: "FeatureCollection", // standard
-  features: [// standard
+  features: [
+    // standard
     {
       // note that it is in an object form
       type: "Feature", // standard
-      geometry: {// standard
+      geometry: {
+        // standard
         type: "Point", // standard
         coordinates: [103.7, 1.35735] // based on api. [lon,lat]. Note that is in an array
       },
-      properties: { // standard. All this data is from api
-        o3_sub_index: "12", 
+      properties: {
+        // standard. All this data is from api
+        o3_sub_index: "12",
         pm10_twenty_four_hourly: "12",
         pm10_sub_index: "12",
         co_sub_index: "12",

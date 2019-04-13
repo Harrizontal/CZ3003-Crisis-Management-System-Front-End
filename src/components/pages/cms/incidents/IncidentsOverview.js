@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import IncidentsSideBar from "./IncidentsSideBar";
 import ReactMap3 from "../../../map/ReactMap3";
+import CreateIncidentButton from "../../../map/CreateIncidentButton";
 
 const TOKEN =
   "pk.eyJ1IjoiaGFycml6b250YWwiLCJhIjoiY2l6YWw3YW90MDQ1NzJ3cDl5bXd4M2Y4aSJ9.CnTz5K2ShZcuLiG0xYLBKw";
@@ -23,6 +24,7 @@ export class IncidentsOverview extends Component {
         }}
       >
         <div style={{ width: "75%", height: "100%", position: "relative" }}>
+          <CreateIncidentButton history={this.props.history} />
           <ReactMap3
             token={TOKEN}
             longitude={LONG}

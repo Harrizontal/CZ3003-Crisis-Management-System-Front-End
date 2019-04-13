@@ -71,7 +71,7 @@ export default connect(
 
 const style = {
   ui: {
-    zIndex: 4,
+    zIndex: 2,
     position: "absolute",
     right: "10px",
     top: "10px"
