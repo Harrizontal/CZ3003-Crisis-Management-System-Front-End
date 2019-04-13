@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getIncidents } from "../../../../actions/incidentActions";
-import { getContacts } from "../../../../actions/contactActions";
 import Incident from "./Incident";
 
 class IncidentsSideBar extends Component {

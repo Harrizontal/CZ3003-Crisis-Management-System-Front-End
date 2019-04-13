@@ -8,27 +8,21 @@ export const login = (username, password) => dispatch => {
   console.log("Loading - execute login at userActions");
   dispatch(request({ username }));
   return userService.login(username, password).then(
-    user => {
-      console.log("Login successful");
-      console.log(user);
-      dispatch(success(user));
-      return user;
+    data => {
+      console.log(data["msg"]);
+      if (!data["msg"]) {
+        dispatch(success(data));
+        localStorage.setItem("token", JSON.stringify(data["token"]));
+        return true;
+      } else {
+        return Promise.reject(false);
+      }
     },
     error => {
-      console.log("Login failed: error:");
-      console.log(error);
       dispatch(failure(error));
-      return error;
+      return Promise.reject(error);
     }
   );
-  // });
-
-  // dispatch({
-  //   type: LOGIN,
-  //   payload: "test1"
-  // });
-
-  // for loading bar
   function request(user) {
     console.log("execute request at login");
     return { type: userConstants.LOGIN_REQUEST, user };

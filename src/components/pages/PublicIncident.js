@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import TextInputGroup from "../layout/TextInputGroup";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addContact } from "../../actions/contactActions";
 import Select from "react-select";
 import { transparent } from "material-ui/styles/colors";
-
 import { createIncident } from "../../actions/publicActions";
 
 class PublicIncident extends Component {
@@ -26,25 +23,64 @@ class PublicIncident extends Component {
       { value: "6", label: "Terroist" },
       { value: "7", label: "Others" }
     ],
-    selectedOption: null
+    selectedOption: null,
+    selectedOptionId: null,
+    assType: [
+      { value: "1", label: "Emergency Ambulance" },
+      { value: "2", label: "Rescue and Evacuation" },
+      { value: "3", label: "Fire Fighting" },
+      { value: "4", label: "Gas Leak Control" }
+    ],
+    selectedAssType: null,
+    selectedAssTypeId: null
   };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   handleChange = selectedOption => {
     this.setState({ selectedOption });
+    let arrayValue = [];
+    this.setState({ selectedOption });
+
+    // get all selected option's id
+    selectedOption.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedOptionId: arrayValue });
+
     var errors = {};
     var empty = require("is-empty");
     for (var i = 0; i < selectedOption.length; i++) {
-      console.log(selectedOption[i]["value"]);
+      // if is others
       if (selectedOption[i]["value"] == 7) {
         errors["selectedoption"] = "Please describe in Description Field";
         this.setState({ errors: errors });
         break;
-      } else this.setState({ errors: {} });
+      } else {
+        this.setState({ errors: {} });
+      }
     }
     if (empty(selectedOption)) {
       this.setState({ errors: {} });
     }
   };
+
+  handleChangeAss = selectedAssType => {
+    let arrayValue = [];
+    this.setState({ selectedAssType });
+
+    selectedAssType.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedAssTypeId: arrayValue });
+
+    var errors = {};
+    var empty = require("is-empty");
+    if (empty(selectedAssType)) {
+      this.setState({ errors: errors });
+    }
+  };
+
   checkFields = () => {
     const {
       name,
@@ -57,7 +93,6 @@ class PublicIncident extends Component {
     } = this.state;
     var errors = {};
     var empty = require("is-empty");
-    console.log(selectedOption);
 
     // Check For Errors
     const validName = name.match(new RegExp("^[a-zA-Z\\s]*$"));
@@ -110,46 +145,53 @@ class PublicIncident extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    const { dispatch } = this.props;
     const canSubmit = this.checkFields();
-    console.log(canSubmit);
 
     if (canSubmit === true) {
       const {
         name,
         contact,
         nric,
-        selectedOption,
+        selectedOptionId,
         locaddress,
-        postalcode,
-        description
+        description,
+        selectedAssTypeId
       } = this.state;
 
       // follow API parameters
       let incident = {
+        address: locaddress,
+        userIC: nric,
         name: name,
-        phoneNo: contact,
-        nric: nric,
-        selectedOption: selectedOption,
-        locaddress: locaddress,
-        postalcode: postalcode,
-        description: description
+        mobilePhone: contact,
+        description: description,
+        emergency_type: selectedOptionId,
+        assistance_type: selectedAssTypeId
       };
-      this.props.createIncident(incident);
+
+      dispatch(createIncident(incident)).then(
+        response => {
+          this.setState({
+            name: "",
+            contact: "",
+            nric: "",
+            selectedOption: null,
+            locaddress: "",
+            postalcode: "",
+            description: "",
+            errors: {},
+            note: {}
+          });
+
+          console.log("Incident submitted successfully");
+        },
+        error => {
+          console.log("Error!");
+        }
+      );
 
       // Clear State
-      this.setState({
-        name: "",
-        contact: "",
-        nric: "",
-        selectedOption: null,
-        locaddress: "",
-        postalcode: "",
-        description: "",
-        errors: {},
-        note: {}
-      });
-
       console.log("incident submitted");
 
       this.props.history.push("/");
@@ -185,7 +227,9 @@ class PublicIncident extends Component {
       description,
       errors,
       options,
-      selectedOption
+      selectedOption,
+      assType,
+      selectedAssType
     } = this.state;
 
     return (
@@ -235,6 +279,17 @@ class PublicIncident extends Component {
                 </div>
               )}
 
+              <div className="formlabel2">Assistance Required: </div>
+              <Select
+                isMulti
+                value={selectedAssType}
+                onChange={this.handleChangeAss}
+                options={assType}
+                className="basic-multi-select"
+                styles={customStyles}
+                error={errors.selectedAssType}
+              />
+
               <TextInputGroup
                 label="Address: "
                 name="locaddress"
@@ -271,7 +326,4 @@ class PublicIncident extends Component {
   }
 }
 
-export default connect(
-  null,
-  { createIncident }
-)(PublicIncident);
+export default connect(null)(PublicIncident);

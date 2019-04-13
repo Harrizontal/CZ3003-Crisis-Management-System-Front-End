@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import IncidentsSideBar from "./IncidentsSideBar";
 import ReactMap3 from "../../../map/ReactMap3";
 import CreateIncidentButton from "../../../map/CreateIncidentButton";
+import { Config } from "../../../../Config";
 
-const TOKEN =
-  "pk.eyJ1IjoiaGFycml6b250YWwiLCJhIjoiY2l6YWw3YW90MDQ1NzJ3cDl5bXd4M2Y4aSJ9.CnTz5K2ShZcuLiG0xYLBKw";
+const TOKEN = Config.MAPBOX_API;
 const LONG = 103.842275;
 const LAT = 1.275635;
 const ZOOM = 10;

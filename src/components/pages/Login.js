@@ -81,23 +81,16 @@ class Login extends Component {
         this.state.role = "gp";
         this.setState(role);
       }
-      {
-        console.log(role);
-      }
 
       dispatch(login(this.state.username, this.state.password)).then(
-        user => {
-          console.log("accessing to next web page");
-          console.log(user);
+        response => {
           this.props.history.push("/cms");
         },
         error => {
-          console.log("wrong");
+          console.log("Error!");
         }
       );
     }
-
-    console.log(this.state);
   };
 
   render() {

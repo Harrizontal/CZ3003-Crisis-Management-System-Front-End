@@ -1,20 +1,18 @@
+import { Config } from "../Config";
 import axios from "axios";
+const url = Config.SERVER_URL;
+
 export const publicService = {
   createIncident,
   subscribe
 };
 
 function createIncident(incident) {
-  console.log("createIncident");
+  console.log(incident);
   return axios
-    .post(`https://jsonplaceholder.typicode.com/posts/`)
-    .then(res => {
-      console.log(res.data);
-      return res.data;
-    })
-    .catch(error => {
-      return undefined;
-    });
+    .post(url + "/gpincident", incident)
+    .then(response => response.data)
+    .catch(error => Promise.reject(error));
 }
 
 function subscribe(phoneNoPostalCode) {
