@@ -25,6 +25,7 @@ class IncidentCreate extends Component {
       { value: "7", label: "Others" }
     ],
     selectedOption: null,
+    selectedOptionId: null,
     assType: [
       { value: "1", label: "Emergency Ambulance" },
       { value: "2", label: "Rescue and Evacuation" },
@@ -32,16 +33,29 @@ class IncidentCreate extends Component {
       { value: "4", label: "Gas Leak Control" }
     ],
     selectedAssType: null,
+    selectedAssTypeId: null,
     agencyType: [
       { value: "1", label: "SCDF" },
       { value: "2", label: "SPF" },
       { value: "3", label: "Singapore Power" }
     ],
-    selectedAgencyType: null
+    selectedAgencyType: null,
+    selectedAgencyTypeId: null
   };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
+
   handleChange = selectedOption => {
     this.setState({ selectedOption });
+
+    let arrayValue = [];
+
+    // get all selected option's id
+    selectedOption.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedOptionId: arrayValue });
+
     var errors = {};
     var empty = require("is-empty");
     for (var i = 0; i < selectedOption.length; i++) {
@@ -58,6 +72,16 @@ class IncidentCreate extends Component {
   };
   handleChangeAss = selectedAssType => {
     this.setState({ selectedAssType });
+
+    let arrayValue = [];
+
+    // get all selected option's id
+    selectedAssType.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedAssTypeId: arrayValue });
+
     var errors = {};
     var empty = require("is-empty");
     if (empty(selectedAssType)) {
@@ -66,6 +90,16 @@ class IncidentCreate extends Component {
   };
   handleChangeAgency = selectedAgencyType => {
     this.setState({ selectedAgencyType });
+
+    let arrayValue = [];
+
+    // get all selected option's id
+    selectedAgencyType.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedAgencyTypeId: arrayValue });
+
     var errors = {};
     var empty = require("is-empty");
     if (empty(selectedAgencyType)) {
@@ -147,7 +181,7 @@ class IncidentCreate extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    const { dispatch } = this.props;
     const canSubmit = this.checkFields();
     console.log(canSubmit);
 
@@ -156,44 +190,63 @@ class IncidentCreate extends Component {
         name,
         contact,
         nric,
-        selectedOption,
         locaddress,
-        postalcode,
         description,
-        selectedAssType,
-        selectedAgencyType
+        selectedOptionId,
+        selectedAssTypeId,
+        selectedAgencyTypeId
       } = this.state;
 
       // incident object must match the params in the API
       let incident = {
         name: name,
-        phone_no: contact,
-        nric: nric,
-        selectedOption: selectedOption,
-        address: locaddress,
-        postalcode: postalcode,
+        userIC: nric,
+        mobilePhone: contact,
         description: description,
-        selectedAssType: selectedAssType,
-        selectedAgencyType: selectedAgencyType
+        address: locaddress,
+        assistance_type: selectedAssTypeId,
+        emergency_type: selectedOptionId,
+        relevant_agencies: selectedAgencyTypeId
       };
+      dispatch(addIncident(incident)).then(
+        response => {
+          this.setState({
+            name: "",
+            contact: "",
+            nric: "",
+            selectedOption: null,
+            selectedOptionId: null,
+            selectedAssType: null,
+            selectedAssTypeId: null,
+            selectedAgencyType: null,
+            selectedAgencyTypeId: null,
+            locaddress: "",
+            postalcode: "",
+            description: "",
+            errors: {},
+            note: {}
+          });
 
-      this.props.addIncident(incident);
-
+          console.log("Incident submitted successfully");
+          alert("Incident submitted successfully");
+        },
+        error => {
+          alert("Error. Note that address must be valid to process");
+        }
+      );
       // Clear State
-      this.setState({
-        name: "",
-        contact: "",
-        nric: "",
-        selectedOption: {},
-        locaddress: "",
-        postalcode: "",
-        description: "",
-        errors: {},
-        selectedAssType: "",
-        selectedAgencyType: ""
-      });
-
-      this.props.history.push("/cms/incidents");
+      // this.setState({
+      //   name: "",
+      //   contact: "",
+      //   nric: "",
+      //   selectedOption: {},
+      //   locaddress: "",
+      //   postalcode: "",
+      //   description: "",
+      //   errors: {},
+      //   selectedAssType: "",
+      //   selectedAgencyType: ""
+      // });
     }
   };
 
@@ -232,13 +285,12 @@ class IncidentCreate extends Component {
       agencyType,
       selectedAgencyType
     } = this.state;
-    console.log(this.state);
 
     return (
       <body className="backgroundNoLogo">
-        <div class="bodybg" className="formcontainer">
+        <div className="bodybg formcontainer">
           <div className="card-header">
-            <span class="firstwordsel">create</span> incident report
+            <span className="firstwordsel">create</span> incident report
           </div>
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
@@ -353,7 +405,4 @@ class IncidentCreate extends Component {
   }
 }
 
-export default connect(
-  null,
-  { addIncident }
-)(IncidentCreate);
+export default connect(null)(IncidentCreate);

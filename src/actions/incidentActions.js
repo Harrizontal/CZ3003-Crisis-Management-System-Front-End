@@ -34,10 +34,18 @@ export const getIncident = id => async dispatch => {
 };
 export const updateIncident = id => async dispatch => {};
 
-export const addIncident = incident => async dispatch => {
-  try {
-    const res = await incidentService.addIncident(incident);
-  } catch (error) {
-    console.log("IncidentActions:Getincident->" + error);
-  }
+export const addIncident = incident => dispatch => {
+  return incidentService.addIncident(incident).then(
+    data => {
+      if (data["msg"]) {
+        return true;
+      } else {
+        // got error
+        return Promise.reject(false);
+      }
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
 };

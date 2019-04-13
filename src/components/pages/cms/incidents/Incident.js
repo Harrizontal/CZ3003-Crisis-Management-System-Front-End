@@ -19,15 +19,9 @@ class Incident extends Component {
     const {
       id,
       address,
-      postal_code,
-      description,
       emergency_type,
-      assistance_type,
-      relevant_agency,
       time_stamp,
-      status,
-      reported_user,
-      phone_no
+      status
     } = this.props.incident;
 
     // const test = this.props.incident;

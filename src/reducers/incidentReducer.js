@@ -1,13 +1,5 @@
 import { incidentConstants } from "../constants";
-import {
-  dengueData,
-  dengueLayerPaint,
-  fillLayerFormat,
-  weatherData,
-  weatherData2,
-  weatherLayerPaint,
-  incidentData
-} from "../components/map/map-style";
+import { incidentData } from "../components/map/map-style";
 //let user = JSON.parse(localStorage.getItem("user"));
 // const initialState = user ? { loggedIn: true, user } : {};
 

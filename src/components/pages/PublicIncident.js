@@ -38,7 +38,6 @@ class PublicIncident extends Component {
   handleChange = selectedOption => {
     this.setState({ selectedOption });
     let arrayValue = [];
-    this.setState({ selectedOption });
 
     // get all selected option's id
     selectedOption.map(function(option) {
@@ -177,6 +176,9 @@ class PublicIncident extends Component {
             contact: "",
             nric: "",
             selectedOption: null,
+            selectedOptionId: null,
+            selectedAssType: null,
+            selectedAssTypeId: null,
             locaddress: "",
             postalcode: "",
             description: "",
@@ -185,16 +187,12 @@ class PublicIncident extends Component {
           });
 
           console.log("Incident submitted successfully");
+          this.props.history.push("/");
         },
         error => {
           console.log("Error!");
         }
       );
-
-      // Clear State
-      console.log("incident submitted");
-
-      this.props.history.push("/");
     }
   };
 
