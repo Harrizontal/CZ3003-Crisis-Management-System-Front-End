@@ -6,9 +6,8 @@ import { incidentData } from "../components/map/map-style";
 const initialState2 = {
   incidents: [],
   incident: {},
-  data: "",
-  paint: ""
-  // inc: {} // for edit page
+  mapSourceData: null,
+  type: null
 };
 
 export function incident(state = initialState2, action) {
@@ -17,17 +16,21 @@ export function incident(state = initialState2, action) {
     case incidentConstants.GET_INCIDENTS:
       console.log("incidentConstants.GET_INCIDENTS @ incidentReducer");
 
+      var sourceData = {
+        type: "FeatureCollection",
+        features: action.payload["data"]
+      };
+      console.log(action.payload);
       newState = {
         ...state,
-        incidents: action.payload["features"],
-        mapSourceData: incidentData,
+        incidents: action.payload["data"],
+        mapSourceData: sourceData,
         type: "marker"
       };
 
       console.log(newState);
       return newState;
     case incidentConstants.GET_INCIDENT:
-      console.log("asdasdasdas");
       newState = {
         ...state,
         incident: action.payload

@@ -3,14 +3,9 @@ import { incidentService } from "../services";
 
 export const getIncidents = () => async dispatch => {
   try {
-    //const res = await incidentService.getIncidents();
     console.log("dispatch @ getIncidents");
     const res = await incidentService.getIncidents();
 
-    // dispatch({
-    //   type: incidentConstants.GET_INCIDENTS,
-    //   payload: res.data.data
-    // });
     dispatch({
       type: incidentConstants.GET_INCIDENTS,
       payload: res

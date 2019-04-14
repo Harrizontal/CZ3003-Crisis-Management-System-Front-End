@@ -12,10 +12,14 @@ import { defaultMapStyle } from "./map-style";
 const id = "data";
 
 class ReactMap3 extends Component {
-  state = {
-    listOfMarkers: [],
-    seconds: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      listOfMarkers: [],
+      seconds: 0
+    };
+  }
+
   _generateSourceAndLayer = (map, id, mapSource, mapLayer) => {
     if (map.getSource(id)) {
       console.log("There is source available, just update it");
@@ -73,20 +77,25 @@ class ReactMap3 extends Component {
 
         mapSource.features.forEach(function(marker) {
           var el = document.createElement("div");
-          el.className = "marker";
-          el.style.backgroundImage =
-            "url(http://openweathermap.org/img/w/02n.png";
-          el.style.width = "50px";
-          el.style.height = "50px";
+          el.style.width = "30px";
+          el.style.height = "30px";
 
-          // el.addEventListener("click", function() {
-          //   window.alert(
-          //     marker.properties.location + "" + marker.properties.status
-          //   );
-          // });
+          // should convert to functgion
+          switch (marker.properties.statuses[0].statusName) {
+            case "Pending":
+              el.className = "pending-marker";
+              break;
+            case "Ongoing":
+              el.className = "ongoing-marker";
+              break;
+            default:
+              el.className = "psi-marker";
+              break;
+          }
+
           popup2 = new mapboxgl.Popup({
             offset: 25
-          }).setText(marker.properties.address);
+          }).setText(marker.properties.statuses[0].statusName);
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)
@@ -99,12 +108,6 @@ class ReactMap3 extends Component {
         break;
     }
   };
-
-  tick() {
-    this.setState(prevState => ({
-      seconds: prevState.seconds + 1
-    }));
-  }
 
   componentWillUnmount() {
     clearInterval(this.interval);

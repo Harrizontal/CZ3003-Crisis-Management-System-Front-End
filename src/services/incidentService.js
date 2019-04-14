@@ -11,16 +11,20 @@ export const incidentService = {
 };
 
 function getIncidents() {
-  return fetch(`https://jsonplaceholder.typicode.com/posts`)
-    .then(console.log("asd"))
-    .then(user => {
-      return incidentData;
+  return axios
+    .get(url + "/allIncidents?status=All&order=desc")
+    .then(res => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch(error => {
+      return undefined;
     });
 }
 
 function getIncident(id) {
   return axios
-    .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .get(url + "/incident/" + id)
     .then(res => {
       console.log(res.data);
       return res.data;

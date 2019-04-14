@@ -5567,8 +5567,8 @@ export const incidentData = {
         emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
         assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
         relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
-        time_stamp: "2018-12-12",
-        status: "Pending", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
+        time_stamp: "XXXXXXXXXX:XXXXX:XXXX:XXX:XXX", // just give me based on db
+        status: "Pending", // Pending|Ongoing|Resolved|Deleted???|Rejected
         reported_user: "John Cena", // based on user db
         phone_no: "81234766" // based on user db
       }

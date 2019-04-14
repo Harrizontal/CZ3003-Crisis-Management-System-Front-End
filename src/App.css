@@ -429,9 +429,10 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
-.incident-card .first-section div {
+.incident-card .first-section .address {
+  width: 60%;
 }
 
 .incident-card .second-section div {
@@ -555,7 +556,23 @@ input[type="number"]::-webkit-outer-spin-button {
   background-size: cover;
 }
 
-.createIncBTN{
+.ongoing-marker {
+  background-image: url("resources/ongoing.png");
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pending-marker {
+  background-image: url("resources/pending.png");
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.createIncBTN {
   border-radius: 25px;
   color: white;
   background-color: black;
@@ -565,7 +582,7 @@ input[type="number"]::-webkit-outer-spin-button {
   letter-spacing: 0.1em;
 }
 
-.createIncBTN:hover{
+.createIncBTN:hover {
   color: white;
   background-color: #c51ea1;
 }
@@ -581,7 +598,7 @@ input[type="number"]::-webkit-outer-spin-button {
   transform: translateX(-50%) translateY(-50%);
   width: 80%;
 }
-.reportText{
+.reportText {
   font-family: "Rubik", sans-serif;
   background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.8);
@@ -591,7 +608,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 10px;
 }
 
-.socialmedia{
+.socialmedia {
   font-family: "Rubik", sans-serif;
   letter-spacing: 0.1em;
   font-size: 1.1em;

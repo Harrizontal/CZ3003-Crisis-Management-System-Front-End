@@ -15,32 +15,55 @@ class Incident extends Component {
       return <span>Request for approval</span>;
     }
   }
+
+  displayTime(date) {
+    var date = date.slice(0, -5) + "08:00";
+    var today = new Date();
+    var incidentDate = new Date(date);
+    var diffMs = today - incidentDate;
+    var diffDays = Math.floor(diffMs / 86400000); // days
+    var diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+    if (diffDays == 0) {
+      if (diffHrs == 0) {
+        if (diffMins == 0) {
+          return "created a few seconds ago";
+        }
+        return "created " + diffMins + " mins ago";
+      }
+      return "created " + diffHrs + " hours ago";
+    }
+    return "created " + diffDays + " days ago";
+  }
+
   render() {
     const {
-      id,
+      incidentID,
       address,
-      emergency_type,
-      time_stamp,
-      status
+      emergencyType,
+      timeStamp,
+      statuses
     } = this.props.incident;
 
+    let status = statuses[0]["statusName"];
     // const test = this.props.incident;
     console.log(this.props.incident);
 
-    let statusClassName = status + "Circle";
     return (
-      <Link style={{ textDecoration: "none" }} to={`/cms/incident/${id}`}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={`/cms/incident/${incidentID}`}
+      >
         <div className="incident-card">
           <div className="first-section">
-            <div>{address}</div>
+            <div className="address">{address}</div>
             <div className="pendingCircle">{status}</div>
           </div>
           <div className="second-section">
-            <div>{emergency_type}</div>
+            <div>{this.displayMessage(status)}</div>
           </div>
           <div className="third-section">
-            <div>{this.displayMessage(status)}</div>
-            <div>{time_stamp}</div>
+            <div>{this.displayTime(timeStamp)}</div>
           </div>
         </div>
       </Link>

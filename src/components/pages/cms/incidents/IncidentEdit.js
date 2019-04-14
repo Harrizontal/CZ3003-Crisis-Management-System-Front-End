@@ -48,6 +48,79 @@ class IncidentEdit extends Component {
     this.props.getIncident(id);
   }
 
+  formatState(incident) {
+    var fieldsOption = this.state.options;
+    var fieldsAssTypeOption = this.state.assType;
+    var fieldsAgencyTypeOption = this.state.agencyType;
+
+    var selectedOption = [];
+    incident.emergencyType.map(function(value) {
+      for (var i = 0; i < fieldsOption.length; i++) {
+        if (fieldsOption[i].label == value.emergencyName) {
+          selectedOption.push(fieldsOption[i]);
+          break;
+        }
+      }
+    });
+
+    var selectedAssType = [];
+    incident.assistanceType.map(function(value) {
+      for (var i = 0; i < fieldsAssTypeOption.length; i++) {
+        if (fieldsAssTypeOption[i].label == value.assistanceName) {
+          selectedAssType.push(fieldsAssTypeOption[i]);
+          break;
+        }
+      }
+    });
+
+    var selectedAgencyType = [];
+    incident.relevantAgencies.map(function(value) {
+      for (var i = 0; i < fieldsAgencyTypeOption.length; i++) {
+        if (fieldsAgencyTypeOption[i].label == value.agencyName) {
+          selectedAgencyType.push(fieldsAgencyTypeOption[i]);
+          break;
+        }
+      }
+    });
+
+    var state = {
+      show: true,
+      incidentid: incident.incidentID,
+      status: incident.status[0].statusname,
+      name: incident.reportedUser.name,
+      contact: incident.reportedUser.mobilePhone,
+      nric: incident.reportedUser.userIC,
+      locaddress: incident.address,
+      postalcode: incident.postalCode,
+      description: incident.description,
+      errors: {},
+      options: [
+        { value: "1", label: "Fire" },
+        { value: "2", label: "Flood" },
+        { value: "3", label: "Earthquake" },
+        { value: "4", label: "Gas Leak" },
+        { value: "5", label: "Drought" },
+        { value: "6", label: "Terroist" },
+        { value: "7", label: "Others" }
+      ],
+      selectedOption: selectedOption,
+      assType: [
+        { value: "1", label: "Emergency Ambulance" },
+        { value: "2", label: "Rescue and Evacuation" },
+        { value: "3", label: "Fire Fighting" },
+        { value: "4", label: "Gas Leak Control" }
+      ],
+      selectedAssType: selectedAssType,
+      agencyType: [
+        { value: "1", label: "SCDF" },
+        { value: "2", label: "SPF" },
+        { value: "3", label: "Singapore Power" }
+      ],
+      selectedAgencyType: selectedAgencyType
+    };
+
+    this.setState({ ...state });
+  }
   componentWillReceiveProps(nextProps, nextState) {
     console.log(nextProps.incident);
     if (nextProps.incident == undefined || nextProps.incident.length == 0) {
@@ -55,7 +128,7 @@ class IncidentEdit extends Component {
       this.setState({ show: false });
     } else {
       console.log("Got incident");
-      this.setState({ show: true });
+      this.formatState(nextProps.incident);
     }
   }
 
@@ -165,6 +238,23 @@ class IncidentEdit extends Component {
     }
   };
 
+  generateButtons = status => {
+    switch (status) {
+      case "Pending":
+        return (
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <input type="submit" value="Edit" className="btnSubmit" />
+            <input type="submit" value="Approve" className="btnSubmit" />
+            <input type="submit" value="Reject" className="btnSubmit" />
+          </div>
+        );
+      case "Ongoing":
+        return <input type="submit" value="Edit" className="btnSubmit" />;
+      default:
+        return null;
+    }
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -242,7 +332,7 @@ class IncidentEdit extends Component {
       status
     } = this.state;
     console.log(this.state);
-
+    console.log(selectedAgencyType);
     return (
       <body className="backgroundNoLogo">
         {this.state.show ? (
@@ -362,7 +452,7 @@ class IncidentEdit extends Component {
                       {errors["selectedAgencyType"]}
                     </div>
                   )}
-                  <input type="submit" value="edit" className="btnSubmit" />
+                  {this.generateButtons(status)}
                 </div>
               </form>
             </div>

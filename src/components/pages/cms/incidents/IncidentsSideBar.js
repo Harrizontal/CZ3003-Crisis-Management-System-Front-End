@@ -18,18 +18,33 @@ class IncidentsSideBar extends Component {
     this.setState({ view: value });
   }
 
+  calculateIncident(incidents, status) {
+    let showIncidents = incidents.filter(incident => {
+      if (status == "all") {
+        return incident;
+      } else {
+        return incident["properties"]["statuses"][0]["statusName"] == status;
+      }
+    });
+
+    return showIncidents.length;
+  }
+
   render() {
     console.log("Rendering");
     // console.log(this.props);
     const { incidents } = this.props;
 
     let showIncidents = incidents.filter(incident => {
+      console.log(incidents);
       if (this.state.view == "all") {
         this.state.title = "Recent Incidents";
         return incident;
       } else {
         this.state.title = this.state.view + " Incidents";
-        return incident["properties"]["status"] == this.state.view;
+        return (
+          incident["properties"]["statuses"][0]["statusName"] == this.state.view
+        );
       }
     });
 
@@ -42,21 +57,27 @@ class IncidentsSideBar extends Component {
             className="incident-sidebar-item"
             onClick={() => this.changeTab("all")}
           >
-            <span className="big">15</span>
+            <span className="big">
+              {this.calculateIncident(incidents, "all")}
+            </span>
             <span className="small">Total Incident</span>
           </div>
           <div
             className="incident-sidebar-item"
             onClick={() => this.changeTab("Pending")}
           >
-            <span className="big">15</span>
+            <span className="big">
+              {this.calculateIncident(incidents, "Pending")}
+            </span>
             <span className="small">Pending Incidents</span>
           </div>
           <div
             className="incident-sidebar-item"
-            onClick={() => this.changeTab("Outgoing")}
+            onClick={() => this.changeTab("Ongoing")}
           >
-            <span className="big">15</span>
+            <span className="big">
+              {this.calculateIncident(incidents, "Ongoing")}
+            </span>
             <span className="small">Ongoing Incidents</span>
           </div>
         </div>
