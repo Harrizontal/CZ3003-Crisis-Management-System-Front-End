@@ -25,7 +25,9 @@ class RelevantAgency extends Component {
   handleClickOpen = () => {
     this.setState({ open: true });
   };
-
+  handleGoBack = () => {
+    this.props.history.goBack();
+  }
   handleNoClose = () => {
     this.setState({ open: false });
     console.log("Incident not yet resolved!")
@@ -41,7 +43,7 @@ class RelevantAgency extends Component {
     return (
         <div className="bgRelevantAgency">
         <div className="containerDisplayIncident">
-          <div className="headerRelevantAgency">VIEW INCIDENT REPORT:</div> <br/>
+          <div className="headerRelevantAgency">VIEW INCIDENT REPORT</div> <br/>
           <div className="incidentProperties">IncidentID : {}</div> <br/>
           <div className="incidentProperties">Status: {}</div> <br/>
           <div className="incidentProperties">Name: {}</div> <br/>
@@ -55,7 +57,7 @@ class RelevantAgency extends Component {
           <div className="incidentProperties">Relevant Agency: {}</div> 
           <div className="buttonsRelevantAgencies">
             <input type="submit" value="Resolve" className="btnResolve" onClick={this.handleClickOpen}/>
-            <input type="submit" value="Go Back" className="btnGoBack" />
+            <input type="submit" value="Go Back" className="btnGoBack" onClick={this.handleGoBack}/>
           </div>
         </div>  
         <Dialog
