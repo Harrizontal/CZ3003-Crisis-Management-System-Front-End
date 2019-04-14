@@ -133,10 +133,6 @@ class ReactMap3 extends Component {
 
     mapboxgl.accessToken = token;
     this.map = new mapboxgl.Map(mapConfig);
-
-    // load data here
-    console.log("consoling this.props.incidents");
-    console.log(this.props.incident);
   }
 
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet

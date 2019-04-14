@@ -45,3 +45,19 @@ export const changeOverview = event => async dispatch => {
     console.log("GetMapData - " + error);
   }
 };
+
+export const getInitialMapData = () => async dispatch => {
+  try {
+    let res = await infoService.getDengueClusterMap();
+    // change map
+    dispatch({
+      type: "CHANGE_OVERVIEW",
+      selected: "dengue",
+      payload: res
+    });
+
+    // change information
+  } catch (error) {
+    console.log("GetMapData - " + error);
+  }
+};

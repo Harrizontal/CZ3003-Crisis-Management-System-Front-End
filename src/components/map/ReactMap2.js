@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 
 import { clickMap, setStyle } from "../../actions/mapActions";
 import MAP_STYLE from "./map-style-basic-v8.json";
+import { changeOverview, getInitialMapData } from "../../actions/mapActions";
 
 const id = "data";
 
@@ -131,6 +132,8 @@ class ReactMap2 extends Component {
 
     mapboxgl.accessToken = token;
     this.map = new mapboxgl.Map(mapConfig);
+    // load dengue data first
+    this.props.getInitialMapData();
   }
 
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet
@@ -180,7 +183,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       clickMap: clickMap,
-      setStyle: setStyle
+      setStyle: setStyle,
+      getInitialMapData: getInitialMapData
     },
     dispatch
   );
