@@ -548,6 +548,30 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.sun-marker {
+  background-image: url(http://openweathermap.org/img/w/01d.png);
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cloud-marker {
+  background-image: url(http://openweathermap.org/img/w/03d.png);
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rain-marker {
+  background-image: url(http://openweathermap.org/img/w/09d.png);
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .psi-marker {
   background-image: url("resources/icons8-marker-40.png");
   width: 50px;

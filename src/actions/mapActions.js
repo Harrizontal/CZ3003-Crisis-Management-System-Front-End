@@ -33,7 +33,6 @@ export const changeOverview = event => async dispatch => {
       default:
         return null;
     }
-
     // change map
     dispatch({
       type: "CHANGE_OVERVIEW",

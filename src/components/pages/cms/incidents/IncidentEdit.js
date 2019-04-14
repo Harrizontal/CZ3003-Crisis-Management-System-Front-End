@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Select from "react-select";
 import { transparent } from "material-ui/styles/colors";
-import { getIncident } from "../../../../actions/incidentActions";
+import {
+  getIncident,
+  updateIncident
+} from "../../../../actions/incidentActions";
 
 class IncidentEdit extends Component {
   state = {
@@ -28,6 +31,7 @@ class IncidentEdit extends Component {
       { value: "7", label: "Others" }
     ],
     selectedOption: null,
+    selectedOptionId: null,
     assType: [
       { value: "1", label: "Emergency Ambulance" },
       { value: "2", label: "Rescue and Evacuation" },
@@ -35,12 +39,14 @@ class IncidentEdit extends Component {
       { value: "4", label: "Gas Leak Control" }
     ],
     selectedAssType: null,
+    selectedAssTypeId: null,
     agencyType: [
       { value: "1", label: "SCDF" },
       { value: "2", label: "SPF" },
       { value: "3", label: "Singapore Power" }
     ],
-    selectedAgencyType: null
+    selectedAgencyType: null,
+    selectedAgencyTypeId: null
   };
 
   componentDidMount() {
@@ -54,39 +60,46 @@ class IncidentEdit extends Component {
     var fieldsAgencyTypeOption = this.state.agencyType;
 
     var selectedOption = [];
+    var selectedOptionId = [];
     incident.emergencyType.map(function(value) {
       for (var i = 0; i < fieldsOption.length; i++) {
         if (fieldsOption[i].label == value.emergencyName) {
           selectedOption.push(fieldsOption[i]);
+          selectedOptionId.push(parseInt(fieldsOption[i].value));
           break;
         }
       }
     });
 
     var selectedAssType = [];
+    var selectedAssTypeId = [];
     incident.assistanceType.map(function(value) {
       for (var i = 0; i < fieldsAssTypeOption.length; i++) {
         if (fieldsAssTypeOption[i].label == value.assistanceName) {
           selectedAssType.push(fieldsAssTypeOption[i]);
+          selectedAssTypeId.push(parseInt(fieldsAssTypeOption[i].value));
           break;
         }
       }
     });
 
     var selectedAgencyType = [];
+    var selectedAgencyTypeId = [];
     incident.relevantAgencies.map(function(value) {
       for (var i = 0; i < fieldsAgencyTypeOption.length; i++) {
         if (fieldsAgencyTypeOption[i].label == value.agencyName) {
           selectedAgencyType.push(fieldsAgencyTypeOption[i]);
+          selectedAgencyTypeId.push(parseInt(fieldsAgencyTypeOption[i].value));
           break;
         }
       }
     });
 
+    var length = incident.status.length - 1;
     var state = {
       show: true,
       incidentid: incident.incidentID,
-      status: incident.status[0].statusname,
+      status: incident.status[length].statusname,
       name: incident.reportedUser.name,
       contact: incident.reportedUser.mobilePhone,
       nric: incident.reportedUser.userIC,
@@ -104,6 +117,7 @@ class IncidentEdit extends Component {
         { value: "7", label: "Others" }
       ],
       selectedOption: selectedOption,
+      selectedOptionId: selectedOptionId,
       assType: [
         { value: "1", label: "Emergency Ambulance" },
         { value: "2", label: "Rescue and Evacuation" },
@@ -111,16 +125,19 @@ class IncidentEdit extends Component {
         { value: "4", label: "Gas Leak Control" }
       ],
       selectedAssType: selectedAssType,
+      selectedAssTypeId: selectedAssTypeId,
       agencyType: [
         { value: "1", label: "SCDF" },
         { value: "2", label: "SPF" },
         { value: "3", label: "Singapore Power" }
       ],
-      selectedAgencyType: selectedAgencyType
+      selectedAgencyType: selectedAgencyType,
+      selectedAgencyTypeId: selectedAgencyTypeId
     };
 
     this.setState({ ...state });
   }
+
   componentWillReceiveProps(nextProps, nextState) {
     console.log(nextProps.incident);
     if (nextProps.incident == undefined || nextProps.incident.length == 0) {
@@ -135,6 +152,16 @@ class IncidentEdit extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   handleChange = selectedOption => {
     this.setState({ selectedOption });
+
+    let arrayValue = [];
+
+    // get all selected option's id
+    selectedOption.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedOptionId: arrayValue });
+
     var errors = {};
     var empty = require("is-empty");
     for (var i = 0; i < selectedOption.length; i++) {
@@ -153,12 +180,32 @@ class IncidentEdit extends Component {
     this.setState({ selectedAssType });
     var errors = {};
     var empty = require("is-empty");
+
+    let arrayValue = [];
+
+    // get all selected option's id
+    selectedAssType.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+    console.log(arrayValue);
+    this.setState({ selectedAssTypeId: arrayValue });
+
     if (empty(selectedAssType)) {
       this.setState({ errors: errors });
     }
   };
   handleChangeAgency = selectedAgencyType => {
     this.setState({ selectedAgencyType });
+
+    let arrayValue = [];
+
+    // get all selected option's id
+    selectedAgencyType.map(function(option) {
+      arrayValue.push(parseInt(option["value"]));
+    });
+
+    this.setState({ selectedAgencyTypeId: arrayValue });
+
     var errors = {};
     var empty = require("is-empty");
     if (empty(selectedAgencyType)) {
@@ -179,7 +226,6 @@ class IncidentEdit extends Component {
     } = this.state;
     var errors = {};
     var empty = require("is-empty");
-    console.log(selectedOption);
 
     // Check For Errors
     const validName = name.match(new RegExp("^[a-zA-Z\\s]*$"));
@@ -189,7 +235,7 @@ class IncidentEdit extends Component {
       errors["name"] = "Enter a valid name.";
     }
 
-    const validContact = contact.match(new RegExp("^[0-9]{8}$"));
+    const validContact = contact.toString().match(new RegExp("^[0-9]{8}$"));
     if (contact === "") {
       errors["contact"] = "Contact is required.";
     } else if (!validContact) {
@@ -243,55 +289,78 @@ class IncidentEdit extends Component {
       case "Pending":
         return (
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <input type="submit" value="Edit" className="btnSubmit" />
-            <input type="submit" value="Approve" className="btnSubmit" />
-            <input type="submit" value="Reject" className="btnSubmit" />
+            <input
+              name="submit_approve"
+              type="submit"
+              value="Approve"
+              className="btnSubmit"
+              onClick={this.onSubmitApprove}
+            />
+            <input
+              name="submit_disapprove"
+              type="submit"
+              value="Reject"
+              className="btnSubmit"
+              onClick={this.onSubmitReject}
+            />
           </div>
         );
-      case "Ongoing":
-        return <input type="submit" value="Edit" className="btnSubmit" />;
       default:
         return null;
     }
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-
+  submitForm = value => {
     const canSubmit = this.checkFields();
-    console.log(canSubmit);
-
+    console.log(value);
     if (canSubmit === true) {
       const {
         name,
         contact,
         nric,
-        selectedOption,
         locaddress,
-        postalcode,
         description,
-        selectedAssType,
-        selectedAgencyType
+        selectedOptionId,
+        selectedAssTypeId,
+        selectedAgencyTypeId
       } = this.state;
-      console.log(this.state);
-      // Clear State
-      this.setState({
-        name: "",
-        contact: "",
-        nric: "",
-        selectedOption: {},
-        locaddress: "",
-        postalcode: "",
-        description: "",
-        errors: {},
-        selectedAssType: "",
-        selectedAgencyType: ""
-      });
 
-      window.confirm("Incident Editted!");
+      const { id } = this.props.match.params;
+      const { dispatch } = this.props;
 
-      this.props.history.push("/");
+      let incident = {
+        action: value,
+        name: name,
+        userIC: nric,
+        mobilePhone: contact,
+        description: description,
+        address: locaddress,
+        assistance_type: selectedAssTypeId,
+        emergency_type: selectedOptionId,
+        relevant_agencies: selectedAgencyTypeId
+      };
+
+      this.props.updateIncident(id, incident).then(
+        response => {
+          console.log("Incident updated successfully");
+          alert("Incident updated successfully");
+          this.setState({ status: null });
+        },
+        error => {
+          alert("Error. Note that address must be valid to process");
+        }
+      );
     }
+  };
+
+  onSubmitApprove = e => {
+    e.preventDefault();
+    this.submitForm("approve");
+  };
+
+  onSubmitReject = e => {
+    e.preventDefault();
+    this.submitForm("reject");
   };
 
   render() {
@@ -331,15 +400,14 @@ class IncidentEdit extends Component {
       incidentid,
       status
     } = this.state;
-    console.log(this.state);
-    console.log(selectedAgencyType);
+
     return (
       <body className="backgroundNoLogo">
         {this.state.show ? (
           <div className="bodybg formcontainer">
             <div className="editIncidentTitle">
               <div className="incident-header">
-                <span className="firstwordsel">edit</span> incident report:{" "}
+                <span className="firstwordsel">Update</span> incident report:{" "}
               </div>
               <div className="incidentLabel">
                 IncidentID: <label>{incidentid}</label>
@@ -475,5 +543,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getIncident }
+  { getIncident, updateIncident }
 )(IncidentEdit);

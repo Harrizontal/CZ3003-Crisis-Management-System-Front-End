@@ -27,7 +27,22 @@ export const getIncident = id => async dispatch => {
     console.log("IncidentActions:Getincident->" + error);
   }
 };
-export const updateIncident = id => async dispatch => {};
+export const updateIncident = (id, incident) => async dispatch => {
+  return incidentService.updateIncident(id, incident).then(
+    data => {
+      if (data["msg"]) {
+        console.log(data["msg"]);
+        return true;
+      } else {
+        // got error
+        return Promise.reject(false);
+      }
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
+};
 
 export const addIncident = incident => dispatch => {
   return incidentService.addIncident(incident).then(

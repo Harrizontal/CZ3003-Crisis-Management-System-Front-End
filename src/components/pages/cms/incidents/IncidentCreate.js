@@ -234,19 +234,6 @@ class IncidentCreate extends Component {
           alert("Error. Note that address must be valid to process");
         }
       );
-      // Clear State
-      // this.setState({
-      //   name: "",
-      //   contact: "",
-      //   nric: "",
-      //   selectedOption: {},
-      //   locaddress: "",
-      //   postalcode: "",
-      //   description: "",
-      //   errors: {},
-      //   selectedAssType: "",
-      //   selectedAgencyType: ""
-      // });
     }
   };
 

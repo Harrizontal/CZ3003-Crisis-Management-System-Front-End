@@ -45,9 +45,9 @@ class Incident extends Component {
       statuses
     } = this.props.incident;
 
-    let status = statuses[0]["statusName"];
+    var length = statuses.length - 1;
+    let status = statuses[length]["statusName"];
     // const test = this.props.incident;
-    console.log(this.props.incident);
 
     return (
       <Link

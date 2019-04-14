@@ -10,7 +10,6 @@ class IncidentsSideBar extends Component {
     title: "Recent Incidents"
   };
   componentDidMount() {
-    console.log("componentDidMount");
     this.props.getIncidents();
   }
 
@@ -23,7 +22,12 @@ class IncidentsSideBar extends Component {
       if (status == "all") {
         return incident;
       } else {
-        return incident["properties"]["statuses"][0]["statusName"] == status;
+        var lengthOfStatus = incident["properties"]["statuses"].length - 1;
+        console.log(incident["properties"]["statuses"]);
+        return (
+          incident["properties"]["statuses"][lengthOfStatus]["statusName"] ==
+          status
+        );
       }
     });
 
@@ -31,24 +35,22 @@ class IncidentsSideBar extends Component {
   }
 
   render() {
-    console.log("Rendering");
-    // console.log(this.props);
     const { incidents } = this.props;
 
     let showIncidents = incidents.filter(incident => {
-      console.log(incidents);
       if (this.state.view == "all") {
         this.state.title = "Recent Incidents";
         return incident;
       } else {
+        // wrong...
         this.state.title = this.state.view + " Incidents";
+        var lengthOfStatus = incident["properties"]["statuses"].length - 1;
         return (
-          incident["properties"]["statuses"][0]["statusName"] == this.state.view
+          incident["properties"]["statuses"][lengthOfStatus]["statusName"] ==
+          this.state.view
         );
       }
     });
-
-    console.log(incidents);
 
     return (
       <div className="incident-sidebar-container">

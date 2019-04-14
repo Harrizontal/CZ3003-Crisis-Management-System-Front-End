@@ -27,8 +27,15 @@ export function overviewReducer(state = initialState, action) {
   switch (action.type) {
     case "CHANGE_OVERVIEW":
       console.log("CHANGE_VIZ");
+
       let selected, data, layer, type, moreInfo;
       console.log(action.payload);
+      var sourceData = {
+        type: "FeatureCollection",
+        features: action.payload["features"]
+      };
+
+      console.log(sourceData);
       switch (action.selected) {
         case "dengue":
           data = action.payload;
@@ -37,14 +44,14 @@ export function overviewReducer(state = initialState, action) {
           type = "fill";
           break;
         case "weather":
-          data = weatherData2;
+          data = sourceData;
           fillLayerFormat.paint = weatherLayerPaint;
           //layer = fillLayerFormat;
           //paint = weatherLayerPaint;
           type = "marker";
           break;
         case "psi":
-          data = psiData;
+          data = sourceData;
           fillLayerFormat.paint = weatherLayerPaint;
           type = "psimarker";
           break;

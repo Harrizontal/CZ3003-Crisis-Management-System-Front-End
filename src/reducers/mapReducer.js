@@ -22,6 +22,7 @@ export default function mapReducer(styleState = null, action) {
 
     case "CHANGE_VIZ": {
       console.log("CHANGE_VIZ");
+
       let data;
       let paint;
       switch (action.payload) {

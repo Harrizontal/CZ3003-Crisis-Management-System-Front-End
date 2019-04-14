@@ -8,6 +8,7 @@ import { getIncidents } from "../../actions/incidentActions";
 
 import MAP_STYLE from "./map-style-basic-v8.json";
 import { defaultMapStyle } from "./map-style";
+import { MapsRateReview } from "material-ui/svg-icons";
 
 const id = "data";
 
@@ -81,7 +82,8 @@ class ReactMap3 extends Component {
           el.style.height = "30px";
 
           // should convert to functgion
-          switch (marker.properties.statuses[0].statusName) {
+          var length = marker.properties.statuses.length - 1;
+          switch (marker.properties.statuses[length].statusName) {
             case "Pending":
               el.className = "pending-marker";
               break;
@@ -92,10 +94,11 @@ class ReactMap3 extends Component {
               el.className = "psi-marker";
               break;
           }
+          var address = "<div>" + marker.properties.address + "</div>";
 
           popup2 = new mapboxgl.Popup({
             offset: 25
-          }).setText(marker.properties.statuses[0].statusName);
+          }).setHTML(address);
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)

@@ -68,17 +68,19 @@ class ReactMap2 extends Component {
         var popup;
         mapSource.features.forEach(function(marker) {
           var el = document.createElement("div");
-          el.className = "marker";
-          el.style.backgroundImage =
-            "url(http://openweathermap.org/img/w/02n.png";
+
+          var forecast = marker.properties.forecast.toLowerCase();
+          if (forecast.includes("rain")) {
+            el.className = "rain-marker";
+          } else if (forecast.includes("sun")) {
+            el.className = "sun-marker";
+          } else if (forecast.includes("cloud")) {
+            el.className = "cloud-marker";
+          } else {
+            el.className = "psi-marker";
+          }
           el.style.width = "50px";
           el.style.height = "50px";
-
-          el.addEventListener("click", function() {
-            window.alert(
-              marker.properties.location + "" + marker.properties.status
-            );
-          });
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)
@@ -90,18 +92,21 @@ class ReactMap2 extends Component {
         break;
       case "psimarker":
         var popup;
+        var popup2;
         mapSource.features.forEach(function(marker) {
           var el = document.createElement("div");
           el.className = "psi-marker";
           el.style.width = "50px";
           el.style.height = "50px";
 
-          el.addEventListener("click", function() {
-            window.alert(marker.properties["o3_sub_index"]);
-          });
+          popup2 = new mapboxgl.Popup({
+            closeOnClick: false,
+            offset: 20
+          }).setText(marker.properties.pm10_twenty_four_hourly);
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)
+            .setPopup(popup2)
             .addTo(map);
 
           array.push(popup);
