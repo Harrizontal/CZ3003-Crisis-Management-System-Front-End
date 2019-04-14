@@ -302,11 +302,6 @@ body {
   margin-top: 40px;
   transition: 0.4s;
 }
-@media screen and (max-width: 500px) {
-  .btnSubmit {
-    margin-bottom: 20px;
-  }
-}
 .btnSubmit:hover {
   background-color: #c51ea1;
 }
