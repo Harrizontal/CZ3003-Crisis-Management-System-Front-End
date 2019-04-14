@@ -135,11 +135,18 @@ body {
   cursor: pointer;
   padding: 0;
 }
+@media screen and (min-width: 501px) {
+  .background {
+    background-image: url(resources/bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
 
-.background {
-  background-image: url(resources/bg.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+@media screen and (max-width: 500px) {
+  .background {
+    background: none;
+  }
 }
 .backgroundNoLogo {
   background-image: url(resources/bgNoLogo.svg);
@@ -172,34 +179,76 @@ body {
   padding: 15px;
   padding-top: 5px;
 }
+@media screen and (max-width: 500px) {
+  .formcontainer {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* width: 80%;
+    height: 100%;
+    margin:10%; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (min-width: 501px) {
+  .formcontainer {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3em;
+    /* width: 80%;
+    height: 100%;
+    margin:10%; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+@media screen and (max-width: 500px) {
+  .card-header {
+    font-family: "Rubik", sans-serif;
+    font-variant: small-caps;
+    font-weight: 500;
+    font-size: 2em;
+    padding: 5%;
+    letter-spacing: 0.3em;
+    margin-bottom: 10px;
+  }
+}
 
-.formcontainer {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 3em;
-  /* width: 80%;
-  height: 100%;
-  margin:10%; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+@media screen and (min-width: 501px) {
+  .card-header {
+    font-family: "Rubik", sans-serif;
+    font-variant: small-caps;
+    font-weight: 500;
+    font-size: 2.1em;
+    letter-spacing: 0.3em;
+    margin-bottom: 30px;
+  }
 }
-.card-header {
-  font-family: "Rubik", sans-serif;
-  font-variant: small-caps;
-  font-weight: 500;
-  font-size: 2.1em;
-  letter-spacing: 0.3em;
-  margin-bottom: 30px;
+
+@media screen and (max-width: 500px) {
+  .card-body {
+    display: flexbox;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+  }
 }
-.card-body {
-  display: flexbox;
-  align-items: flex-start;
-  align-content: flex-start;
-  height: 100%;
+@media screen and (min-width: 501px) {
+  .card-body {
+    display: flexbox;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 100%;
+  }
 }
+
 .textgroup1 {
   width: 50%;
   height: 80%;
@@ -215,6 +264,15 @@ body {
   display: flex;
   align-items: flex-start;
   top: 0;
+}
+@media screen and (max-width: 500px) {
+  .selectgroup {
+    width: 80%;
+    height: 20%;
+    display: inline-block;
+    align-self: flex-start;
+    align-content: flex-start;
+  }
 }
 .selectgroup {
   width: 100%;
@@ -243,6 +301,11 @@ body {
   margin: 0 auto;
   margin-top: 40px;
   transition: 0.4s;
+}
+@media screen and (max-width: 500px) {
+  .btnSubmit {
+    margin-bottom: 20px;
+  }
 }
 .btnSubmit:hover {
   background-color: #c51ea1;
@@ -429,10 +492,9 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
-.incident-card .first-section .address {
-  width: 60%;
+.incident-card .first-section div {
 }
 
 .incident-card .second-section div {
@@ -550,22 +612,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .psi-marker {
   background-image: url("resources/icons8-marker-40.png");
-  width: 50px;
-  height: 50px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.ongoing-marker {
-  background-image: url("resources/ongoing.png");
-  width: 50px;
-  height: 50px;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.pending-marker {
-  background-image: url("resources/pending.png");
   width: 50px;
   height: 50px;
   background-repeat: no-repeat;

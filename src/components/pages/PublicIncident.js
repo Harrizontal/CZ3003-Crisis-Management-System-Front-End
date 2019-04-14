@@ -197,6 +197,7 @@ class PublicIncident extends Component {
   };
 
   render() {
+
     const customStyles = {
       fontFamily: "Rubik",
       option: (provided, state) => ({
@@ -206,7 +207,7 @@ class PublicIncident extends Component {
       control: () => ({
         // none of react-select's styles are passed to <Control />
         background: transparent,
-        width: 500
+        width: 300,
       }),
       singleValue: (provided, state) => {
         const opacity = state.isDisabled ? 0.5 : 1;
