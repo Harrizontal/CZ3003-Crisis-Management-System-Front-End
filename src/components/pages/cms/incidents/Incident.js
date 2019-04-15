@@ -10,6 +10,15 @@ class Incident extends Component {
       return <span>Request for approval</span>;
     }
   }
+  displayStatus(status){
+    if (status == "Pending"){
+      return <span className="status-pending">Pending</span>;
+    }
+    if (status == "Ongoing"){
+      return <span className="status-ongoing">Ongoing</span>;
+    }
+    return status;
+  }
 
   displayTime(date) {
     var date = date.slice(0, -5) + "08:00";
@@ -46,8 +55,9 @@ class Incident extends Component {
         <div className="incident-card">
           <div className="first-section">
             <div className="address">{address}</div>
-            <div className="pendingCircle">{status}</div>
           </div>
+          <div className="first-section-split"></div>
+            <div className="first-section-split">{this.displayStatus(status)}</div>
           <div className="second-section">
             <div>{this.displayMessage(status)}</div>
           </div>
