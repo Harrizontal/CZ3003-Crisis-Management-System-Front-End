@@ -4,7 +4,6 @@ export default class PSI extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <div 
         style={{        
         zIndex: 2,
@@ -14,10 +13,15 @@ export default class PSI extends Component {
         }}
         className="psi-card">
          
-      </div>
-    );
-=======
-      <div className= "containerLegendPSI">
+      
+      <div className= "containerLegendPSI"
+      style = {{
+        zIndex: 2,
+        position: "absolute",
+        right: "0px",
+        bottom: "330px"
+      }}
+      >
         <table className="legendPSI">
           <tr>
             <th rowSpan="2">Area</th>
@@ -52,8 +56,8 @@ export default class PSI extends Component {
           </tr>
         </table>
       </div>
+      </div>
+      
     );
-
->>>>>>> 3747afd502ad09a144beae75ef431cf6fc335094
   }
 }
