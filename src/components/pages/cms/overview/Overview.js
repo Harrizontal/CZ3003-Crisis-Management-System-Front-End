@@ -30,7 +30,7 @@ class Overview extends Component {
           justifyContent: "flex-start"
         }}
       >
-        <div style={{ width: "60%", height: "100%", position: "relative" }}>
+        <div style={{ width: "75%", height: "100%", position: "relative" }}>
           <Interface2 />
           <ReactMap2
             token={TOKEN}
@@ -43,13 +43,14 @@ class Overview extends Component {
         </div>
         <div
           style={{
-            width: "40%",
+            width: "25%",
             zIndex: 2,
             boxShadow: "-8px 0px 6px -6px rgba(0,0,0,0.25)"
           }}
         >
           <InformationSideBar
             selected={this.props.mapInformation["selected"]}
+            data={this.props.mapInformation["information"]}
           />
         </div>
       </div>

@@ -4,7 +4,9 @@ const url = Config.SERVER_URL;
 
 export const publicService = {
   createIncident,
-  subscribe
+  subscribe,
+  accessLinkRelevantAgency,
+  approveIncidentRelevantAgency
 };
 
 function createIncident(incident) {
@@ -24,5 +26,21 @@ function subscribe(phoneNoPostalCode) {
     })
     .catch(error => {
       return undefined;
+    });
+}
+
+function accessLinkRelevantAgency(id) {
+  return axios
+    .get(url + "/incidentupdate/" + id)
+    .then(response => response.data)
+    .catch(error => console.log(error.response.status));
+}
+
+function approveIncidentRelevantAgency(id) {
+  return axios
+    .post(url + "/incidentupdate/" + id)
+    .then(response => response.data)
+    .catch(error => {
+      throw error.response.status;
     });
 }

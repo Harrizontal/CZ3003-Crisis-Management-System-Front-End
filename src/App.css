@@ -637,6 +637,22 @@ input[type="number"]::-webkit-outer-spin-button {
   background-size: cover;
 }
 
+.ongoing-marker {
+  background-image: url("resources/ongoing.png");
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pending-marker {
+  background-image: url("resources/pending.png");
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .createIncBTN {
   border-radius: 25px;
   color: white;
@@ -681,7 +697,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: black;
   text-transform: lowercase;
 }
-.bgRelevantAgency{
+.bgRelevantAgency {
   background: url(./resources/bg.svg);
   background-blend-mode: overlay;
   background-size: cover;
@@ -689,7 +705,7 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 100%;
   width: 100%;
 }
-.containerDisplayIncident{
+.containerDisplayIncident {
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
@@ -707,7 +723,7 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-.headerRelevantAgency{
+.headerRelevantAgency {
   font-family: "Rubik", sans-serif;
   letter-spacing: 0.1em;
   font-size: 2em;
@@ -718,7 +734,7 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
   justify-content: center;
 }
-.incidentProperties{
+.incidentProperties {
   width: 70%;
   height: 100%;
   display: inline-block;
@@ -731,14 +747,15 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 1.2em;
   font-weight: 400;
 }
-.buttonsRelevantAgencies{
+.buttonsRelevantAgencies {
   width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-content: space-evenly;
 }
-.btnGoBack, .btnResolve {
+.btnGoBack,
+.btnResolve {
   font-family: "Rubik", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -755,9 +772,35 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-top: 40px;
   transition: 0.4s;
 }
-.btnGoBack:hover, .btnResolve:hover {
+.btnGoBack:hover,
+.btnResolve:hover {
   background-color: #c51ea1;
 }
-.btnGoBack:hover::after, .btnResolve:hover:after{
+.btnGoBack:hover::after,
+.btnResolve:hover:after {
   background-color: black;
+}
+
+.weather-forecast-header {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  padding: 5%;
+}
+
+.weather-forecast-header .item {
+  flex-grow: 1;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 5%;
+  text-align: center;
+  background-color: white;
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

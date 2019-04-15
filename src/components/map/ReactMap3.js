@@ -81,8 +81,8 @@ class ReactMap3 extends Component {
           el.style.width = "30px";
           el.style.height = "30px";
 
-          // should convert to functgion
-          var length = marker.properties.statuses.length - 1;
+          // should convert to function
+          var length = marker.properties.statuses.length - 1; // get latest status
           switch (marker.properties.statuses[length].statusName) {
             case "Pending":
               el.className = "pending-marker";
@@ -138,18 +138,13 @@ class ReactMap3 extends Component {
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet
   componentWillReceiveProps(nextProps) {
     if (this.props.incident === null) return;
-    console.log(nextProps);
     const before = this.props.mapInformation; // not needed
     const after = nextProps.incident;
     const map = this.map;
 
-    console.log(before);
-    console.log(after);
     const mapSource = after["mapSourceData"];
     const mapLayer = after["mapLayer"];
     const type = after["type"];
-
-    console.log(this.state.listOfMarkers);
 
     if (this.state.listOfMarkers.length > 0) {
       this.state.listOfMarkers.forEach(function(marker) {
@@ -158,6 +153,7 @@ class ReactMap3 extends Component {
     }
 
     if (after) {
+      console.log(type);
       this._generateSourceAndLayer(map, id, mapSource, mapLayer);
       this._generateMarkers(map, type, mapSource);
     }

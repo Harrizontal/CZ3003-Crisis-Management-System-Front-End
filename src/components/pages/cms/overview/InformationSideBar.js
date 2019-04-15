@@ -7,11 +7,11 @@ export default class InformationSideBar extends Component {
   _generateInfoComponent(title) {
     switch (title) {
       case "dengue":
-        return <DengueCluster />;
+        return <DengueCluster data={this.props.data} />;
       case "weather":
-        return <Weather />;
+        return <Weather data={this.props.data} />;
       case "psi":
-        return <PSI />;
+        return <PSI data={this.props.data} />;
       default:
         return <div>No information available</div>;
     }

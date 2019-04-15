@@ -51,12 +51,10 @@ class ReactMap2 extends Component {
         });
         mapSource.features.forEach(function(marker) {
           map.on("mouseenter", "data", e => {
-            const features = map.queryRenderedFeatures(e.point);
-            var getDescription = marker["properties"]["Description"];
-
+            //const features = map.queryRenderedFeatures(e.point);
             popup
               .setLngLat(e.lngLat)
-              .setHTML(getDescription)
+              .setHTML(e.features[0].properties.LOCALITY)
               .addTo(map);
           });
 
@@ -139,18 +137,13 @@ class ReactMap2 extends Component {
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet
   componentWillReceiveProps(nextProps) {
     if (this.props.mapInformation === null) return;
-    console.log(nextProps);
     const before = this.props.mapInformation;
     const after = nextProps.mapInformation;
     const map = this.map;
 
-    console.log(before);
-    console.log(after);
     const mapSource = after["mapSourceData"];
     const mapLayer = after["mapLayer"];
     const type = after["type"];
-
-    console.log(this.state.listOfMarkers);
 
     if (this.state.listOfMarkers.length > 0) {
       this.state.listOfMarkers.forEach(function(marker) {
@@ -158,7 +151,6 @@ class ReactMap2 extends Component {
       });
     }
 
-    console.log(mapSource);
     if (after) {
       this._generateSourceAndLayer(map, id, mapSource, mapLayer);
       this._generateMarkers(map, type, mapSource);

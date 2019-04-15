@@ -23,7 +23,6 @@ class IncidentsSideBar extends Component {
         return incident;
       } else {
         var lengthOfStatus = incident["properties"]["statuses"].length - 1;
-        console.log(incident["properties"]["statuses"]);
         return (
           incident["properties"]["statuses"][lengthOfStatus]["statusName"] ==
           status
