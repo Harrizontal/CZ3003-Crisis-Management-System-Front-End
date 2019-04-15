@@ -33,7 +33,6 @@ class CreateIncidentButton extends Component {
             style={style.button}
             onClick={this._directToCreateIncident.bind(this)}
           >
-
           </button>
           <div className="createINC">create<br></br>incident</div>
         </div>
