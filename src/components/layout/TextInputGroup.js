@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
 
 const TextInputGroup = ({
   label,
@@ -13,9 +12,11 @@ const TextInputGroup = ({
 }) => {
   return (
     <div className="form-group">
-      <label className="formlabel" htmlFor={name}>{label}</label>
-      <input 
-        className="forminput" 
+      <label className="formlabel" htmlFor={name}>
+        {label}
+      </label>
+      <input
+        className="forminput"
         type={type}
         name={name}
         /*className={classnames('form-control form-control-lg', {
@@ -41,7 +42,7 @@ TextInputGroup.propTypes = {
 };
 
 TextInputGroup.defaultProps = {
-  type: 'text'
+  type: "text"
 };
 
 export default TextInputGroup;

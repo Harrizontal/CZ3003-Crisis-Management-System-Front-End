@@ -7,8 +7,6 @@ import { bindActionCreators } from "redux";
 import { getIncidents } from "../../actions/incidentActions";
 
 import MAP_STYLE from "./map-style-basic-v8.json";
-import { defaultMapStyle } from "./map-style";
-import { MapsRateReview } from "material-ui/svg-icons";
 
 const id = "data";
 
@@ -138,7 +136,6 @@ class ReactMap3 extends Component {
   // Utilizes diffStyles to update the DOM map from a new Immutable stylesheet
   componentWillReceiveProps(nextProps) {
     if (this.props.incident === null) return;
-    const before = this.props.mapInformation; // not needed
     const after = nextProps.incident;
     const map = this.map;
 

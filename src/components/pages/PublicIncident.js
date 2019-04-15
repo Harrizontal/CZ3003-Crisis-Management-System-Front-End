@@ -186,18 +186,19 @@ class PublicIncident extends Component {
             note: {}
           });
 
-          console.log("Incident submitted successfully");
+          alert(
+            "Incident has submitted successfully! We will contact you if there a need to verify these submitted information"
+          );
           this.props.history.push("/");
         },
         error => {
-          console.log("Error!");
+          alert("Incident failed to submit. Please contact adminstrator.");
         }
       );
     }
   };
 
   render() {
-
     const customStyles = {
       fontFamily: "Rubik",
       option: (provided, state) => ({
@@ -207,7 +208,7 @@ class PublicIncident extends Component {
       control: () => ({
         // none of react-select's styles are passed to <Control />
         background: transparent,
-        width: 300,
+        width: 300
       }),
       singleValue: (provided, state) => {
         const opacity = state.isDisabled ? 0.5 : 1;

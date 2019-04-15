@@ -1,4 +1,3 @@
-import Immutable from "immutable";
 import popupCreator from "./popup";
 
 export default function UserIntReducer(userIntState = null, action) {
@@ -15,6 +14,4 @@ export default function UserIntReducer(userIntState = null, action) {
     default:
       return userIntState;
   }
-
-  return userIntState;
 }

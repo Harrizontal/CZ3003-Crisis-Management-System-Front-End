@@ -1,12 +1,33 @@
 import React, { Component } from "react";
-
+import { DeviceBattery90 } from "material-ui/svg-icons";
 export default class Weather extends Component {
+  getTextualDate(date) {
+    // convert dd-mm-yyy to Date object
+    var date = new Date(date.replace(/(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
+    console.log(date);
+    var days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    var day = days[date.getDay()];
+    console.log(day);
+    return day;
+  }
   generateForecastWeather = forecast => {
-    console.log(forecast);
     return (
       <div className="weather-forecast-header">
-        {forecast.map(function(value) {
-          return <div className="item"> {value.forecast}</div>;
+        {forecast.map(value => {
+          return (
+            <div className="weather-item">
+              {this.getTextualDate(value.date)}
+              {value.forecast}
+            </div>
+          );
         })}
       </div>
     );
@@ -23,7 +44,7 @@ export default class Weather extends Component {
         }}
       >
         {this.generateForecastWeather(this.props.data)}
-        <div style={{ width: "100%", height: "50%" }}>Weather</div>
+        <i class="wi wi-day-sunny" />
         <div style={{ width: "100%", height: "50%" }}>adasd</div>
       </div>
     );

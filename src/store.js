@@ -17,7 +17,6 @@ function hydrate(usePrevious = null) {
   }
 }
 
-const persistedState = loadState();
 const initialState = hydrate();
 
 const middleware = [thunk];
