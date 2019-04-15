@@ -19,32 +19,30 @@ const initialState = {
   mapSourceData: "",
   mapLayer: "",
   type: "",
-  moreInformation: ""
+  information: ""
 };
 
 export function overviewReducer(state = initialState, action) {
-  console.log("updating state for reactmap and sidebar");
   switch (action.type) {
     case "CHANGE_OVERVIEW":
-      console.log("CHANGE_VIZ");
+      console.log("CHANGE_OVERVIEW");
 
-      let selected, data, layer, type, moreInfo;
-      console.log(action.payload);
+      let selected, data, layer, type, info;
       var sourceData = {
         type: "FeatureCollection",
         features: action.payload["features"]
       };
 
-      console.log(sourceData);
       switch (action.selected) {
         case "dengue":
-          data = action.payload;
+          data = sourceData;
           fillLayerFormat.paint = dengueLayerPaint;
           layer = fillLayerFormat;
           type = "fill";
           break;
         case "weather":
           data = sourceData;
+          info = action.payload["information"];
           fillLayerFormat.paint = weatherLayerPaint;
           //layer = fillLayerFormat;
           //paint = weatherLayerPaint;
@@ -64,7 +62,7 @@ export function overviewReducer(state = initialState, action) {
         mapSourceData: data,
         mapLayer: layer,
         type: type,
-        moreInformation: "Testing!"
+        information: info
       };
     default:
       return state;

@@ -1,6 +1,5 @@
 import { Config } from "../Config";
 import axios from "axios";
-import { incidentData } from "../components/map/map-style";
 const url = Config.SERVER_URL;
 
 export const socialMediaService = {

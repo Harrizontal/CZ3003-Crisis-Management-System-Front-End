@@ -1,4 +1,5 @@
 import { publicService } from "../services";
+import { incidentConstants } from "../constants";
 
 export const createIncident = incident => dispatch => {
   return publicService.createIncident(incident).then(
@@ -11,17 +12,9 @@ export const createIncident = incident => dispatch => {
       }
     },
     error => {
-      return Promise.reject(error);
+      return Promise.reject(false);
     }
   );
-
-  function success(user) {
-    return { type: "asdasdasd", user };
-  }
-
-  function failure(error) {
-    return { type: "asdasdasd", error };
-  }
 };
 
 export const subscribe = phoneNoPostalCode => async dispatch => {
@@ -30,4 +23,39 @@ export const subscribe = phoneNoPostalCode => async dispatch => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const accessPublicAgencyLink = id => dispatch => {
+  return publicService.accessLinkRelevantAgency(id).then(
+    data => {
+      if (data) {
+        console.log(data);
+        dispatch({
+          type: incidentConstants.GET_INCIDENT,
+          payload: data
+        });
+        return true;
+      }
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
+};
+
+export const approveIncidentLink = id => dispatch => {
+  return publicService.approveIncidentRelevantAgency(id).then(
+    data => {
+      if (data) {
+        console.log(data);
+        return true;
+      } else {
+        console.log(data);
+      }
+    },
+    error => {
+      console.log(error);
+      return Promise.reject(error);
+    }
+  );
 };

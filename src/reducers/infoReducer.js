@@ -10,14 +10,6 @@ const initialState = {
 export function map(state = initialState, action) {
   switch (action.type) {
     case constants.GET_MAP_DATA:
-      console.log("dispatch! and the payload recieved");
-      console.log(action.payload);
-      //   const test = {
-      //     ...state,
-      //     mapData: action.payload
-      //   };
-      console.log("The state is:");
-      console.log(state);
       return { ...state, mapData: action.payload };
     default:
       return state;

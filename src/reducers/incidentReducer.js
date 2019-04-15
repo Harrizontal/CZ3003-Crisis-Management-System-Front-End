@@ -14,13 +14,10 @@ export function incident(state = initialState2, action) {
   let newState;
   switch (action.type) {
     case incidentConstants.GET_INCIDENTS:
-      console.log("incidentConstants.GET_INCIDENTS @ incidentReducer");
-
       var sourceData = {
         type: "FeatureCollection",
         features: action.payload["data"]
       };
-      console.log(action.payload);
       newState = {
         ...state,
         incidents: action.payload["data"],
@@ -28,7 +25,6 @@ export function incident(state = initialState2, action) {
         type: "marker"
       };
 
-      console.log(newState);
       return newState;
     case incidentConstants.GET_INCIDENT:
       newState = {

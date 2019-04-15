@@ -5556,7 +5556,7 @@ export const incidentData = {
       geometry: {
         // standard
         type: "Point", // standard
-        coordinates: [103.839, 1.375] // based on database. [lon,lat]. Note that is in an array
+        coordinates: ["103.839", "1.375"] // based on database. [lon,lat]. Note that is in an array
       },
       properties: {
         // standard
@@ -5572,95 +5572,95 @@ export const incidentData = {
         reported_user: "John Cena", // based on user db
         phone_no: "81234766" // based on user db
       }
-    },
-    {
-      type: "Feature", // standard
-      geometry: {
-        // standard
-        type: "Point", // standard
-        coordinates: [103.924, 1.321] // based on database. [lon,lat]. Note that is in an array
-      },
-      properties: {
-        // standard
-        id: "2", // based on incidentId
-        address: "Clementi Road", // based on address
-        postal_code: "080008", // based on postalCode
-        description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
-        emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
-        assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
-        relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
-        time_stamp: "2018-12-12",
-        status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
-        reported_user: "John Cena", // based on user db
-        phone_no: "81234766" // based on user db
-      }
-    },
-    {
-      type: "Feature", // standard
-      geometry: {
-        // standard
-        type: "Point", // standard
-        coordinates: [102, 1.321] // based on database. [lon,lat]. Note that is in an array
-      },
-      properties: {
-        // standard
-        id: "3", // based on incidentId
-        address: "Clementi Road", // based on address
-        postal_code: "080008", // based on postalCode
-        description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
-        emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
-        assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
-        relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
-        time_stamp: "2018-12-12",
-        status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
-        reported_user: "John Cena", // based on user db
-        phone_no: "81234766" // based on user db
-      }
-    },
-    {
-      type: "Feature", // standard
-      geometry: {
-        // standard
-        type: "Point", // standard
-        coordinates: [101, 1.321] // based on database. [lon,lat]. Note that is in an array
-      },
-      properties: {
-        // standard
-        id: "4", // based on incidentId
-        address: "Clementi Road", // based on address
-        postal_code: "080008", // based on postalCode
-        description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
-        emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
-        assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
-        relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
-        time_stamp: "2018-12-12",
-        status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
-        reported_user: "John Cena", // based on user db
-        phone_no: "81234766" // based on user db
-      }
-    },
-    {
-      type: "Feature", // standard
-      geometry: {
-        // standard
-        type: "Point", // standard
-        coordinates: [100, 1.321] // based on database. [lon,lat]. Note that is in an array
-      },
-      properties: {
-        // standard
-        id: "5", // based on incidentId
-        address: "Clementi Road", // based on address
-        postal_code: "080008", // based on postalCode
-        description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
-        emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
-        assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
-        relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
-        time_stamp: "2018-12-12",
-        status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
-        reported_user: "John Cena", // based on user db
-        phone_no: "81234766" // based on user db
-      }
     }
+    // {
+    //   type: "Feature", // standard
+    //   geometry: {
+    //     // standard
+    //     type: "Point", // standard
+    //     coordinates: [103.924, 1.321] // based on database. [lon,lat]. Note that is in an array
+    //   },
+    //   properties: {
+    //     // standard
+    //     id: "2", // based on incidentId
+    //     address: "Clementi Road", // based on address
+    //     postal_code: "080008", // based on postalCode
+    //     description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
+    //     emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
+    //     assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
+    //     relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
+    //     time_stamp: "2018-12-12",
+    //     status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
+    //     reported_user: "John Cena", // based on user db
+    //     phone_no: "81234766" // based on user db
+    //   }
+    // },
+    // {
+    //   type: "Feature", // standard
+    //   geometry: {
+    //     // standard
+    //     type: "Point", // standard
+    //     coordinates: [102, 1.321] // based on database. [lon,lat]. Note that is in an array
+    //   },
+    //   properties: {
+    //     // standard
+    //     id: "3", // based on incidentId
+    //     address: "Clementi Road", // based on address
+    //     postal_code: "080008", // based on postalCode
+    //     description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
+    //     emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
+    //     assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
+    //     relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
+    //     time_stamp: "2018-12-12",
+    //     status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
+    //     reported_user: "John Cena", // based on user db
+    //     phone_no: "81234766" // based on user db
+    //   }
+    // },
+    // {
+    //   type: "Feature", // standard
+    //   geometry: {
+    //     // standard
+    //     type: "Point", // standard
+    //     coordinates: ["101", "1.321"] // based on database. [lon,lat]. Note that is in an array
+    //   },
+    //   properties: {
+    //     // standard
+    //     id: "4", // based on incidentId
+    //     address: "Clementi Road", // based on address
+    //     postal_code: "080008", // based on postalCode
+    //     description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
+    //     emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
+    //     assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
+    //     relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
+    //     time_stamp: "2018-12-12",
+    //     status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
+    //     reported_user: "John Cena", // based on user db
+    //     phone_no: "81234766" // based on user db
+    //   }
+    // },
+    // {
+    //   type: "Feature", // standard
+    //   geometry: {
+    //     // standard
+    //     type: "Point", // standard
+    //     coordinates: [100, 1.321] // based on database. [lon,lat]. Note that is in an array
+    //   },
+    //   properties: {
+    //     // standard
+    //     id: "5", // based on incidentId
+    //     address: "Clementi Road", // based on address
+    //     postal_code: "080008", // based on postalCode
+    //     description: "Help!!!!!!!!!!!!!!!!!!!!! me!",
+    //     emergency_type: ["Fire", "Flood", "Earthquake", "Gas Leak"], // everything put in array | or you guys can give me id then i process from there
+    //     assistance_type: ["Emergency Ambulance"], // everything put in array or you guys can me id. If status is pending, it will be nil (put null or dont pass this field at all)
+    //     relevant_agency: ["Singapore Civil Defence", "etc"], // same as above. Note that is an array
+    //     time_stamp: "2018-12-12",
+    //     status: "Outgoing", // Pending|Ongoing|Resolved|Deleted???|Rejected . Can give Id also. I process at front end
+    //     reported_user: "John Cena", // based on user db
+    //     phone_no: "81234766" // based on user db
+    //   }
+    // }
   ]
 };
 
