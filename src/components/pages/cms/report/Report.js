@@ -144,7 +144,7 @@ class Report extends Component {
                 className="radioInput"
                 type="radio"
                 name="facebook"
-                value="1"
+                value="2"
                 checked={this.state.selected === "2"}
                 onChange={this.radioSelect}
               />
@@ -157,7 +157,7 @@ class Report extends Component {
                 className="radioInput"
                 type="radio"
                 name="twitter"
-                value="2"
+                value="1"
                 checked={this.state.selected === "1"}
                 onChange={this.radioSelect}
               />

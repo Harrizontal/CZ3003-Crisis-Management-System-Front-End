@@ -9,15 +9,14 @@ class NotFound extends Component{
     return (
       <div className="bg404">
         <div className="containerNF">
-          <div className="e404">The page you were looking for doesn't exist</div>
-          <Button
+          {/* <div className="e404">The page you were looking for doesn't exist</div> */}
+          <Button style={{backgroundColor:"#c51ea1;", color:"black"}}
             variant="contained"
-            color="primary"
             type="submit"
             className="buttonNF"
             onClick={e => this.onSubmit(e)}
             >
-            Click here to return
+            BACK
           </Button>
         </div>      
       </div>     
