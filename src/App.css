@@ -602,8 +602,8 @@ body {
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  width: 15%;
-  height: 25%;
+  width: 30%;
+  height: 40%;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -908,20 +908,20 @@ input[type="number"]::-webkit-outer-spin-button {
 .popup-content {
   padding: 0 !important;
 }
-.psi-card{
-  background-image: url('resources/psilegend.svg');
+.psi-card {
+  background-image: url("resources/psilegend.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 270px;
-  width :348px;
+  width: 348px;
   border-radius: 25px;
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
 }
-.btnDWP{
+.btnDWP {
   border-radius: 25px;
   color: black;
   width: 130px;
-  height:45px;
+  height: 45px;
   font-family: "Rubik", sans-serif;
   text-transform: lowercase;
   text-align: center;
@@ -933,27 +933,26 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .btnDWP:hover {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-
 }
-.containerLegendPSI{
+.containerLegendPSI {
   background: rgba(255, 255, 255, 1);
   border-radius: 25px;
-  padding:1rem;
+  padding: 1rem;
   padding-left: 10px;
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
 }
-.green{
+.green {
   height: 20px;
   width: 20px;
   margin: auto;
   border-radius: 50%;
-  background: #00BFA5;
+  background: #00bfa5;
 }
-table{
+table {
   border-collapse: collapse;
   width: auto;
 }
-.aq{
+.aq {
   border-bottom: none;
   line-height: 5%;
 }
@@ -980,4 +979,58 @@ td {
 }
 tr:hover {
   background-color: #f5f5f5;
+}
+
+@media screen and (min-width: 501px) {
+  .bgRelevantAgency {
+    background: url(./resources/bg.svg);
+    background-blend-mode: overlay;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .containerDisplayIncident {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    width: 100%;
+    height: 80%;
+  }
+
+  .headerRelevantAgency {
+    font-family: "Rubik", sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 1em;
+    font-weight: 500;
+    color: #7138e0;
+    text-decoration-line: underline;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .bgRelevantAgency {
+    background: white;
+  }
+
+  .containerDisplayIncident {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    width: 100%;
+    height: 80%;
+  }
+
+  .headerRelevantAgency {
+    font-family: "Rubik", sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 1em;
+    font-weight: 500;
+    color: #7138e0;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
 }

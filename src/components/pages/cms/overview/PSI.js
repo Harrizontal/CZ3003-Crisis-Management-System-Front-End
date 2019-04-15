@@ -1,6 +1,22 @@
 import React, { Component } from "react";
 
 export default class PSI extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  displayPSIbasedOnLocation(data, location) {
+    // console.log(data);
+    //var points = data;
+    var points = data;
+    for (var i = 0; i < points.length; i++) {
+      console.log(points[i].properties.area + "== " + location.toLowerCase());
+      if (points[i].properties.area == location.toLowerCase()) {
+        return points[i].properties.pm25_sub_index;
+      }
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -33,35 +49,60 @@ export default class PSI extends Component {
             </tr>
             <tr>
               <td>North</td>
-              <td>50</td>
+              <td>
+                {this.displayPSIbasedOnLocation(
+                  this.props.mapSource["features"],
+                  "north"
+                )}
+              </td>
               <td>
                 <div className="green" />
               </td>
             </tr>
             <tr>
               <td>South</td>
-              <td>44</td>
+              <td>
+                {this.displayPSIbasedOnLocation(
+                  this.props.mapSource["features"],
+                  "south"
+                )}
+              </td>
               <td>
                 <div className="green" />
               </td>
             </tr>
             <tr>
               <td>Central</td>
-              <td>43</td>
+              <td>
+                {this.displayPSIbasedOnLocation(
+                  this.props.mapSource["features"],
+                  "national"
+                )}
+              </td>
               <td>
                 <div className="green" />
               </td>
             </tr>
             <tr>
               <td>East</td>
-              <td>41</td>
+              <td>
+                {this.displayPSIbasedOnLocation(
+                  this.props.mapSource["features"],
+                  "east"
+                )}
+              </td>
               <td>
                 <div className="green" />
               </td>
             </tr>
             <tr>
               <td>West</td>
-              <td>43</td>
+              <td>
+                {this.displayPSIbasedOnLocation(
+                  this.props.mapSource["features"],
+                  "west"
+                )}
+              </td>
               <td>
                 <div className="green" />
               </td>

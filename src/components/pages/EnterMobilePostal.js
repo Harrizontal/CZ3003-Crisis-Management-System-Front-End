@@ -53,7 +53,7 @@ class EnterMobilePostal extends Component {
         postalCode: this.state.postalCode
       };
       this.props.subscribe(phoneNoPostalCode);
-
+      alert("You have subscribed to CMS! Thank you!");
       this.setState({
         mobileNumber: "",
         postalCode: ""
@@ -69,11 +69,13 @@ class EnterMobilePostal extends Component {
       <MuiThemeProvider>
         <body className="backgroundLogin">
           <form className="formEnterMobileArea">
+            <div className="card-header">Subscribe to CMS</div>
             <TextField
               name="mobileNumber"
               className="mobileNumberTextInput"
               placeholder="Enter your mobile number"
               value={this.state.mobileNumber}
+              fullWidth
               onChange={e => this.change(e)}
               type="number"
             />
@@ -85,6 +87,7 @@ class EnterMobilePostal extends Component {
               value={this.state.postalCode}
               placeholder="Enter your postal code"
               onChange={this.state.postalCode}
+              fullWidth
               onChange={e => this.change(e)}
               type="number"
             />

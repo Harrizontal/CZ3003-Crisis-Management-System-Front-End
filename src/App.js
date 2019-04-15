@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router basename="/CZ3003_CMS_FrontEnd">
+        <Router>
           <div className="App">
             <div>
               <Switch>

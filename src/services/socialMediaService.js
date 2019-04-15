@@ -6,19 +6,24 @@ export const socialMediaService = {
   postTwitter
 };
 
-function postTwitter(message) {
+function postTwitter(message, socialmediatarget) {
+  var body = {
+    message: message,
+    social_media_target: socialmediatarget
+  };
+  console.log(body);
   var configHeader = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token").slice(1, -1)
     }
   };
   return axios
-    .post(url + "/twitter", message, configHeader)
+    .post(url + "/socialmedia", body, configHeader)
     .then(res => {
       console.log(res.data);
       return res.data;
     })
     .catch(error => {
-      return undefined;
+      throw error.response.status;
     });
 }

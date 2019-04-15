@@ -98,9 +98,13 @@ class ReactMap2 extends Component {
         var popup2;
         mapSource.features.forEach(function(marker) {
           var el = document.createElement("div");
-          el.className = "psi-marker";
+          el.style.fontSize = "2em";
+          el.style.fontWeight = "bold";
           el.style.width = "50px";
           el.style.height = "50px";
+
+          var test = document.createTextNode(marker.properties.pm25_sub_index);
+          el.appendChild(test);
 
           popup2 = new mapboxgl.Popup({
             closeOnClick: false,

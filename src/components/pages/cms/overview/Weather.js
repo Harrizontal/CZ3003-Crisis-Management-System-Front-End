@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DeviceBattery90 } from "material-ui/svg-icons";
+
 export default class Weather extends Component {
   getTextualDate(date) {
     // convert dd-mm-yyy to Date object
@@ -34,6 +34,7 @@ export default class Weather extends Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div
         style={{

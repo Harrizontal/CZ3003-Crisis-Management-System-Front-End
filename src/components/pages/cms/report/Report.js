@@ -29,9 +29,12 @@ class Report extends Component {
       280 - charnum + " remaining characters";
   }
 
-  radioSelect(event){
+  radioSelect(event) {
     var selectedName;
-    this.setState({selectedName: event.target.name });
+    this.setState({
+      selectedName: event.target.name,
+      selected: event.target.value
+    });
   }
 
   checkFields = () => {
@@ -56,10 +59,8 @@ class Report extends Component {
     //   selectedoption: "",
     //   errror: {}
     // });
-    var message = {
-      message: this.state.text
-    };
-    dispatch(postTwitter(message)).then(
+
+    dispatch(postTwitter(this.state.text, this.state.selected)).then(
       response => {
         alert("social media submitted successfully");
         this.setState({
@@ -67,13 +68,13 @@ class Report extends Component {
         });
       },
       error => {
-        alert("Error");
+        alert("Error. Please contact the adminstrator.");
       }
     );
   };
 
   render() {
-    const {text, error, selected, selectedName} = this.state;
+    const { text, error, selected, selectedName } = this.state;
     return (
       <div className="formcontainer2">
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -101,7 +102,7 @@ class Report extends Component {
             </div>
           </div>
 
-          <div style={{ flexGrow: "1", padding: "2%",}}>
+          <div style={{ flexGrow: "1", padding: "2%" }}>
             <span
               id="remaining"
               style={{
@@ -123,15 +124,15 @@ class Report extends Component {
               flexBasis: "0"
             }}
           >
-            <div 
-              style={{ flexGrow: "1", flexShrink: "1", textAlign: "center", }}
+            <div
+              style={{ flexGrow: "1", flexShrink: "1", textAlign: "center" }}
             >
               <input
                 className="radioInput"
                 type="radio"
                 name="all"
                 value="3"
-                checked={this.state.value === '3'} 
+                checked={this.state.selected === "3"}
                 onChange={this.radioSelect}
               />
               <img src={all} style={{ height: "50px", width: "50px" }} />
@@ -144,7 +145,7 @@ class Report extends Component {
                 type="radio"
                 name="facebook"
                 value="1"
-                checked={this.state.value === '1'} 
+                checked={this.state.selected === "2"}
                 onChange={this.radioSelect}
               />
               <img src={facebook} style={{ height: "50px", width: "50px" }} />
@@ -157,7 +158,7 @@ class Report extends Component {
                 type="radio"
                 name="twitter"
                 value="2"
-                checked={this.state.value === '2'} 
+                checked={this.state.selected === "1"}
                 onChange={this.radioSelect}
               />
               <img src={twitter} style={{ height: "50px", width: "50px" }} />

@@ -39,6 +39,7 @@ class Overview extends Component {
           <InformationSideBar
             selected={this.props.mapInformation["selected"]}
             data={this.props.mapInformation["information"]}
+            mapSource={this.props.mapInformation["mapSourceData"]}
           />
         </div>
       </div>
