@@ -5,11 +5,6 @@ import { connect } from "react-redux";
 import { deleteContact } from "../../../../actions/contactActions";
 
 class Incident extends Component {
-  onDeleteClick = id => {
-    //// DELETE CONTACT ////
-    this.props.deleteContact(id);
-  };
-
   displayMessage(status) {
     if (status == "Pending") {
       return <span>Request for approval</span>;
@@ -37,13 +32,7 @@ class Incident extends Component {
   }
 
   render() {
-    const {
-      incidentID,
-      address,
-      emergencyType,
-      timeStamp,
-      statuses
-    } = this.props.incident;
+    const { incidentID, address, timeStamp, statuses } = this.props.incident;
 
     var length = statuses.length - 1;
     let status = statuses[length]["statusName"];

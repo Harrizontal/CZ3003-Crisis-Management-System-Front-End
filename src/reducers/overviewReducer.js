@@ -1,16 +1,10 @@
-import { infoConstants as constants } from "../constants";
-
 //let user = JSON.parse(localStorage.getItem("user"));
 //const initialState = user ? { loggedIn: true, user } : {};
 
 import {
-  dengueData,
   dengueLayerPaint,
   fillLayerFormat,
-  weatherData,
-  weatherData2,
-  weatherLayerPaint,
-  psiData
+  weatherLayerPaint
 } from "../components/map/map-style";
 
 const initialState = {
@@ -44,8 +38,6 @@ export function overviewReducer(state = initialState, action) {
           data = sourceData;
           info = action.payload["information"];
           fillLayerFormat.paint = weatherLayerPaint;
-          //layer = fillLayerFormat;
-          //paint = weatherLayerPaint;
           type = "marker";
           break;
         case "psi":

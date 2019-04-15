@@ -5,9 +5,9 @@ import CreateIncidentButton from "../../../map/CreateIncidentButton";
 import { Config } from "../../../../Config";
 
 const TOKEN = Config.MAPBOX_API;
-const LONG = 103.842275;
-const LAT = 1.275635;
-const ZOOM = 10;
+const LONG = Config.LONG;
+const LAT = Config.LAT;
+const ZOOM = Config.ZOOM;
 const STYLE_ID = "ryantm/cj8m5f0136ll12sk7nm8dj00k";
 
 export class IncidentsOverview extends Component {

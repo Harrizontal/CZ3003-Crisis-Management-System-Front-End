@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 
 import { clickMap, setStyle } from "../../actions/mapActions";
 import MAP_STYLE from "./map-style-basic-v8.json";
-import { changeOverview, getInitialMapData } from "../../actions/mapActions";
+import { getInitialMapData } from "../../actions/mapActions";
 
 const id = "data";
 
@@ -75,6 +75,10 @@ class ReactMap2 extends Component {
             el.className = "sun-marker";
           } else if (forecast.includes("cloud")) {
             el.className = "cloud-marker";
+          } else if (forecast.includes("thunder")) {
+            el.className = "thunder-marker";
+          } else if (forecast.includes("showers")) {
+            el.className = "showers-marker";
           } else {
             el.className = "psi-marker";
           }
@@ -101,7 +105,7 @@ class ReactMap2 extends Component {
           popup2 = new mapboxgl.Popup({
             closeOnClick: false,
             offset: 20
-          }).setText(marker.properties.pm10_twenty_four_hourly);
+          }).setText(marker.properties.pm25_sub_index);
 
           popup = new mapboxgl.Marker(el)
             .setLngLat(marker.geometry.coordinates)

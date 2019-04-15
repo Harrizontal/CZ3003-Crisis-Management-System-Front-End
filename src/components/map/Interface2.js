@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Immutable from "immutable";
 import { changeOverview } from "../../actions/mapActions";
 
 class Interface2 extends Component {

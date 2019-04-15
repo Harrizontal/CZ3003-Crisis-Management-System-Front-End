@@ -1,6 +1,5 @@
 import { Config } from "../Config";
 import axios from "axios";
-import { incidentData } from "../components/map/map-style";
 const url = Config.SERVER_URL;
 
 export const incidentService = {
@@ -12,7 +11,7 @@ export const incidentService = {
 
 function getIncidents() {
   return axios
-    .get(url + "/allIncidents?status=All&order=desc")
+    .get(url + "/allIncidents?status=pending&status=ongoing&order=desc")
     .then(res => {
       console.log(res.data);
       return res.data;
