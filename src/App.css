@@ -459,7 +459,7 @@ body {
   background-color: white;
   transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border-radius: 20px;
+  border-radius: 15px;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
@@ -469,7 +469,7 @@ body {
   color: black;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
 }
 
 .incident-card:hover {
@@ -481,13 +481,38 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 1%;
 }
-
+.incident-card .first-section-split{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  margin-bottom: 1%;
+}
+.status-ongoing{
+  color: #00BFA5;
+}
+.status-pending{
+  color: #F5A623;
+}
+.incident-card .second-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 0.8em;
+  color: #F84141;
+  margin-bottom: 1%;
+}
 .incident-card .third-section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  font-size: 0.8em;
 }
 .incident-card .first-section div {
 }
@@ -654,24 +679,35 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .createIncBTN {
-  border-radius: 25px;
-  color: white;
-  background-color: black;
+  border-radius: 50%;
+  border:none;
+  color: black;
+  background-image: url("resources/add.svg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 80px;
+  height:80px;
 
+}
+.createINC{
+  margin-top: 5%; 
   font-family: "Rubik", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color:black;
 }
 
 .createIncBTN:hover {
-  color: white;
-  background-color: #c51ea1;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .formcontainer2 {
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 1);
   padding: 3.5em;
   position: absolute;
   top: 50%;
@@ -781,7 +817,6 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: black;
 }
 
-<<<<<<< HEAD
 .popup-content{
   padding: 0 !important; 
 }
@@ -823,7 +858,6 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 25%;
   justify-content: space-around;
 }
-=======
 .weather-forecast-header {
   height: 15%;
   width: 100%;
@@ -850,4 +884,3 @@ input[type="number"]::-webkit-outer-spin-button {
 .popup-content {
   padding: 0 !important;
 }
->>>>>>> 2d5d6da98afb162c260b01b58cfdb13d0c29ec1a

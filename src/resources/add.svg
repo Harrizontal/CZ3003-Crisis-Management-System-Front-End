@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>add</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-48.000000, -35.000000)">
+            <g id="add" transform="translate(48.000000, 35.000000)">
+                <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="40" cy="40" r="40"></circle>
+                <path d="M54.1448134,38.1450068 L41.8551866,38.1450068 L41.8551866,25.8556493 C41.8551866,24.832265 41.0246822,24 40,24 C38.9753178,24 38.1448134,24.832265 38.1448134,25.8552119 L38.1448134,38.1450068 L25.8551866,38.1450068 C24.8309416,38.1450068 24,38.9772718 24,40.0002187 C24,41.0266643 24.8309416,41.8554306 25.8551866,41.8554306 L38.1448134,41.8554306 L38.1448134,54.1447881 C38.1448134,55.1721084 38.9753178,56 40,56 C41.0246822,56 41.8551866,55.1707964 41.8551866,54.1447881 L41.8551866,41.8554306 L54.1448134,41.8554306 C55.169933,41.8554306 56,41.026227 56,40.0002187 C56,38.9772718 55.1694957,38.1450068 54.1448134,38.1450068 Z" id="Path" fill="#000000"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -12,7 +12,7 @@ export const incidentService = {
 
 function getIncidents() {
   return axios
-    .get(url + "/allIncidents?status=All&order=desc")
+    .get(url + "/allIncidents?status=pending&status=ongoing&order=desc")
     .then(res => {
       console.log(res.data);
       return res.data;

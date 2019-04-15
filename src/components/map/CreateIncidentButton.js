@@ -6,12 +6,12 @@ const style = {
   ui: {
     zIndex: 2,
     position: "absolute",
-    right: "10px",
-    top: "10px"
+    right: "40px",
+    top: "30px"
   },
   button: {
     marginRight: "2px",
-    padding: "5%"
+    padding: "8%"
   }
 };
 
@@ -34,8 +34,9 @@ class CreateIncidentButton extends Component {
             style={style.button}
             onClick={this._directToCreateIncident.bind(this)}
           >
-            Create Incident
+
           </button>
+          <div className="createINC">create<br></br>incident</div>
         </div>
       </div>
     );

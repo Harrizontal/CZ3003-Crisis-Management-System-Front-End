@@ -3,6 +3,7 @@ import IncidentsSideBar from "./IncidentsSideBar";
 import ReactMap3 from "../../../map/ReactMap3";
 import CreateIncidentButton from "../../../map/CreateIncidentButton";
 import { Config } from "../../../../Config";
+import autorenew from "material-ui/svg-icons/action/autorenew";
 import ongoing from "../../../../resources/ongoing.png";
 import pending from "../../../../resources/pending.png";
 
