@@ -459,7 +459,7 @@ body {
   background-color: white;
   transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border-radius: 5px;
+  border-radius: 20px;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
@@ -760,4 +760,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .btnGoBack:hover::after, .btnResolve:hover:after{
   background-color: black;
+}
+
+.popup-content{
+  padding: 0 !important; 
 }

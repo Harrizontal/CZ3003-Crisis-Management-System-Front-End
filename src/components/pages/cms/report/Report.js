@@ -12,9 +12,11 @@ class Report extends Component {
     super(props);
     this.state = {
       text: "",
-      errror: {}
+      errror: {},
+      selected: "social media"
     };
     this.handleChange = this.handleChange.bind(this);
+    this.radioSelect = this.radioSelect.bind(this);
   }
 
   handleChange(event) {
@@ -24,6 +26,13 @@ class Report extends Component {
     this.setState({ text: event.target.value });
     document.getElementById("remaining").innerHTML =
       280 - charnum + " remaining characters";
+  }
+
+  radioSelect(event){
+    var selected = "Social Media"
+    console.log(event.target.value );
+    this.setState({ selected: event.target.value });
+    console.log(selected);
   }
 
   checkFields = () => {
@@ -65,6 +74,7 @@ class Report extends Component {
   };
 
   render() {
+    const {text, error, selected} = this.state;
     return (
       <div className="formcontainer2">
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -77,7 +87,7 @@ class Report extends Component {
               }}
             >
               <div className="card-header">
-                <span className="firstwordsel">Post to:</span> Social Media
+                <span className="firstwordsel">Post to:</span> {selected}
               </div>
             </div>
 
@@ -122,6 +132,7 @@ class Report extends Component {
                 type="radio"
                 name="media"
                 value="1"
+                onChange={this.radioSelect}
               />
               <img src={all} style={{ height: "50px", width: "50px" }} />
             </div>
@@ -133,6 +144,7 @@ class Report extends Component {
                 type="radio"
                 name="media"
                 value="2"
+                onChange={this.radioSelect}
               />
               <img src={facebook} style={{ height: "50px", width: "50px" }} />
             </div>
@@ -144,6 +156,7 @@ class Report extends Component {
                 type="radio"
                 name="media"
                 value="3"
+                onChange={this.radioSelect}
               />
               <img src={twitter} style={{ height: "50px", width: "50px" }} />
             </div>
