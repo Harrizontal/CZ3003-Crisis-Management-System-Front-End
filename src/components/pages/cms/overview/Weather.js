@@ -20,7 +20,8 @@ export default class Weather extends Component {
   }
   generateForecastWeather = forecast => {
     return (
-      <div className="weather-forecast-header">
+      <div className="weather-forecast-card">
+        <div className="weather-forecast-header">Weather forecast</div>
         {forecast.map(value => {
           return (
             <div className="weather-item">
@@ -44,8 +45,6 @@ export default class Weather extends Component {
         }}
       >
         {this.generateForecastWeather(this.props.data)}
-        <i class="wi wi-day-sunny" />
-        <div style={{ width: "100%", height: "50%" }}>adasd</div>
       </div>
     );
   }

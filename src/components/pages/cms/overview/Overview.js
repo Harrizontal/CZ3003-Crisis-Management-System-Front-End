@@ -18,32 +18,22 @@ class Overview extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "flex-start"
-        }}
-      >
-        <div style={{ width: "75%", height: "100%", position: "relative" }}>
-          <Interface2 />
-          <ReactMap2
-            token={TOKEN}
-            longitude={LONG}
-            latitude={LAT}
-            zoom={ZOOM}
-            showPopUp={true}
-            styleID={STYLE_ID}
-          />
-        </div>
+      <div style={{ width: "100%", height: "100%", position: "relative" }}>
+        <Interface2 />
+        <ReactMap2
+          token={TOKEN}
+          longitude={LONG}
+          latitude={LAT}
+          zoom={ZOOM}
+          showPopUp={true}
+          styleID={STYLE_ID}
+        />
         <div
           style={{
-            width: "25%",
             zIndex: 2,
-            boxShadow: "-8px 0px 6px -6px rgba(0,0,0,0.25)"
+            position: "absolute",
+            bottom: "30px",
+            right: "10px"
           }}
         >
           <InformationSideBar

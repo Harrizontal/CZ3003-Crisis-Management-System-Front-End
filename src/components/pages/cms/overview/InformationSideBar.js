@@ -18,17 +18,6 @@ export default class InformationSideBar extends Component {
   }
 
   render() {
-    return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column"
-        }}
-      >
-        {this._generateInfoComponent(this.props.selected)}
-      </div>
-    );
+    return <div>{this._generateInfoComponent(this.props.selected)}</div>;
   }
 }
