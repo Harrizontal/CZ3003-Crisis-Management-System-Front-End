@@ -33,7 +33,7 @@ class Overview extends Component {
             zIndex: 2,
             position: "absolute",
             bottom: "30px",
-            right: "55px"
+            right: "50px"
           }}
         >
           <InformationSideBar
