@@ -13,7 +13,8 @@ class Report extends Component {
     this.state = {
       text: "",
       errror: {},
-      selected: "social media"
+      selected: "social media",
+      selectedName: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.radioSelect = this.radioSelect.bind(this);
@@ -29,10 +30,10 @@ class Report extends Component {
   }
 
   radioSelect(event){
-    var selected = "Social Media"
-    console.log(event.target.value );
+    var selected = "Social Media";
+    var selectedName = "";
     this.setState({ selected: event.target.value });
-    console.log(selected);
+    this.setState({selectedName: event.target.name });
   }
 
   checkFields = () => {
@@ -74,7 +75,7 @@ class Report extends Component {
   };
 
   render() {
-    const {text, error, selected} = this.state;
+    const {text, error, selected, selectedName} = this.state;
     return (
       <div className="formcontainer2">
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -87,7 +88,7 @@ class Report extends Component {
               }}
             >
               <div className="card-header">
-                <span className="firstwordsel">Post to:</span> {selected}
+                <span className="firstwordsel">Post to:</span> {selectedName}
               </div>
             </div>
 
@@ -130,8 +131,8 @@ class Report extends Component {
               <input
                 className="radioInput"
                 type="radio"
-                name="media"
-                value="1"
+                name="all"
+                value="3"
                 onChange={this.radioSelect}
               />
               <img src={all} style={{ height: "50px", width: "50px" }} />
@@ -142,8 +143,8 @@ class Report extends Component {
               <input
                 className="radioInput"
                 type="radio"
-                name="media"
-                value="2"
+                name="facebook"
+                value="1"
                 onChange={this.radioSelect}
               />
               <img src={facebook} style={{ height: "50px", width: "50px" }} />
@@ -154,8 +155,8 @@ class Report extends Component {
               <input
                 className="radioInput"
                 type="radio"
-                name="media"
-                value="3"
+                name="twitter"
+                value="2"
                 onChange={this.radioSelect}
               />
               <img src={twitter} style={{ height: "50px", width: "50px" }} />
