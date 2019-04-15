@@ -923,6 +923,7 @@ table{
 }
 .aq{
   border-bottom: none;
+  line-height: 5%;
 }
 th {
   border-bottom: 1px solid black;
@@ -931,8 +932,9 @@ th {
   font-size: 1em;
   font-weight: 400;
   color: black;
-  padding: 10px;
+  padding: 12px;
   width: auto;
+  line-height: 5%;
 }
 td {
   border-bottom: 1px solid black;

@@ -4,7 +4,6 @@ export default class PSI extends Component {
   render() {
     return (
       <div className= "containerLegendPSI">
-        <br/>
         <table className="legendPSI">
           <tr>
             <th rowSpan="2">Area</th>
