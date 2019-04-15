@@ -395,12 +395,13 @@ body {
 
 /* terence */
 .groupName {
-  font-size: 3.5em;
-  font-weight: 500;
+  font-size: 3.0em;
+  font-weight: 400;
   letter-spacing: 0.1em;
   font-family: "Rubik", sans-serif;
   font-variant: small-caps;
   color: black;
+  margin-bottom: 10%;
 }
 .projectName {
   font-size: 1.5em;
@@ -413,14 +414,13 @@ body {
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  width: fit-content;
+  width: 40%;
   height: fit-content;
-  padding: 2em;
+  padding: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-emphasis-style: bold;
 
   position: absolute;
   top: 50%;
@@ -451,6 +451,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #7138e0;
 }
 
 .incident-card {
@@ -700,11 +701,11 @@ input[type="number"]::-webkit-outer-spin-button {
   background-image: url("resources/add.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
 }
 .createINC {
-  margin-top: 5%;
+  margin-top: 10%;
   font-family: "Rubik", sans-serif;
   text-transform: lowercase;
   text-align: center;

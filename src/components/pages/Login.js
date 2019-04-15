@@ -120,7 +120,7 @@ class Login extends Component {
               <div className="errorMsg">{this.state.errors.password}</div>
               <br />
               <br />
-              <Button
+              <Button style={{backgroundColor:"#c51ea1"}}
                 variant="contained"
                 color="primary"
                 type="submit"
