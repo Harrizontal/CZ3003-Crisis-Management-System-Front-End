@@ -131,54 +131,61 @@ class RelevantAgency extends Component {
               <div className="headerRelevantAgency">VIEW INCIDENT REPORT</div>{" "}
               <br />
               <div className="incidentProperties">
-                IncidentID : {this.state.incidentid}
+                <b>IncidentID:</b> {this.state.incidentid}
               </div>{" "}
               <br />
               <div className="incidentProperties">
-                Status: {this.state.status}
+                <b>Status:</b> {this.state.status}
               </div>{" "}
               <br />
               <div className="incidentProperties">
-                Name: {this.state.name}
+                <b>Name:</b> {this.state.name}
               </div>{" "}
               <br />
               <div className="incidentProperties">
-                Contact: {this.state.contact}
+                <b>Contact:</b>
+                {this.state.contact}
               </div>
               <br />
               <div className="incidentProperties">
-                NRIC: {this.state.nric}
+                <b>NRIC:</b> {this.state.nric}
               </div>{" "}
               <br />
               <div className="incidentProperties">
-                Address: {this.state.locaddress}
+                <b>Address:</b> {this.state.locaddress}
               </div>
               <br />
               <div className="incidentProperties">
-                Postal Code: {this.state.postalcode}
+                <b>Postal Code:</b> {this.state.postalcode}
               </div>
               <br />
               <div className="incidentProperties">
-                Description: {this.state.description}
+                <b>Description:</b> {this.state.description}
               </div>
               <br />
               <div className="incidentProperties">
-                Emergency Type: {this.state.emergencyType}{" "}
+                <b>Emergency Type:</b>
+                {this.state.emergencyType}{" "}
               </div>
               <br />
               <div className="incidentProperties">
-                Assistance Required:{this.state.assistanceType}
+                <b>Assistance Required:</b>
+                {this.state.assistanceType}
               </div>
               <br />
               <div className="incidentProperties">
-                Relevant Agency contacted:
+                <b>Relevant Agency contacted:</b>
               </div>
               <br />
               {this.state.relevantAgency.map(function(value) {
                 return (
                   <div className="incidentProperties">
                     {value.relevantagency_name}:{" "}
-                    {value.acknowledged ? "Resolved" : "Unresolved"}
+                    {value.acknowledged ? (
+                      <div className="green">Resolved</div>
+                    ) : (
+                      <div className="orange">Unresolved</div>
+                    )}
                   </div>
                 );
               })}
