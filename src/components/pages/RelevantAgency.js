@@ -21,17 +21,20 @@ class RelevantAgency extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(id);
     this.props.accessPublicAgencyLink(id);
   }
 
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.interval = setInterval(
+      () => this.props.accessPublicAgencyLink(id),
+      5000
+    );
+  }
   componentWillReceiveProps(nextProps, nextState) {
-    console.log(nextProps.incident);
     if (nextProps.incident == undefined || nextProps.incident.length == 0) {
-      console.log("No Incident");
       this.setState({ show: false });
     } else {
-      console.log("Got incident");
       this.formatState(nextProps.incident);
     }
   }
@@ -47,25 +50,34 @@ class RelevantAgency extends Component {
       selectedAssType = selectedAssType + value.assistanceName + " ";
     });
 
-    var selectedAgencyType = "";
+    var selectedAgencyType = [];
     incident.relevantAgencies.map(function(value) {
-      selectedAgencyType = selectedAgencyType + value.agencyName + " ";
+      selectedAgencyType.push(value.relevantagency_name);
     });
 
     var showResolveButton = false;
 
-    var length = incident.status.length - 1;
+    var length = incident.statuses.length - 1;
 
-    if (incident.status[length].statusname == "Resolved") {
-      showResolveButton = false;
-    } else {
-      showResolveButton = true;
+    var getCurrentRA = incident.current_relevant_agency.agencyName;
+    var totalRA = incident.relevantAgencies.length;
+    for (var i = 0; i < totalRA; i++) {
+      if (incident.relevantAgencies[i].relevantagency_name == getCurrentRA) {
+        if (incident.relevantAgencies[i].acknowledged) {
+          showResolveButton = false;
+          break;
+        } else {
+          showResolveButton = true;
+          break;
+        }
+      }
     }
+
     var state = {
       show: true,
       showResolveButton: showResolveButton,
       incidentid: incident.incidentID,
-      status: incident.status[length].statusname,
+      status: incident.statuses[length].statusname,
       name: incident.reportedUser.name,
       contact: incident.reportedUser.mobilePhone,
       nric: incident.reportedUser.userIC,
@@ -74,7 +86,7 @@ class RelevantAgency extends Component {
       description: incident.description,
       emergencyType: selectedOption,
       assistanceType: selectedAssType,
-      relevantAgency: selectedAgencyType
+      relevantAgency: incident.relevantAgencies
     };
 
     this.setState({ ...state });
@@ -91,7 +103,6 @@ class RelevantAgency extends Component {
   };
   handleNoClose = () => {
     this.setState({ open: false });
-    console.log("Incident not yet resolved!");
   };
   handleYesClose = () => {
     this.setState({ open: false });
@@ -99,6 +110,7 @@ class RelevantAgency extends Component {
     this.props.approveIncidentLink(id).then(
       res => {
         alert("Approve successfuly");
+        this.props.accessPublicAgencyLink(id);
         this.setState({ showResolveButton: false });
       },
       error => {
@@ -159,8 +171,17 @@ class RelevantAgency extends Component {
               </div>
               <br />
               <div className="incidentProperties">
-                Relevant Agency: {this.state.relevantAgency}
+                Relevant Agency contacted:
               </div>
+              <br />
+              {this.state.relevantAgency.map(function(value) {
+                return (
+                  <div className="incidentProperties">
+                    {value.relevantagency_name}:{" "}
+                    {value.acknowledged ? "Resolved" : "Unresolved"}
+                  </div>
+                );
+              })}
               <div className="buttonsRelevantAgencies">
                 {this.state.showResolveButton && (
                   <input

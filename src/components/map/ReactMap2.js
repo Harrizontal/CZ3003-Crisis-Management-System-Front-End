@@ -54,7 +54,7 @@ class ReactMap2 extends Component {
             //const features = map.queryRenderedFeatures(e.point);
             popup
               .setLngLat(e.lngLat)
-              .setHTML(e.features[0].properties.LOCALITY)
+              .setHTML(e.features[0].properties.Description)
               .addTo(map);
           });
 

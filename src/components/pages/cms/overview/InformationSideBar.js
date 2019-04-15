@@ -6,14 +6,12 @@ import PSI from "./PSI";
 export default class InformationSideBar extends Component {
   _generateInfoComponent(title) {
     switch (title) {
-      case "dengue":
-        return <DengueCluster data={this.props.data} />;
       case "weather":
         return <Weather data={this.props.data} />;
       case "psi":
         return <PSI data={this.props.data} />;
       default:
-        return <div>No information available</div>;
+        return <div>No other information available</div>;
     }
   }
 

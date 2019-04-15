@@ -25,8 +25,7 @@ export default class Weather extends Component {
         {forecast.map(value => {
           return (
             <div className="weather-item">
-              {this.getTextualDate(value.date)}
-              {value.forecast}
+              {this.getTextualDate(value.date)}: {value.forecast}
             </div>
           );
         })}
