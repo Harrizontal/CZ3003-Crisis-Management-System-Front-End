@@ -284,6 +284,15 @@ class IncidentEdit extends Component {
     }
   };
 
+  showEditOrView = status => {
+    console.log(status);
+    switch (status) {
+      case "Pending":
+        return "Edit";
+      case "Ongoing":
+        return "View";
+    }
+  };
   generateButtons = status => {
     switch (status) {
       case "Pending":
@@ -407,7 +416,10 @@ class IncidentEdit extends Component {
           <div className="bodybg formcontainer">
             <div className="editIncidentTitle">
               <div className="incident-header">
-                <span className="firstwordsel">Update</span> incident report:{" "}
+                <span className="firstwordsel">
+                  {this.showEditOrView(status)}
+                </span>{" "}
+                incident report:{" "}
               </div>
               <div className="incidentLabel">
                 IncidentID: <label>{incidentid}</label>
