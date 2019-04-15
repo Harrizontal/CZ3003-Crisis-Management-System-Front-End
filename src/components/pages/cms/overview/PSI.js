@@ -8,7 +8,7 @@ export default class PSI extends Component {
         style={{        
         zIndex: 2,
         position: "absolute",
-        right: "40px",
+        right: "10px",
         bottom: "30px"
         }}
         className="psi-card">
@@ -19,7 +19,7 @@ export default class PSI extends Component {
         zIndex: 2,
         position: "absolute",
         right: "0px",
-        bottom: "330px"
+        bottom: "300px"
       }}
       >
         <table className="legendPSI">
