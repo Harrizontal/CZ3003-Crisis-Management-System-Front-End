@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeOverview } from "../../actions/mapActions";
+import block from "material-ui/svg-icons/content/block";
 
 class Interface2 extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Interface2 extends Component {
   _makeButton(activeState, btnData) {
     const { value, contents } = btnData;
     return (
-      <button
+      <button className="btnDWP"
         value={value}
         type="button"
         style={style.button}
@@ -70,12 +71,13 @@ export default connect(
 
 const style = {
   ui: {
-    zIndex: 2,
+    display: "inline-block",
+    zIndex: "2",
     position: "absolute",
-    right: "10px",
-    top: "10px"
+    right: "40px",
+    top: "30px"
   },
   button: {
-    marginRight: "2px"
+    marginRight: "10px"
   }
 };

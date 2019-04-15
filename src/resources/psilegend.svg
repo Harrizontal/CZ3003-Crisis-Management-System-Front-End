@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="580px" height="450px" viewBox="0 0 580 450" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PSI-legend">
+            <g id="Group">
+                <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="0" y="0" width="580" height="450"></rect>
+                <text id="LEGEND-:" font-family="Rubik-Medium, Rubik" font-size="30" font-weight="400" fill="#000000">
+                    <tspan x="40" y="58">LEGEN</tspan>
+                    <tspan x="137.05" y="58" letter-spacing="-1.875">D : </tspan>
+                </text>
+                <text id="PSI-Value" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#000000">
+                    <tspan x="91" y="118">PSI Value</tspan>
+                </text>
+                <text id="Air-Quality-Descript" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#000000">
+                    <tspan x="261" y="118">Air Quality Descriptor</tspan>
+                </text>
+                <text id="0-50" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#00BFA5">
+                    <tspan x="91" y="172">0-50</tspan>
+                </text>
+                <text id="Good" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#00BFA5">
+                    <tspan x="261" y="172">Good</tspan>
+                </text>
+                <text id="51-100" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#1DA1F2">
+                    <tspan x="91" y="222">51-100</tspan>
+                </text>
+                <text id="Moderate" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#1DA1F2">
+                    <tspan x="261" y="222">Moderate</tspan>
+                </text>
+                <text id="101-200" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#F5A623">
+                    <tspan x="91" y="272">101-200</tspan>
+                </text>
+                <text id="Unhealthy" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#F5A623">
+                    <tspan x="261" y="272">Unhealthy</tspan>
+                </text>
+                <text id="201-300" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#FF852A">
+                    <tspan x="91" y="322">201-300</tspan>
+                </text>
+                <text id="Very-Unhealthy" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#FF852A">
+                    <tspan x="261" y="322">Very Unhealthy</tspan>
+                </text>
+                <text id="Above-300" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#F84141">
+                    <tspan x="91" y="372">Above 300</tspan>
+                </text>
+                <text id="Hazardous" font-family="Rubik-Regular, Rubik" font-size="25" font-weight="normal" fill="#F84141">
+                    <tspan x="261" y="372">Hazardous</tspan>
+                </text>
+                <path d="M91,136.5 L501,136.5" id="Line" stroke="#979797" stroke-linecap="square" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
