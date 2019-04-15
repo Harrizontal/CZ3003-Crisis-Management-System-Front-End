@@ -796,6 +796,49 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: black;
 }
 
+<<<<<<< HEAD
+.popup-content{
+  padding: 0 !important; 
+}
+
+.legendbarContainer{
+  width: 50%; 
+  height: 6%; 
+  background: white;
+  border-radius: 30px;
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
+}
+.legend{
+  width:100%;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+}
+.legend-label{
+  font-family: "Rubik", sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  text-transform: lowercase;
+  font-size: 1em;
+}
+.legend-header{
+  font-family: "Rubik", sans-serif;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-right: 8%;
+}
+.legend-item{
+  display: inline-flex;
+  flex-direction: row; 
+  align-items: center;
+  padding: 5px;
+  width: 25%;
+  justify-content: space-around;
+}
+=======
 .weather-forecast-header {
   height: 50%;
   width: 100%;
@@ -833,3 +876,4 @@ input[type="number"]::-webkit-outer-spin-button {
 .popup-content {
   padding: 0 !important;
 }
+>>>>>>> 2d5d6da98afb162c260b01b58cfdb13d0c29ec1a

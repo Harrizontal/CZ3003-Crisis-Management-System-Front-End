@@ -3,6 +3,8 @@ import IncidentsSideBar from "./IncidentsSideBar";
 import ReactMap3 from "../../../map/ReactMap3";
 import CreateIncidentButton from "../../../map/CreateIncidentButton";
 import { Config } from "../../../../Config";
+import ongoing from "../../../../resources/ongoing.png";
+import pending from "../../../../resources/pending.png";
 
 const TOKEN = Config.MAPBOX_API;
 const LONG = Config.LONG;
@@ -33,7 +35,30 @@ export class IncidentsOverview extends Component {
             showPopUp={true}
             styleID={STYLE_ID}
           />
+        <div 
+          style={{
+            position:"absolute",
+            margin:"50",
+            zIndex:"2",
+            bottom: "5%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            }}
+            className="legendbarContainer">
+          <div className="legend">
+            <div className="legend-header">legend: </div>
+            <div className="legend-item">
+              <div className="legend-label">pending </div>
+              <img src={pending} style={{width:"30px", height:"30px"}} />
+            </div>
+            <div className="legend-item">
+              <div className="legend-label">ongoing </div>
+              <img src={ongoing} style={{width:"30px", height:"30px"}} />
+            </div>
+          </div>
         </div>
+        </div> 
+
         <div
           style={{
             width: "25%",
