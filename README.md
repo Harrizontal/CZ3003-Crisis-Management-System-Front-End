@@ -1,10 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project is for CZ3003 System Analysis and Design Group Assignment/Labs
 
 ## Table of Contents
 
+- [Team members](#team-members)
 - [Scope of the System](#scope-of-the-system)
 - [Available Scripts](#available-scripts)
 - [Screenshots](#screenshots)
+
+## Team Members (Frontend only)
+
+- Harrison Wong
+- Tay Guang Yuan
+- Terence Chan
+- Redmond Goon
 
 ## Scope of the System
 
