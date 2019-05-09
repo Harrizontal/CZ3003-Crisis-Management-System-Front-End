@@ -80,7 +80,7 @@ class ReactMap2 extends Component {
           } else if (forecast.includes("showers")) {
             el.className = "showers-marker";
           } else {
-            el.className = "psi-marker";
+            el.className = "sun-marker";
           }
           el.style.width = "50px";
           el.style.height = "50px";
